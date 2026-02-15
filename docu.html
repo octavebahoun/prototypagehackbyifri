@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation — Plateforme Académique Intelligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        * {
+            font-family: "Inter", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: translateX(8px);
+            color: #667eea;
+        }
+
+        .nav-link.active {
+            color: #667eea;
+            font-weight: 600;
+            border-left: 3px solid #667eea;
+            padding-left: 13px;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+        }
+
+        .api-method {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        .method-get {
+            background: #10b981;
+            color: white;
+        }
+
+        .method-post {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .method-put {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .method-delete {
+            background: #ef4444;
+            color: white;
+        }
+
+        .method-patch {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-mvp {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-diff {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .db-table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 0.875rem;
+        }
+
+        .db-table th {
+            background: #f1f5f9;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .db-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .db-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Top Navigation -->
+    <nav class="gradient-bg text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <span class="material-icons text-3xl">school</span>
+                    <div>
+                        <h1 class="text-xl font-bold">Plateforme Académique Intelligente</h1>
+                        <p class="text-sm opacity-90">Documentation Technique Complète</p>
+                    </div>
+                </div>
+                <a href="index.html"
+                    class="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition">
+                    <span class="material-icons">arrow_back</span>
+                    <span>Retour aux prototypes</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Sidebar Navigation -->
+            <div class="lg:col-span-1">
+                <div class="sidebar bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">
+                        Navigation
+                    </h3>
+                    <nav class="space-y-2">
+                        <a href="#vision" class="nav-link block py-2 text-gray-700 text-sm">
+                            <span class="material-icons text-sm align-middle mr-2">visibility</span>
+                            Vision
+                        </a>
+                        <a href="#demarrage" class="nav-link block py-2 text-gray-700 text-sm">
+                            <span class="material-icons text-sm align-middle mr-2">rocket_launch</span>
+                            Démarrage Rapide
+                        </a>
+                        <a href="#structure" class="nav-link block py-2 text-gray-700 text-sm">
+                            <span class="material-icons text-sm align-middle mr-2">folder</span>
+                            Structure
+                        </a>
+                        <a href="#ecrans" class="nav-link block py-2 text-gray-700 text-sm">
+                            <span class="material-icons text-sm align-middle mr-2">devices</span>
+                            Écrans Prototypes
+                        </a>
+                        <a href="#parcours" class="nav-link block py-2 text-gray-700 text-sm">
+                            <span class="material-icons text-sm align-middle mr-2">timeline</span>
+                            Parcours Utilisateur
+                        </a>
+                        <a href="#modules" class="nav-link block py-2 text-gray-700 text-sm">
+                            <span class="material-icons text-sm align-middle mr-2">dashboard</span>
+                            Modules Fonctionnels
+                        </a>
+                        <a href="#priorisation" class="nav-link block py-2 text-gray-700 text-sm">
+                            <span class="material-icons text-sm align-middle mr-2">flag</span>
+                            Priorisation MVP
+                        </a>
+                        <a href="#architecture" class="nav-link block py-2 text-gray-700 text-sm">
+                            <span class="material-icons text-sm align-middle mr-2">architecture</span>
+                            Architecture
+                        </a>
+                        <a href="#database" class="nav-link block py-2 text-gray-700 text-sm">
+                            <span class="material-icons text-sm align-middle mr-2">storage</span>
+                            Base de Données
+                        </a>
+                        <a href="#api" class="nav-link block py-2 text-gray-700 text-sm">
+                            <span class="material-icons text-sm align-middle mr-2">api</span>
+                            APIs
+                        </a>
+                        <a href="#references" class="nav-link block py-2 text-gray-700 text-sm">
+                            <span class="material-icons text-sm align-middle mr-2">link</span>
+                            Références
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="lg:col-span-3 space-y-8">
+                <!-- Vision Section -->
+                <section id="vision" class="bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-4xl gradient-text">visibility</span>
+                        <h2 class="text-3xl font-bold text-gray-800">Vision</h2>
+                    </div>
+                    <p class="text-gray-600 text-lg mb-6">
+                        Une plateforme tout-en-un qui accompagne l'étudiant sur 3 axes interconnectés :
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="card-hover bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg">
+                            <span class="material-icons text-blue-600 text-3xl mb-3">calendar_today</span>
+                            <h3 class="font-bold text-blue-900 mb-2">Organisation</h3>
+                            <p class="text-blue-800 text-sm">
+                                Calendrier unifié, tâches, rappels, anticipation des échéances.
+                            </p>
+                        </div>
+                        <div class="card-hover bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg">
+                            <span class="material-icons text-purple-600 text-3xl mb-3">psychology</span>
+                            <h3 class="font-bold text-purple-900 mb-2">Apprentissage</h3>
+                            <p class="text-purple-800 text-sm">
+                                Génération IA (fiches, quiz, podcasts, exercices) à partir de cours et documents.
+                            </p>
+                        </div>
+                        <div class="card-hover bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg">
+                            <span class="material-icons text-green-600 text-3xl mb-3">groups</span>
+                            <h3 class="font-bold text-green-900 mb-2">Collaboration</h3>
+                            <p class="text-green-800 text-sm">
+                                Sessions de révision, quiz multi-joueurs, partage de ressources, réputation.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Démarrage Section -->
+                <section id="demarrage" class="bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-4xl gradient-text">rocket_launch</span>
+                        <h2 class="text-3xl font-bold text-gray-800">Démarrage Rapide</h2>
+                    </div>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                        <p class="text-blue-800 font-medium">Ouvrir la page d'index :</p>
+                        <code class="text-blue-900 font-bold">index.html</code>
+                        <p class="text-blue-700 text-sm mt-2">(hub de navigation + parcours rapide)</p>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg p-6 text-white">
+                        <p class="text-gray-300 mb-3 font-semibold">
+                            <span class="material-icons text-sm align-middle mr-2">terminal</span>
+                            Lancer en local (recommandé)
+                        </p>
+                        <pre class="text-sm"><code>cd "maquette retenu/prototypage"
+python3 -m http.server 8000</code></pre>
+                        <p class="text-gray-400 text-sm mt-3">
+                            Puis ouvrir :
+                            <a href="http://localhost:8000/index.html" class="text-blue-400 underline">
+                                http://localhost:8000/index.html
+                            </a>
+                        </p>
+                    </div>
+                    <div class="mt-4 bg-yellow-50 border-l-4 border-yellow-500 p-4">
+                        <p class="text-yellow-800 text-sm">
+                            <span class="material-icons text-sm align-middle mr-1">info</span>
+                            Les écrans ajoutent une mini barre de navigation "Index prototypes" en haut de
+                            page pour naviguer rapidement.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Structure Section -->
+                <section id="structure" class="bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-4xl gradient-text">folder</span>
+                        <h2 class="text-3xl font-bold text-gray-800">Structure du Dossier</h2>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-3">
+                            <span class="material-icons text-blue-500">description</span>
+                            <div>
+                                <code class="bg-gray-100 px-2 py-1 rounded text-sm">index.html</code>
+                                <p class="text-gray-600 text-sm">
+                                    Page d'entrée "essai de prototypage" (cartes + captures + parcours)
+                                </p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="material-icons text-blue-500">code</span>
+                            <div>
+                                <code class="bg-gray-100 px-2 py-1 rounded text-sm">*/code.html</code>
+                                <p class="text-gray-600 text-sm">Un écran prototype par variante</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="material-icons text-blue-500">image</span>
+                            <div>
+                                <code class="bg-gray-100 px-2 py-1 rounded text-sm">*/screen.png</code>
+                                <p class="text-gray-600 text-sm">Capture d'aperçu associée à chaque écran</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="material-icons text-blue-500">folder_open</span>
+                            <div>
+                                <code class="bg-gray-100 px-2 py-1 rounded text-sm">doc/</code>
+                                <p class="text-gray-600 text-sm">
+                                    Cahiers de référence (fonctionnalités + stack)
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Écrans Section -->
+                <section id="ecrans" class="bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-4xl gradient-text">devices</span>
+                        <h2 class="text-3xl font-bold text-gray-800">Écrans Disponibles</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="card-hover border-2 border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <span class="material-icons text-blue-600">login</span>
+                                <h3 class="font-bold text-gray-800">Login Page</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm">
+                                Authentification (porte d'entrée du parcours)
+                            </p>
+                            <code class="text-xs bg-gray-100 px-2 py-1 rounded mt-2 inline-block">
+                  login page/code.html
+                </code>
+                        </div>
+
+                        <div class="card-hover border-2 border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <span class="material-icons text-purple-600">dashboard</span>
+                                <h3 class="font-bold text-gray-800">Dashboard Étudiant</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm">Tâches, stats, widgets</p>
+                            <code class="text-xs bg-gray-100 px-2 py-1 rounded mt-2 inline-block">
+                  student_dashboard_home_variant_1/code.html
+                </code>
+                        </div>
+
+                        <div class="card-hover border-2 border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <span class="material-icons text-green-600">account_circle</span>
+                                <h3 class="font-bold text-gray-800">Profil Étudiant</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm">Infos personnelles + cours</p>
+                            <code class="text-xs bg-gray-100 px-2 py-1 rounded mt-2 inline-block">
+                  student_profile_page_variant_2/code.html
+                </code>
+                        </div>
+
+                        <div class="card-hover border-2 border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <span class="material-icons text-orange-600">calendar_month</span>
+                                <h3 class="font-bold text-gray-800">Calendrier Hebdomadaire</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm">Vue semaine</p>
+                            <code class="text-xs bg-gray-100 px-2 py-1 rounded mt-2 inline-block">
+                  calendar_weekly_view_variant_1/code.html
+                </code>
+                        </div>
+
+                        <div class="card-hover border-2 border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <span class="material-icons text-red-600">grade</span>
+                                <h3 class="font-bold text-gray-800">Gestion des Notes</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm">Notes & moyennes (table + filtres)</p>
+                            <code class="text-xs bg-gray-100 px-2 py-1 rounded mt-2 inline-block">
+                  grade_management_interface_variant_1/code.html
+                </code>
+                        </div>
+
+                        <div class="card-hover border-2 border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <span class="material-icons text-indigo-600">quiz</span>
+                                <h3 class="font-bold text-gray-800">Quiz Interactif</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm">Progression, timer, score</p>
+                            <code class="text-xs bg-gray-100 px-2 py-1 rounded mt-2 inline-block">
+                  interactive_quiz_interface_variant_2/code.html
+                </code>
+                        </div>
+
+                        <div class="card-hover border-2 border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <span class="material-icons text-cyan-600">auto_awesome</span>
+                                <h3 class="font-bold text-gray-800">Génération IA</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm">Hub génération IA (upload/paste)</p>
+                            <code class="text-xs bg-gray-100 px-2 py-1 rounded mt-2 inline-block">
+                  ai_content_generation_variant_1/code.html
+                </code>
+                        </div>
+
+                        <div class="card-hover border-2 border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <span class="material-icons text-pink-600">description</span>
+                                <h3 class="font-bold text-gray-800">Résultats IA</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm">Vue document / modes d'étude</p>
+                            <code class="text-xs bg-gray-100 px-2 py-1 rounded mt-2 inline-block">
+                  ai_generation_results_variant_2/code.html
+                </code>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Parcours Section -->
+                <section id="parcours" class="bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-4xl gradient-text">timeline</span>
+                        <h2 class="text-3xl font-bold text-gray-800">Parcours Utilisateur</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">
+                                1
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-800">Connexion & Profil</h4>
+                                <p class="text-gray-600 text-sm">
+                                    L'étudiant se connecte et renseigne son profil.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold">
+                                2
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-800">Centralisation</h4>
+                                <p class="text-gray-600 text-sm">
+                                    Il centralise ses cours/tâches dans le calendrier et reçoit des notifications.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-indigo-500 text-white rounded-full flex items-center justify-center font-bold">
+                                3
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-800">Upload & Génération IA</h4>
+                                <p class="text-gray-600 text-sm">
+                                    Il uploade des cours : l'IA extrait + génère fiche/quiz/podcast.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center font-bold">
+                                4
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-800">Suivi de Performance</h4>
+                                <p class="text-gray-600 text-sm">
+                                    Les notes alimentent la moyenne et déclenchent des alertes (early warning).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold">
+                                5
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-800">Collaboration</h4>
+                                <p class="text-gray-600 text-sm">
+                                    En cas de difficulté, il rejoint une session collaborative ou trouve un tuteur
+                                    via matching.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Modules Section -->
+                <section id="modules" class="bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-4xl gradient-text">dashboard</span>
+                        <h2 class="text-3xl font-bold text-gray-800">Modules Fonctionnels</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="card-hover bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                            <h3 class="font-bold text-blue-900 mb-2 flex items-center">
+                                <span class="material-icons mr-2">badge</span>
+                                1. Identité & Contexte Académique
+                            </h3>
+                            <p class="text-blue-800 text-sm">Auth, profil, emploi du temps</p>
+                        </div>
+
+                        <div class="card-hover bg-purple-50 p-6 rounded-lg border-l-4 border-purple-500">
+                            <h3 class="font-bold text-purple-900 mb-2 flex items-center">
+                                <span class="material-icons mr-2">event_note</span>
+                                2. Organisation Intelligente
+                            </h3>
+                            <p class="text-purple-800 text-sm">
+                                Tâches, calendrier unifié, notifications
+                            </p>
+                        </div>
+
+                        <div class="card-hover bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                            <h3 class="font-bold text-green-900 mb-2 flex items-center">
+                                <span class="material-icons mr-2">analytics</span>
+                                3. Suivi de Performance
+                            </h3>
+                            <p class="text-green-800 text-sm">
+                                Notes, calcul moyenne, alertes, dashboards
+                            </p>
+                        </div>
+
+                        <div class="card-hover bg-indigo-50 p-6 rounded-lg border-l-4 border-indigo-500">
+                            <h3 class="font-bold text-indigo-900 mb-2 flex items-center">
+                                <span class="material-icons mr-2">psychology</span>
+                                4. Apprentissage Assisté par IA
+                            </h3>
+                            <p class="text-indigo-800 text-sm">
+                                Fiches, quiz, podcasts, extraction doc
+                            </p>
+                        </div>
+
+                        <div class="card-hover bg-orange-50 p-6 rounded-lg border-l-4 border-orange-500">
+                            <h3 class="font-bold text-orange-900 mb-2 flex items-center">
+                                <span class="material-icons mr-2">schedule</span>
+                                5. Planification Intelligente
+                            </h3>
+                            <p class="text-orange-800 text-sm">Suggestions, planning de révision</p>
+                        </div>
+
+                        <div class="card-hover bg-pink-50 p-6 rounded-lg border-l-4 border-pink-500">
+                            <h3 class="font-bold text-pink-900 mb-2 flex items-center">
+                                <span class="material-icons mr-2">groups</span>
+                                6. Collaboration & Social Learning
+                            </h3>
+                            <p class="text-pink-800 text-sm">
+                                Matching, sessions, ressources, quiz live, réputation
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Priorisation Section -->
+                <section id="priorisation" class="bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-4xl gradient-text">flag</span>
+                        <h2 class="text-3xl font-bold text-gray-800">Priorisation MVP</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="badge badge-mvp">MVP ESSENTIEL</span>
+                            </div>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li class="flex items-start">
+                                    <span class="material-icons text-blue-500 text-sm mr-2">check_circle</span>
+                                    Auth/profil
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-blue-500 text-sm mr-2">check_circle</span>
+                                    Calendrier unifié
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-blue-500 text-sm mr-2">check_circle</span>
+                                    Tâches (manuel + extraction basique)
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-blue-500 text-sm mr-2">check_circle</span>
+                                    Notes + moyennes
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-blue-500 text-sm mr-2">check_circle</span>
+                                    Early warning
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-blue-500 text-sm mr-2">check_circle</span>
+                                    Génération IA basique (fiches + quiz)
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-blue-500 text-sm mr-2">check_circle</span>
+                                    Sessions collaboratives
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-blue-500 text-sm mr-2">check_circle</span>
+                                    Notifications basiques
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-yellow-50 p-6 rounded-lg">
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="badge badge-diff">DIFFÉRENCIATEURS CLÉS</span>
+                            </div>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li class="flex items-start">
+                                    <span class="material-icons text-yellow-600 text-sm mr-2">star</span>
+                                    Matching intelligent
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-yellow-600 text-sm mr-2">star</span>
+                                    Planning adaptatif
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-yellow-600 text-sm mr-2">star</span>
+                                    Quiz temps réel type Kahoot
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-yellow-600 text-sm mr-2">star</span>
+                                    Bibliothèque collaborative
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-yellow-600 text-sm mr-2">star</span>
+                                    Podcast IA
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Architecture Section -->
+                <section id="architecture" class="bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-4xl gradient-text">architecture</span>
+                        <h2 class="text-3xl font-bold text-gray-800">Architecture Cible</h2>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Recommandation : <strong>Microservices hybride</strong>
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg">
+                            <h3 class="font-bold text-blue-900 mb-3 flex items-center">
+                                <span class="material-icons mr-2">web</span>
+                                Frontend
+                            </h3>
+                            <ul class="space-y-2 text-sm text-blue-800">
+                                <li>
+                                    <strong>React + Vite</strong>
+                                </li>
+                                <li>Tailwind CSS / Material UI</li>
+                                <li>Redux / Zustand (state management)</li>
+                                <li>Socket.io-client (temps réel)</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-lg">
+                            <h3 class="font-bold text-red-900 mb-3 flex items-center">
+                                <span class="material-icons mr-2">dns</span>
+                                Backend Core
+                            </h3>
+                            <ul class="space-y-2 text-sm text-red-800">
+                                <li>
+                                    <strong>Laravel 11</strong>
+                                </li>
+                                <li>API REST</li>
+                                <li>Laravel Sanctum (auth)</li>
+                                <li>Logique métier principale</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg">
+                            <h3 class="font-bold text-green-900 mb-3 flex items-center">
+                                <span class="material-icons mr-2">smart_toy</span>
+                                Service IA
+                            </h3>
+                            <ul class="space-y-2 text-sm text-green-800">
+                                <li>
+                                    <strong>Python + FastAPI</strong>
+                                </li>
+                                <li>OpenAI / Claude (génération)</li>
+                                <li>PyPDF2, pytesseract (extraction)</li>
+                                <li>gTTS (text-to-speech)</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg">
+                            <h3 class="font-bold text-purple-900 mb-3 flex items-center">
+                                <span class="material-icons mr-2">speed</span>
+                                Temps Réel
+                            </h3>
+                            <ul class="space-y-2 text-sm text-purple-800">
+                                <li>
+                                    <strong>Node.js + Express</strong>
+                                </li>
+                                <li>Socket.io</li>
+                                <li>Quiz rooms, chat, whiteboard</li>
+                                <li>Redis (scaling optionnel)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Database Section -->
+                <section id="database" class="bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-4xl gradient-text">storage</span>
+                        <h2 class="text-3xl font-bold text-gray-800">Base de Données</h2>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Schéma relationnel (Backend Laravel - PostgreSQL/MySQL)
+                    </p>
+
+                    <!-- Tables Grid -->
+                    <div class="space-y-6">
+                        <!-- Users Table -->
+                        <div class="border-2 border-gray-200 rounded-lg overflow-hidden">
+                            <div class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-3">
+                                <h3 class="font-bold text-white text-lg flex items-center">
+                                    <span class="material-icons mr-2">person</span>
+                                    users (Étudiants)
+                                </h3>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="db-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Champ</th>
+                                            <th>Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>id</code></td>
+                                            <td><span class="text-purple-600 font-mono text-xs">BIGINT PK</span></td>
+                                            <td>Identifiant unique</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>email</code></td>
+                                            <td>
+                                                <span class="text-purple-600 font-mono text-xs">VARCHAR(255)
+                                                    UNIQUE</span>
+                                            </td>
+                                            <td>Email de connexion</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>password</code></td>
+                                            <td><span class="text-purple-600 font-mono text-xs">VARCHAR(255)</span></td>
+                                            <td>Hash du mot de passe</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>nom</code></td>
+                                            <td><span class="text-purple-600 font-mono text-xs">VARCHAR(100)</span></td>
+                                            <td>Nom de famille</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>prenom</code></td>
+                                            <td><span class="text-purple-600 font-mono text-xs">VARCHAR(100)</span></td>
+                                            <td>Prénom</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>universite</code></td>
+                                            <td><span class="text-purple-600 font-mono text-xs">VARCHAR(255)</span></td>
+                                            <td>Nom de l'université</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>filiere</code></td>
+                                            <td><span class="text-purple-600 font-mono text-xs">VARCHAR(255)</span></td>
+                                            <td>Filière d'études</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>niveau</code></td>
+                                            <td><span class="text-purple-600 font-mono text-xs">ENUM</span></td>
+                                            <td>L1, L2, L3, M1, M2, Doctorat</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>objectif_moyenne</code></td>
+                                            <td><span class="text-purple-600 font-mono text-xs">DECIMAL(4,2)</span></td>
+                                            <td>Moyenne visée (ex: 13.50)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>style_apprentissage</code></td>
+                                            <td><span class="text-purple-600 font-mono text-xs">ENUM</span></td>
+                                            <td>visuel, auditif, kinesthésique</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>avatar_url</code></td>
+                                            <td><span class="text-purple-600 font-mono text-xs">VARCHAR(500)</span></td>
+                                            <td>URL photo de profil</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>xp_total</code></td>
+                                            <td>
+                                                <span class="text-purple-600 font-mono text-xs">INT DEFAULT 0</span>
+                                            </td>
+                                            <td>Points d'expérience cumulés</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>niveau_gamification</code></td>
+                                            <td>
+                                                <span class="text-purple-600 font-mono text-xs">INT DEFAULT 1</span>
+                                            </td>
+                                            <td>Niveau actuel (gamification)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Simplified summary for other tables -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="border-2 border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <span class="material-icons text-orange-500 mr-2">book</span>
+                                    matieres
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-2">Matières suivies par l'étudiant</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge bg-gray-100 text-gray-700">user_id FK</span>
+                                    <span class="badge bg-gray-100 text-gray-700">nom</span>
+                                    <span class="badge bg-gray-100 text-gray-700">coefficient</span>
+                                    <span class="badge bg-gray-100 text-gray-700">couleur</span>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <span class="material-icons text-blue-500 mr-2">schedule</span>
+                                    emploi_temps
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-2">Cours planifiés</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge bg-gray-100 text-gray-700">matiere_id FK</span>
+                                    <span class="badge bg-gray-100 text-gray-700">jour_semaine</span>
+                                    <span class="badge bg-gray-100 text-gray-700">heure_debut</span>
+                                    <span class="badge bg-gray-100 text-gray-700">salle</span>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <span class="material-icons text-purple-500 mr-2">task</span>
+                                    taches
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-2">Devoirs & tâches</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge bg-gray-100 text-gray-700">titre</span>
+                                    <span class="badge bg-gray-100 text-gray-700">date_limite</span>
+                                    <span class="badge bg-gray-100 text-gray-700">priorite</span>
+                                    <span class="badge bg-gray-100 text-gray-700">statut</span>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <span class="material-icons text-green-500 mr-2">grade</span>
+                                    notes
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-2">Évaluations & résultats</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge bg-gray-100 text-gray-700">matiere_id FK</span>
+                                    <span class="badge bg-gray-100 text-gray-700">note_obtenue</span>
+                                    <span class="badge bg-gray-100 text-gray-700">coefficient</span>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <span class="material-icons text-red-500 mr-2">warning</span>
+                                    alertes
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-2">Early Warning System</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge bg-gray-100 text-gray-700">type_alerte</span>
+                                    <span class="badge bg-gray-100 text-gray-700">niveau_severite</span>
+                                    <span class="badge bg-gray-100 text-gray-700">actions_suggerees</span>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <span class="material-icons text-indigo-500 mr-2">groups</span>
+                                    sessions_collaboratives
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-2">Sessions de révision</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge bg-gray-100 text-gray-700">titre</span>
+                                    <span class="badge bg-gray-100 text-gray-700">date_debut</span>
+                                    <span class="badge bg-gray-100 text-gray-700">format</span>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <span class="material-icons text-cyan-500 mr-2">folder_shared</span>
+                                    ressources_partagees
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-2">Bibliothèque collaborative</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge bg-gray-100 text-gray-700">type_ressource</span>
+                                    <span class="badge bg-gray-100 text-gray-700">tags</span>
+                                    <span class="badge bg-gray-100 text-gray-700">note_moyenne</span>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <span class="material-icons text-pink-500 mr-2">auto_awesome</span>
+                                    contenus_ia
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-2">Contenus générés par IA</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge bg-gray-100 text-gray-700">type_contenu</span>
+                                    <span class="badge bg-gray-100 text-gray-700">contenu_json</span>
+                                    <span class="badge bg-gray-100 text-gray-700">source_doc</span>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <span class="material-icons text-yellow-600 mr-2">quiz</span>
+                                    quiz_questions
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-2">Banque de questions</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge bg-gray-100 text-gray-700">question</span>
+                                    <span class="badge bg-gray-100 text-gray-700">options</span>
+                                    <span class="badge bg-gray-100 text-gray-700">reponse_correcte</span>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <span class="material-icons text-teal-500 mr-2">assessment</span>
+                                    quiz_resultats
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-2">Performances aux quiz</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge bg-gray-100 text-gray-700">score</span>
+                                    <span class="badge bg-gray-100 text-gray-700">temps_passe</span>
+                                    <span class="badge bg-gray-100 text-gray-700">notions_faibles</span>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <span class="material-icons text-amber-500 mr-2">military_tech</span>
+                                    badges
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-2">Système de gamification</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge bg-gray-100 text-gray-700">code</span>
+                                    <span class="badge bg-gray-100 text-gray-700">nom</span>
+                                    <span class="badge bg-gray-100 text-gray-700">condition_json</span>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <span class="material-icons text-lime-600 mr-2">notifications</span>
+                                    notifications
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-2">Système de notifications</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge bg-gray-100 text-gray-700">type</span>
+                                    <span class="badge bg-gray-100 text-gray-700">titre</span>
+                                    <span class="badge bg-gray-100 text-gray-700">is_read</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Relations -->
+                        <div class="bg-indigo-50 p-6 rounded-lg">
+                            <h4 class="font-bold text-indigo-900 mb-4 flex items-center">
+                                <span class="material-icons mr-2">account_tree</span>
+                                Relations Clés
+                            </h4>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-indigo-800">
+                                <li>
+                                    <strong>users</strong> ↔ <strong>matieres</strong> (1:N)
+                                </li>
+                                <li>
+                                    <strong>users</strong> ↔ <strong>taches</strong> (1:N)
+                                </li>
+                                <li>
+                                    <strong>users</strong> ↔ <strong>notes</strong> (1:N)
+                                </li>
+                                <li>
+                                    <strong>matieres</strong> ↔ <strong>notes</strong> (1:N)
+                                </li>
+                                <li>
+                                    <strong>users</strong> ↔ <strong>sessions_collaboratives</strong> (1:N)
+                                </li>
+                                <li>
+                                    <strong>sessions</strong> ↔ <strong>inscriptions_sessions</strong> (1:N)
+                                </li>
+                                <li>
+                                    <strong>users</strong> ↔ <strong>contenus_ia</strong> (1:N)
+                                </li>
+                                <li>
+                                    <strong>contenus_ia</strong> ↔ <strong>quiz_questions</strong> (1:N)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- API Section -->
+                <section id="api" class="bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-4xl gradient-text">api</span>
+                        <h2 class="text-3xl font-bold text-gray-800">Architecture des APIs</h2>
+                    </div>
+
+                    <!-- Laravel Backend -->
+                    <div class="mb-8">
+                        <div class="bg-gradient-to-r from-red-500 to-red-600 px-6 py-4 rounded-t-lg">
+                            <h3 class="font-bold text-white text-xl flex items-center">
+                                <span class="material-icons mr-2">dns</span>
+                                Backend Laravel (API Core)
+                            </h3>
+                            <p class="text-red-100 text-sm mt-1">
+                                Base URL: <code>https://api.plateforme-academique.com/api/v1</code>
+                            </p>
+                            <p class="text-red-100 text-sm">Auth: Bearer Token (Laravel Sanctum)</p>
+                        </div>
+                        <div class="bg-white border-2 border-red-200 rounded-b-lg p-6">
+                            <div class="space-y-6">
+                                <!-- Auth Module -->
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                        <span class="material-icons text-red-500 mr-2 text-sm">lock</span>
+                                        Authentification
+                                    </h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/auth/register</code>
+                                            <span class="text-gray-500 text-xs">— Inscription étudiant</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/auth/login</code>
+                                            <span class="text-gray-500 text-xs">— Connexion (retourne token)</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-get">GET</span>
+                                            <code class="text-sm">/auth/me</code>
+                                            <span class="text-gray-500 text-xs">— Profil utilisateur connecté</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-put">PUT</span>
+                                            <code class="text-sm">/auth/profile</code>
+                                            <span class="text-gray-500 text-xs">— Mise à jour profil</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Subjects Module -->
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                        <span class="material-icons text-orange-500 mr-2 text-sm">book</span>
+                                        Matières
+                                    </h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-get">GET</span>
+                                            <code class="text-sm">/matieres</code>
+                                            <span class="text-gray-500 text-xs">— Liste des matières</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/matieres</code>
+                                            <span class="text-gray-500 text-xs">— Ajouter une matière</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-put">PUT</span>
+                                            <code class="text-sm">/matieres/{id}</code>
+                                            <span class="text-gray-500 text-xs">— Modifier une matière</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-delete">DELETE</span>
+                                            <code class="text-sm">/matieres/{id}</code>
+                                            <span class="text-gray-500 text-xs">— Supprimer une matière</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tasks Module -->
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                        <span class="material-icons text-purple-500 mr-2 text-sm">task</span>
+                                        Tâches
+                                    </h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-get">GET</span>
+                                            <code class="text-sm">/taches</code>
+                                            <span class="text-gray-500 text-xs">— Liste des tâches (filtrable)</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/taches</code>
+                                            <span class="text-gray-500 text-xs">— Créer une tâche</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-patch">PATCH</span>
+                                            <code class="text-sm">/taches/{id}/complete</code>
+                                            <span class="text-gray-500 text-xs">— Marquer comme terminée</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/taches/extract</code>
+                                            <span class="text-gray-500 text-xs">— Extraction auto depuis document</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Grades Module -->
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                        <span class="material-icons text-green-500 mr-2 text-sm">grade</span>
+                                        Notes & Moyennes
+                                    </h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-get">GET</span>
+                                            <code class="text-sm">/notes</code>
+                                            <span class="text-gray-500 text-xs">— Liste des notes</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/notes</code>
+                                            <span class="text-gray-500 text-xs">— Ajouter une note</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/notes/import-ocr</code>
+                                            <span class="text-gray-500 text-xs">— Import note via OCR</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-get">GET</span>
+                                            <code class="text-sm">/moyennes</code>
+                                            <span class="text-gray-500 text-xs">— Calcul moyennes (par matière +
+                                                générale)</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sessions Module -->
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                        <span class="material-icons text-indigo-500 mr-2 text-sm">groups</span>
+                                        Sessions Collaboratives
+                                    </h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-get">GET</span>
+                                            <code class="text-sm">/sessions</code>
+                                            <span class="text-gray-500 text-xs">— Sessions disponibles
+                                                (filtrable)</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/sessions</code>
+                                            <span class="text-gray-500 text-xs">— Créer une session</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/sessions/{id}/join</code>
+                                            <span class="text-gray-500 text-xs">— S'inscrire à une session</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/sessions/{id}/rate</code>
+                                            <span class="text-gray-500 text-xs">— Noter la session</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Python/FastAPI Service -->
+                    <div class="mb-8">
+                        <div class="bg-gradient-to-r from-green-500 to-green-600 px-6 py-4 rounded-t-lg">
+                            <h3 class="font-bold text-white text-xl flex items-center">
+                                <span class="material-icons mr-2">smart_toy</span>
+                                Service IA Python (FastAPI)
+                            </h3>
+                            <p class="text-green-100 text-sm mt-1">
+                                Base URL: <code>https://ia.plateforme-academique.com/api/v1</code>
+                            </p>
+                            <p class="text-green-100 text-sm">Auth: API Key (header X-API-Key)</p>
+                        </div>
+                        <div class="bg-white border-2 border-green-200 rounded-b-lg p-6">
+                            <div class="space-y-6">
+                                <!-- AI Generation -->
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                        <span class="material-icons text-green-500 mr-2 text-sm">auto_awesome</span>
+                                        Génération de Contenus
+                                    </h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/ai/generate-summary</code>
+                                            <span class="text-gray-500 text-xs">— Générer fiche de révision</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/ai/generate-quiz</code>
+                                            <span class="text-gray-500 text-xs">— Générer QCM</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/ai/generate-podcast</code>
+                                            <span class="text-gray-500 text-xs">— Générer podcast audio (TTS)</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/ai/generate-exercises</code>
+                                            <span class="text-gray-500 text-xs">— Générer exercices</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Extraction -->
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                        <span class="material-icons text-green-500 mr-2 text-sm">pageview</span>
+                                        Extraction de Documents
+                                    </h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/ai/extract-from-pdf</code>
+                                            <span class="text-gray-500 text-xs">— Extraction texte + structure depuis
+                                                PDF</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="api-method method-post">POST</span>
+                                            <code class="text-sm">/ai/extract-from-image</code>
+                                            <span class="text-gray-500 text-xs">— OCR depuis image (notes
+                                                manuscrites)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Socket.io Service -->
+                    <div class="mb-8">
+                        <div class="bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-4 rounded-t-lg">
+                            <h3 class="font-bold text-white text-xl flex items-center">
+                                <span class="material-icons mr-2">speed</span>
+                                Service Temps Réel Node.js (Socket.io)
+                            </h3>
+                            <p class="text-purple-100 text-sm mt-1">
+                                Base URL: <code>wss://realtime.plateforme-academique.com</code>
+                            </p>
+                            <p class="text-purple-100 text-sm">Auth: Token JWT lors de la connexion</p>
+                        </div>
+                        <div class="bg-white border-2 border-purple-200 rounded-b-lg p-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Client Events -->
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                        <span class="material-icons text-purple-500 mr-2 text-sm">arrow_upward</span>
+                                        Events Client → Server
+                                    </h4>
+                                    <div class="space-y-3">
+                                        <div class="bg-purple-50 p-3 rounded">
+                                            <p class="font-semibold text-purple-900 text-sm mb-1">Quiz</p>
+                                            <ul class="space-y-1 text-xs text-purple-800">
+                                                <li>
+                                                    <code>join-quiz</code>
+                                                </li>
+                                                <li>
+                                                    <code>answer-question</code>
+                                                </li>
+                                                <li>
+                                                    <code>leave-quiz</code>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-purple-50 p-3 rounded">
+                                            <p class="font-semibold text-purple-900 text-sm mb-1">Sessions</p>
+                                            <ul class="space-y-1 text-xs text-purple-800">
+                                                <li>
+                                                    <code>join-session</code>
+                                                </li>
+                                                <li>
+                                                    <code>send-message</code>
+                                                </li>
+                                                <li>
+                                                    <code>whiteboard-draw</code>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Server Events -->
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                        <span class="material-icons text-purple-500 mr-2 text-sm">arrow_downward</span>
+                                        Events Server → Client
+                                    </h4>
+                                    <div class="space-y-3">
+                                        <div class="bg-purple-50 p-3 rounded">
+                                            <p class="font-semibold text-purple-900 text-sm mb-1">Quiz</p>
+                                            <ul class="space-y-1 text-xs text-purple-800">
+                                                <li>
+                                                    <code>quiz-update</code>
+                                                </li>
+                                                <li>
+                                                    <code>leaderboard-update</code>
+                                                </li>
+                                                <li>
+                                                    <code>quiz-ended</code>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-purple-50 p-3 rounded">
+                                            <p class="font-semibold text-purple-900 text-sm mb-1">Sessions</p>
+                                            <ul class="space-y-1 text-xs text-purple-800">
+                                                <li>
+                                                    <code>new-message</code>
+                                                </li>
+                                                <li>
+                                                    <code>whiteboard-update</code>
+                                                </li>
+                                                <li>
+                                                    <code>participant-update</code>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-purple-50 p-3 rounded">
+                                            <p class="font-semibold text-purple-900 text-sm mb-1">Notifications</p>
+                                            <ul class="space-y-1 text-xs text-purple-800">
+                                                <li>
+                                                    <code>notification</code> (temps réel)
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- REST vs WebSocket -->
+                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-lg">
+                        <h4 class="font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="material-icons mr-2">compare_arrows</span>
+                            API REST vs WebSocket — Quand utiliser quoi ?
+                        </h4>
+                        <div class="overflow-x-auto">
+                            <table class="db-table">
+                                <thead>
+                                    <tr>
+                                        <th>Fonctionnalité</th>
+                                        <th>Protocole</th>
+                                        <th>Justification</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Authentification</td>
+                                        <td><span class="badge bg-red-100 text-red-700">REST (Laravel)</span></td>
+                                        <td>Opération ponctuelle</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CRUD Tâches/Notes</td>
+                                        <td><span class="badge bg-red-100 text-red-700">REST (Laravel)</span></td>
+                                        <td>Opérations standard</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Génération IA</td>
+                                        <td>
+                                            <span class="badge bg-green-100 text-green-700">REST (FastAPI)</span>
+                                        </td>
+                                        <td>Processus async long</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quiz collaboratifs</td>
+                                        <td>
+                                            <span class="badge bg-purple-100 text-purple-700">WebSocket (Node.js)</span>
+                                        </td>
+                                        <td>Synchronisation temps réel</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Chat sessions</td>
+                                        <td>
+                                            <span class="badge bg-purple-100 text-purple-700">WebSocket (Node.js)</span>
+                                        </td>
+                                        <td>Bidirectionnel instantané</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tableau blanc</td>
+                                        <td>
+                                            <span class="badge bg-purple-100 text-purple-700">WebSocket (Node.js)</span>
+                                        </td>
+                                        <td>Dessin collaboratif temps réel</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Notifications push</td>
+                                        <td>
+                                            <span class="badge bg-purple-100 text-purple-700">WebSocket (Node.js)</span>
+                                        </td>
+                                        <td>Push instantané</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- References Section -->
+                <section id="references" class="bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-4xl gradient-text">link</span>
+                        <h2 class="text-3xl font-bold text-gray-800">Références</h2>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center space-x-3">
+                            <span class="material-icons text-blue-500">description</span>
+                            <code class="bg-gray-100 px-3 py-2 rounded">
+                  doc/Cahier_Fonctionnalites_Unifie.docx
+                </code>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="material-icons text-blue-500">description</span>
+                            <code class="bg-gray-100 px-3 py-2 rounded">doc/Cahier_Stack_Technique.docx</code>
+                        </li>
+                    </ul>
+                    <div class="mt-4 bg-blue-50 border-l-4 border-blue-500 p-4">
+                        <p class="text-blue-800 text-sm">
+                            <span class="material-icons text-sm align-middle mr-1">info</span>
+                            Un dossier
+                            <code>doc/_extracted/</code>
+                            peut exister si on a extrait le texte des
+                            <code>.docx</code>
+                            pour analyse/README.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-lg font-semibold mb-2">Plateforme Académique Intelligente</p>
+            <p class="text-sm opacity-90">
+                Documentation générée — Février 2026 — Version Prototype
+            </p>
+        </div>
+    </footer>
+
+    <!-- Smooth scroll script -->
+    <script>
+        // Active link highlighting on scroll
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${current}`) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

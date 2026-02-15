@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Student App Login</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#258cf4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+
+<body
+    class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-white min-h-screen flex flex-col">
+    <div class="bg-slate-900 text-white">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm">
+            <a class="font-semibold hover:underline" href="../index.html">← Index prototypes</a>
+            <span class="opacity-60">|</span>
+            <a class="hover:underline" href="../login%20page/code.html">Login</a>
+            <a class="hover:underline" href="../student_dashboard_home_variant_1/code.html">Dashboard</a>
+            <a class="hover:underline" href="../student_profile_page_variant_2/code.html">Profil</a>
+            <a class="hover:underline" href="../calendar_weekly_view_variant_1/code.html">Calendrier</a>
+            <a class="hover:underline" href="../grade_management_interface_variant_1/code.html">Notes</a>
+            <a class="hover:underline" href="../interactive_quiz_interface_variant_2/code.html">Quiz</a>
+            <a class="hover:underline" href="../ai_content_generation_variant_1/code.html">Génération IA</a>
+            <a class="hover:underline" href="../ai_generation_results_variant_2/code.html">Résultats IA</a>
+        </div>
+    </div>
+    <div class="flex flex-1 w-full">
+        <!-- Left Side: Visual Panel -->
+        <div
+            class="hidden lg:flex w-1/2 bg-blue-50 dark:bg-slate-900 relative items-center justify-center overflow-hidden">
+            <!-- Decorative Elements -->
+            <div class="absolute top-10 left-10 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
+            <div class="absolute bottom-20 right-20 w-32 h-32 bg-purple-400/20 rounded-full blur-2xl"></div>
+            <div class="relative z-10 p-12 text-center max-w-xl">
+                <img alt="Diverse students studying together with books and laptops"
+                    class="w-full h-auto object-cover rounded-2xl shadow-2xl shadow-primary/20 transform hover:scale-105 transition-transform duration-500"
+                    data-alt="3D illustration of diverse students studying together with books and laptops"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3wMrahxHBK667RJP38WxrqfSlBHY2pDuyDro2PBD5iyhsCL2y1mjeZwC-mLdbe5g-ljvmtXsRd-W9rY_M79L--Afk632OrZzENQL9bzJ68PdlOeWUvCuRx8BYhHxqBltDm7q_faPasxPOBN0SZZnNyWMWRUxUQdJuvMAIfgTr8bleJ6Z39WBlyphUphFXqiErI88LWOMDO52B-Tw-st2YZf0z4LHzveCOBfC-ZXJ4LfW4J8D_Edyh0tPVYKjFstoCf7gTRBkmbhpS" />
+                <div class="mt-8 space-y-2">
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Learn without limits</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-lg">Join a community of students achieving their
+                        academic goals together.</p>
+                </div>
+            </div>
+            <!-- Abstract background pattern overlay -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent pointer-events-none"></div>
+        </div>
+        <!-- Right Side: Auth Panel -->
+        <div
+            class="w-full lg:w-1/2 flex flex-col justify-center items-center bg-white dark:bg-background-dark p-8 sm:p-12 md:p-16 lg:p-24 shadow-xl lg:shadow-none z-20">
+            <div class="w-full max-w-md space-y-8">
+                <!-- Header -->
+                <div class="text-center lg:text-left space-y-2">
+                    <div class="inline-flex items-center justify-center lg:justify-start w-full lg:w-auto mb-6">
+                        <span class="bg-primary/10 p-2 rounded-lg">
+                            <span class="material-icons-round text-primary text-3xl">school</span>
+                        </span>
+                    </div>
+                    <h1 class="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Welcome back!</h1>
+                    <p class="text-slate-500 dark:text-slate-400">Please enter your details to sign in.</p>
+                </div>
+                <!-- Form -->
+                <form action="#" class="mt-8 space-y-6" method="POST"
+                    onsubmit="window.location.href='../student_dashboard_home_variant_1/code.html'; return false;">
+                    <div class="space-y-5">
+                        <!-- Email Input -->
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5"
+                                for="email">Email</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="material-icons-round text-slate-400 text-xl">mail_outline</span>
+                                </div>
+                                <input autocomplete="email"
+                                    class="appearance-none block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent sm:text-sm bg-slate-50 dark:bg-slate-800 dark:text-white transition-all duration-200"
+                                    id="email" name="email" placeholder="student@university.edu" required=""
+                                    type="email" />
+                            </div>
+                        </div>
+                        <!-- Password Input -->
+                        <div>
+                            <div class="flex items-center justify-between mb-1.5">
+                                <label class="block text-sm font-medium text-slate-700 dark:text-slate-300"
+                                    for="password">Password</label>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="material-icons-round text-slate-400 text-xl">lock_outline</span>
+                                </div>
+                                <input autocomplete="current-password"
+                                    class="appearance-none block w-full pl-10 pr-10 py-3 border border-slate-200 dark:border-slate-700 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent sm:text-sm bg-slate-50 dark:bg-slate-800 dark:text-white transition-all duration-200"
+                                    id="password" name="password" placeholder="••••••••" required="" type="password" />
+                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                    <button class="text-slate-400 hover:text-slate-600 focus:outline-none"
+                                        type="button">
+                                        <span class="material-icons-round text-xl">visibility_off</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex justify-end mt-2">
+                                <a class="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                                    href="#">Forgot password?</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit Button -->
+                    <div>
+                        <button
+                            class="group relative w-full flex justify-center py-3.5 px-4 border border-transparent text-sm font-semibold rounded-lg text-white bg-gradient-to-r from-primary to-cyan-500 hover:from-primary/90 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary shadow-lg shadow-primary/30 transition-all duration-300 transform hover:-translate-y-0.5"
+                            type="submit">
+                            Sign in
+                            <span
+                                class="material-icons-round text-sm ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </button>
+                    </div>
+                </form>
+                <!-- Divider -->
+                <div class="relative my-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-slate-200 dark:border-slate-700"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white dark:bg-background-dark text-slate-500">Or continue with</span>
+                    </div>
+                </div>
+                <!-- Social Login -->
+                <div class="grid grid-cols-1 gap-3">
+                    <button
+                        class="w-full inline-flex justify-center items-center py-2.5 px-4 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm bg-white dark:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                        type="button">
+                        <svg class="h-5 w-5 mr-2" fill="currentColor" viewbox="0 0 24 24">
+                            <path
+                                d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z">
+                            </path>
+                        </svg>
+                        Google
+                    </button>
+                </div>
+                <!-- Footer -->
+                <p class="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
+                    Don't have an account?
+                    <a class="font-semibold text-primary hover:text-primary/80 transition-colors" href="#">Create
+                        account</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

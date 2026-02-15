@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Student Dashboard - Variant 1</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "primary-light": "#eef2ff",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .circular-chart {
+            display: block;
+            margin: 0 auto;
+            max-width: 80%;
+            max-height: 250px;
+        }
+
+        .circle-bg {
+            fill: none;
+            stroke: #e2e8f0;
+            stroke-width: 2.5;
+        }
+
+        .circle {
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            animation: progress 1s ease-out forwards;
+        }
+
+        @keyframes progress {
+            0% {
+                stroke-dasharray: 0 100;
+            }
+        }
+
+        .percentage {
+            fill: #1e293b;
+            font-family: 'Lexend', sans-serif;
+            font-weight: bold;
+            font-size: 0.5em;
+            text-anchor: middle;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-display min-h-screen flex flex-col">
+    <div class="bg-slate-900 text-white">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm">
+            <a class="font-semibold hover:underline" href="../index.html">← Index prototypes</a>
+            <span class="opacity-60">|</span>
+            <a class="hover:underline" href="../login%20page/code.html">Login</a>
+            <a class="hover:underline" href="../student_dashboard_home_variant_1/code.html">Dashboard</a>
+            <a class="hover:underline" href="../student_profile_page_variant_2/code.html">Profil</a>
+            <a class="hover:underline" href="../calendar_weekly_view_variant_1/code.html">Calendrier</a>
+            <a class="hover:underline" href="../grade_management_interface_variant_1/code.html">Notes</a>
+            <a class="hover:underline" href="../interactive_quiz_interface_variant_2/code.html">Quiz</a>
+            <a class="hover:underline" href="../ai_content_generation_variant_1/code.html">Génération IA</a>
+            <a class="hover:underline" href="../ai_generation_results_variant_2/code.html">Résultats IA</a>
+        </div>
+    </div>
+    <!-- Top Navigation -->
+    <nav
+        class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="bg-primary text-white p-1.5 rounded-lg">
+                        <span class="material-icons-outlined text-xl">school</span>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">Academia</span>
+                </div>
+                <!-- Right Side Actions -->
+                <div class="flex items-center gap-4">
+                    <button
+                        class="p-2 text-slate-500 hover:text-primary transition-colors relative rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <span class="material-icons-outlined">notifications</span>
+                        <span
+                            class="absolute top-2 right-2 h-2 w-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+                    </button>
+                    <div class="h-8 w-px bg-slate-200 dark:bg-slate-700"></div>
+                    <button class="flex items-center gap-3 focus:outline-none">
+                        <img alt="Student Profile Avatar"
+                            class="h-9 w-9 rounded-full object-cover border-2 border-primary/20"
+                            data-alt="Smiling young woman portrait"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpJ47R262VA2RUPN_2Yf5gHk_uSwmN-_wv7nC3FwIdEre-764VaCOHX9sFGTvQ6M_v4pegLRJ3ZPy54cuSVkKejw2hrHhlPgn4M7fOVVZA4mVFYNHq15QHuvAPMf1c8xtSZv1W2FDYx6UOfFTHS9AIvmNykMDMa8UW8E76slCns6TMnexn9Qa3QiVjgu8VISS7ynuia9Cx7cxwLeCgW0h7H9xOLCyGsoAySeJzHgQCXdFl5YR8wJMnTGdEwrfHKApn2er7s-z8wIk" />
+                        <div class="hidden md:block text-left">
+                            <p class="text-sm font-semibold text-slate-700 dark:text-slate-200">Sophie M.</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Design Major</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <!-- Welcome Hero -->
+        <header class="mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-2">Hello, Sophie! 👋</h1>
+            <p class="text-slate-500 dark:text-slate-400 text-lg">Here's what's happening in your academic life today.
+            </p>
+        </header>
+        <!-- Dashboard Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Card 1: Average Grade (Visual Focus) -->
+            <div
+                class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 flex flex-col items-center justify-center relative overflow-hidden group hover:shadow-md transition-shadow">
+                <div class="absolute top-0 right-0 p-4 opacity-50">
+                    <span class="material-icons-outlined text-slate-300 dark:text-slate-700 text-4xl">insights</span>
+                </div>
+                <h3
+                    class="text-slate-500 dark:text-slate-400 font-medium text-sm uppercase tracking-wide mb-4 w-full text-left">
+                    Current Average</h3>
+                <div class="relative w-40 h-40">
+                    <svg class="circular-chart text-primary w-full h-full" viewbox="0 0 36 36">
+                        <path class="circle-bg" d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                        <path class="circle stroke-current" d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831" stroke-dasharray="60, 100"></path>
+                        <text class="percentage fill-slate-800 dark:fill-white text-[0.45rem]" x="18"
+                            y="20.35">12/20</text>
+                    </svg>
+                </div>
+                <p
+                    class="mt-4 text-sm text-green-600 dark:text-green-400 flex items-center font-medium bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-lg">
+                    <span class="material-icons-outlined text-sm mr-1">trending_up</span>
+                    +1.2% vs last term
+                </p>
+            </div>
+            <!-- Card 2: Upcoming Tasks (Interactive List) -->
+            <div
+                class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 md:col-span-1 lg:col-span-1 xl:col-span-1 hover:shadow-md transition-shadow flex flex-col">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Upcoming Tasks</h3>
+                    <button class="text-primary hover:text-blue-700 text-sm font-medium">View All</button>
+                </div>
+                <div class="space-y-3 flex-grow overflow-y-auto max-h-[250px] pr-2">
+                    <label
+                        class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer transition-colors group">
+                        <input class="mt-1 h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary"
+                            type="checkbox" />
+                        <div class="flex-1">
+                            <span
+                                class="block text-sm font-medium text-slate-700 dark:text-slate-200 group-hover:text-primary transition-colors">Submit
+                                History Essay</span>
+                            <span class="text-xs text-slate-400 block mt-0.5">Due Tomorrow, 10:00 AM</span>
+                        </div>
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2"></span>
+                    </label>
+                    <label
+                        class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer transition-colors group">
+                        <input class="mt-1 h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary"
+                            type="checkbox" />
+                        <div class="flex-1">
+                            <span
+                                class="block text-sm font-medium text-slate-700 dark:text-slate-200 group-hover:text-primary transition-colors">Math
+                                Homework</span>
+                            <span class="text-xs text-slate-400 block mt-0.5">Due Sep 24</span>
+                        </div>
+                        <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 mt-2"></span>
+                    </label>
+                    <label
+                        class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer transition-colors group">
+                        <input checked=""
+                            class="mt-1 h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary opacity-50"
+                            type="checkbox" />
+                        <div class="flex-1 opacity-50">
+                            <span class="block text-sm font-medium text-slate-700 dark:text-slate-200 line-through">Read
+                                Chapter 4</span>
+                            <span class="text-xs text-slate-400 block mt-0.5">Completed</span>
+                        </div>
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 opacity-50"></span>
+                    </label>
+                </div>
+                <button
+                    class="w-full mt-4 py-2 border border-dashed border-slate-300 dark:border-slate-700 text-slate-500 hover:text-primary hover:border-primary rounded-lg text-sm transition-all flex items-center justify-center gap-2">
+                    <span class="material-icons-outlined text-sm">add</span>
+                    Add new task
+                </button>
+            </div>
+            <!-- Card 3: Calendar (Mini View) -->
+            <div
+                class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 hover:shadow-md transition-shadow flex flex-col">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white">September 2023</h3>
+                    <div class="flex gap-1">
+                        <button class="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded text-slate-500">
+                            <span class="material-icons-outlined text-sm">chevron_left</span>
+                        </button>
+                        <button class="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded text-slate-500">
+                            <span class="material-icons-outlined text-sm">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-7 gap-1 text-center text-xs mb-2">
+                    <span class="text-slate-400 font-medium py-1">S</span>
+                    <span class="text-slate-400 font-medium py-1">M</span>
+                    <span class="text-slate-400 font-medium py-1">T</span>
+                    <span class="text-slate-400 font-medium py-1">W</span>
+                    <span class="text-slate-400 font-medium py-1">T</span>
+                    <span class="text-slate-400 font-medium py-1">F</span>
+                    <span class="text-slate-400 font-medium py-1">S</span>
+                </div>
+                <div class="grid grid-cols-7 gap-1 text-center text-sm flex-grow">
+                    <!-- Previous Month -->
+                    <span class="text-slate-300 dark:text-slate-700 py-2">27</span>
+                    <span class="text-slate-300 dark:text-slate-700 py-2">28</span>
+                    <span class="text-slate-300 dark:text-slate-700 py-2">29</span>
+                    <span class="text-slate-300 dark:text-slate-700 py-2">30</span>
+                    <span class="text-slate-300 dark:text-slate-700 py-2">31</span>
+                    <!-- Current Month -->
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">1</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">2</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">3</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">4</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">5</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">6</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">7</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">8</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">9</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">10</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">11</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">12</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">13</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">14</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">15</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">16</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">17</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">18</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">19</span>
+                    <span class="text-white bg-primary rounded shadow-sm py-2 font-bold cursor-pointer">20</span>
+                    <span
+                        class="text-slate-700 dark:text-slate-300 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded cursor-pointer">21</span>
+                </div>
+            </div>
+            <!-- Card 4: Recent Alerts (Urgency) -->
+            <div
+                class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col overflow-hidden hover:shadow-md transition-shadow">
+                <div class="p-6 bg-red-50 dark:bg-red-900/10 border-b border-red-100 dark:border-red-900/30">
+                    <div class="flex items-center gap-3 text-red-600 dark:text-red-400 mb-2">
+                        <span class="material-icons-outlined">warning</span>
+                        <h3 class="font-semibold text-lg">Recent Alerts</h3>
+                    </div>
+                    <p class="text-sm text-red-500/80 dark:text-red-300/80">2 items require your attention.</p>
+                </div>
+                <div class="p-4 flex-grow">
+                    <div class="space-y-4">
+                        <div
+                            class="flex gap-3 items-start group p-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors cursor-pointer">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400 flex items-center justify-center flex-shrink-0">
+                                <span class="material-icons-outlined text-sm">menu_book</span>
+                            </div>
+                            <div>
+                                <h4
+                                    class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors">
+                                    Library book overdue</h4>
+                                <p class="text-xs text-slate-500 mt-1">"Introduction to UX Design" was due yesterday.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
+                        <div
+                            class="flex gap-3 items-start group p-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors cursor-pointer">
+                            <div
+                                class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400 flex items-center justify-center flex-shrink-0">
+                                <span class="material-icons-outlined text-sm">schedule</span>
+                            </div>
+                            <div>
+                                <h4
+                                    class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors">
+                                    Exam schedule changed</h4>
+                                <p class="text-xs text-slate-500 mt-1">History 101 moved to Room 302.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 p-3 text-center border-t border-slate-100 dark:border-slate-800">
+                    <button
+                        class="text-xs font-semibold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 uppercase tracking-wider">Dismiss
+                        All</button>
+                </div>
+            </div>
+        </div>
+        <!-- Secondary Section (Quick Links or Schedule) -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Course Card 1 -->
+            <div
+                class="bg-primary/5 dark:bg-primary/10 rounded-xl p-5 border border-primary/10 flex items-center justify-between group cursor-pointer hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="h-12 w-12 rounded-lg bg-white dark:bg-slate-800 flex items-center justify-center text-primary shadow-sm">
+                        <span class="material-icons-outlined">brush</span>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-primary uppercase tracking-wider mb-0.5">Next Class</p>
+                        <h4 class="font-semibold text-slate-800 dark:text-slate-200">Visual Design II</h4>
+                        <p class="text-xs text-slate-500">14:00 - Room 4B</p>
+                    </div>
+                </div>
+                <span
+                    class="material-icons-outlined text-slate-400 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </div>
+            <!-- Quick Link 1 -->
+            <div
+                class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 flex items-center gap-4 group cursor-pointer hover:border-primary/50 transition-colors">
+                <div
+                    class="h-10 w-10 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                    <span class="material-icons-outlined">folder_open</span>
+                </div>
+                <div>
+                    <h4
+                        class="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors">
+                        Course Materials</h4>
+                    <p class="text-xs text-slate-500">Access PDFs &amp; Slides</p>
+                </div>
+            </div>
+            <!-- Quick Link 2 -->
+            <div
+                class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 flex items-center gap-4 group cursor-pointer hover:border-primary/50 transition-colors">
+                <div
+                    class="h-10 w-10 rounded-full bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+                    <span class="material-icons-outlined">forum</span>
+                </div>
+                <div>
+                    <h4
+                        class="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors">
+                        Student Forum</h4>
+                    <p class="text-xs text-slate-500">3 new discussions</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,239 @@
+CAHIER DE STACK TECHNIQUE
+Plateforme Académique Intelligente
+Propositions d'architecture et répartition des responsabilités
+👥 COMPOSITION DE L'ÉQUIPE
+Développeur 1 (Toi)
+Expertise : Python + Node.js
+Spécialité : Expert en développement d'APIs
+Développeuse 2 (Hanna)
+Expertise : Design UX/UI, Frontend
+Technologies : React, JSX, HTML, CSS, JavaScript
+Développeur 3 (Mourchid)
+Expertise : Laravel (PHP)
+Spécialité : Expert en développement d'APIs
+🔍 ANALYSE DES BESOINS TECHNIQUES
+D'après le cahier des fonctionnalités, la plateforme nécessite :
+Besoins Frontend
+Interface utilisateur riche et interactive (calendrier, tableaux de bord, graphiques)
+Gestion d'état complexe (profil, notes, tâches, sessions)
+Interactions temps réel (quiz collaboratifs, sessions de révision)
+Tableau blanc collaboratif en ligne
+Design responsive et moderne
+Besoins Backend
+APIs RESTful robustes pour toutes les opérations CRUD
+Authentification et gestion des sessions utilisateurs
+Logique métier complexe (calculs de moyennes, alertes, matching)
+Gestion de fichiers (upload de PDFs, images, documents)
+Système de notifications
+Besoins IA & Traitement
+Génération de contenu (fiches, quiz, podcasts)
+Extraction de texte depuis PDFs et images (OCR)
+Analyse de documents et détection d'informations
+Génération de résumés intelligents
+Text-to-Speech pour podcasts audio
+Besoins Temps Réel
+Quiz multi-joueurs synchronisés
+Sessions de révision collaborative avec tableau blanc
+Chat en temps réel
+Notifications push instantanées
+🏗️ PROPOSITION D'ARCHITECTURE
+Option Recommandée : Architecture Microservices Hybride
+Cette architecture exploite les forces de chaque membre de l'équipe tout en gardant une structure maintenable.
+Vue d'ensemble de l'architecture
+Frontend (Application Web)
+Stack : React + Vite (ou Create React App)
+Responsable : Hanna
+Styling : Tailwind CSS ou Material-UI (MUI)
+State Management : Redux Toolkit ou Zustand
+Communication API : Axios ou React Query
+Temps Réel : Socket.io-client pour WebSockets
+Backend Principal (API Core)
+Stack : Laravel 11 (PHP 8.2+)
+Responsable : Mourchid
+Rôle : API RESTful principale pour CRUD, authentification, logique métier
+Framework API : Laravel Sanctum (authentification) + API Resources
+Validation : Form Requests Laravel
+File Storage : Laravel Storage (local ou cloud)
+Service IA & Traitement (Microservice)
+Stack : Python + FastAPI
+Responsable : Toi (Python)
+Rôle : Toutes les fonctionnalités IA (génération, extraction, analyse)
+Bibliothèques IA :
+OpenAI API ou Anthropic Claude pour génération de contenu
+PyPDF2 ou pdfplumber pour extraction PDF
+Tesseract OCR (pytesseract) pour images
+gTTS ou ElevenLabs pour Text-to-Speech (podcasts)
+spaCy ou Transformers pour NLP avancé
+Service Temps Réel (Microservice)
+Stack : Node.js + Express + Socket.io
+Responsable : Toi (Node.js)
+Rôle : Gestion des connexions WebSocket, quiz temps réel, sessions collaboratives, chat
+Technologie WebSocket : Socket.io (bidirectionnel, reconnexion auto)
+Redis : Pour adapter Socket.io (sessions distribuées si scaling)
+📋 RÉPARTITION DÉTAILLÉE DES RESPONSABILITÉS
+👩‍💻 Hanna - Frontend (React)
+Responsabilités principales
+Design UX/UI complet : Maquettes Figma, design system, charte graphique
+Développement de tous les composants React : Pages, composants réutilisables, layout
+Gestion de l'état global : Redux/Zustand pour profil, notes, tâches, sessions
+Intégration des APIs : Consommation des endpoints Laravel et Python via Axios
+WebSockets côté client : Connexion Socket.io pour temps réel
+Responsive design : Mobile-first, adaptation tablette/desktop
+Composants spécifiques à développer
+Calendrier interactif (React Big Calendar ou FullCalendar)
+Tableaux de bord avec graphiques (Recharts ou Chart.js)
+Interface de quiz en temps réel avec chronomètre
+Tableau blanc collaboratif (Fabric.js ou Excalidraw)
+Drag & drop pour gestion de tâches
+Upload de fichiers avec preview
+Système de notifications toast
+Profils utilisateurs avec badges et XP
+🔧 Mourchid - Backend Core (Laravel)
+Responsabilités principales
+Architecture API RESTful complète : Routes, controllers, resources
+Système d'authentification : Laravel Sanctum (tokens API) ou Passport (OAuth2)
+Gestion des utilisateurs : Profils, permissions, rôles
+Logique métier complexe :
+Calcul de moyennes (pondérations, coefficients)
+Système d'alertes (Early Warning System)
+Algorithme de matching étudiant-tuteur
+Génération de planning de révision
+Gestion des fichiers : Upload, stockage, download de PDFs/images
+Système de notifications : Laravel Notifications (email, push)
+Jobs asynchrones : Laravel Queues pour tâches lourdes
+Modules à développer
+Module Authentification & Profils
+Module Emploi du temps & Calendrier
+Module Tâches & Devoirs
+Module Notes & Moyennes
+Module Alertes & Suggestions
+Module Sessions collaboratives (CRUD)
+Module Bibliothèque de ressources (upload, search, rating)
+Module Gamification (XP, badges, classements)
+Module Matching & Réputation
+🐍 Toi - Services IA & Temps Réel (Python + Node.js)
+Service 1 : Microservice IA (Python/FastAPI)
+API endpoints pour fonctionnalités IA :
+POST /ai/generate-summary : Génération de fiche de révision depuis texte/PDF
+POST /ai/generate-quiz : Génération de QCM depuis contenu de cours
+POST /ai/generate-podcast : Conversion texte en audio pédagogique
+POST /ai/extract-from-pdf : Extraction de texte, devoirs, dates depuis PDF
+POST /ai/extract-from-image : OCR pour notes manuscrites ou photos de copies
+POST /ai/generate-exercises : Génération d'exercices pour matières scientifiques
+Technologies et librairies Python :
+FastAPI : Framework API moderne et rapide
+Pydantic : Validation de données
+OpenAI / Anthropic : Génération de contenu IA
+PyPDF2 / pdfplumber : Extraction depuis PDF
+Pillow + pytesseract : OCR pour images
+gTTS / ElevenLabs : Text-to-Speech
+Service 2 : Serveur Temps Réel (Node.js/Socket.io)
+Gestion des connexions WebSocket :
+Authentification des sockets via tokens JWT
+Gestion des rooms pour sessions et quiz
+Broadcast de messages aux participants
+Fonctionnalités temps réel à implémenter :
+Quiz collaboratifs : Synchronisation questions, réponses, scores en temps réel
+Sessions de révision : Chat texte, partage de fichiers en direct
+Tableau blanc collaboratif : Synchronisation des dessins en temps réel
+Notifications push : Alertes instantanées
+Technologies Node.js :
+Express : Framework HTTP
+Socket.io : WebSocket bidirectionnel
+jsonwebtoken : Validation tokens JWT
+Redis : Adapter Socket.io (scalabilité)
+🔗 COMMUNICATION ENTRE LES SERVICES
+Frontend ↔ Backend Laravel
+Protocole : HTTP REST avec JSON
+Authentification : Bearer Token (Laravel Sanctum)
+CORS : Configuré dans Laravel pour autoriser le frontend
+Backend Laravel ↔ Service IA (Python)
+Protocole : HTTP REST (Laravel appelle FastAPI)
+Sécurité : API Key partagée entre Laravel et FastAPI
+Exemple de flux :
+1. Frontend demande génération de fiche → Laravel
+2. Laravel récupère le fichier et appelle FastAPI
+3. FastAPI génère le contenu et renvoie à Laravel
+4. Laravel stocke le résultat et renvoie au Frontend
+Frontend ↔ Service Temps Réel (Node.js)
+Protocole : WebSocket (Socket.io)
+Authentification : Token JWT passé lors de la connexion socket
+Events Socket.io :
+join-quiz, answer-question, quiz-update
+join-session, send-message, whiteboard-draw
+Backend Laravel ↔ Service Temps Réel (Node.js)
+Protocole : HTTP REST pour démarrer/arrêter des sessions
+Exemple : Quand un quiz est créé dans Laravel, un webhook appelle Node.js pour initialiser la room Socket.io
+⚙️ MÉTHODOLOGIE DE TRAVAIL
+Organisation du développement
+Gestion de version (Git)
+Monorepo ou Multi-repo :
+Option A (Monorepo) : Un seul repository avec 3 dossiers (/frontend, /backend-laravel, /backend-python, /backend-node)
+Option B (Multi-repo) : 4 repos séparés pour chaque service (plus flexible)
+Branches recommandées :
+main : Code en production
+develop : Code en développement stable
+feature/nom-feature : Nouvelles fonctionnalités
+bugfix/nom-bug : Corrections de bugs
+Workflow de développement
+Sprints : Cycles de 2 semaines
+Daily standups : 15 min chaque matin (ou async sur Slack)
+Code review : Pull Request obligatoires avant merge
+Documentation : README.md pour chaque service + API docs (Swagger/Postman)
+Outils de collaboration
+Gestion de projet : Trello, Jira, ou GitHub Projects
+Communication : Slack ou Discord
+Design : Figma (Hanna partage les maquettes)
+API Documentation : Postman ou Swagger pour documenter les endpoints
+Standards de code
+Frontend (React - Hanna)
+Linter : ESLint + Prettier
+Naming : Composants en PascalCase (UserProfile.jsx), fichiers utils en camelCase
+Structure dossiers :
+/src/components - Composants réutilisables
+/src/pages - Pages principales
+/src/services - Appels API (axios)
+/src/store - Redux/Zustand
+/src/utils - Fonctions utilitaires
+Backend Laravel (Mourchid)
+Coding Standard : PSR-12 (PHP Standards)
+Linter : PHP CS Fixer
+Architecture : Respect du pattern MVC Laravel (Models, Controllers, Routes)
+Validation : Form Requests pour toutes les entrées utilisateur
+API Resources : Pour formater les réponses JSON
+Backend Python/FastAPI (Toi)
+Style Guide : PEP 8 (Python Enhancement Proposal)
+Linter : black (formatter) + flake8 ou ruff
+Type hints : Utiliser les annotations de type Python
+Validation : Pydantic models pour tous les inputs
+Backend Node.js (Toi)
+Linter : ESLint + Prettier (même config que frontend)
+Async/Await : Privilégier async/await plutôt que callbacks
+Gestion d'erreurs : Try-catch systématiques pour Socket.io events
+🎯 ORDRE DE DÉVELOPPEMENT RECOMMANDÉ
+Phase 1 : Fondations (Semaines 1-2)
+Hanna : Setup projet React, design system, maquettes Figma des pages principales
+Mourchid : Setup Laravel, migrations, authentification (Sanctum), API CRUD basiques (users, notes, tâches)
+Toi : Setup FastAPI (service IA) + Setup Node.js/Socket.io (service temps réel)
+Phase 2 : MVP Core (Semaines 3-6)
+Hanna : Développer pages : Login/Register, Dashboard, Calendrier, Gestion tâches, Profil
+Mourchid : Modules : Emploi du temps, Notes & Moyennes, Calcul moyennes, Alertes, Upload fichiers
+Toi : API IA : Génération fiches basique, Extraction texte PDF (PyPDF2), Quiz simple
+Phase 3 : Fonctionnalités Avancées (Semaines 7-10)
+Hanna : Sessions collaboratives UI, Bibliothèque ressources, Quiz interface
+Mourchid : Matching algorithm, Planning suggestions, Système réputation, Gamification
+Toi : Podcasts IA (TTS), OCR images, Quiz temps réel (Socket.io), Tableau blanc collaboratif
+Phase 4 : Polish & Optimisation (Semaines 11-12)
+Tests utilisateurs
+Corrections bugs
+Optimisations performance
+Documentation finale
+📊 TABLEAU RÉCAPITULATIF
+FIN DU CAHIER DE STACK TECHNIQUE
+Cette architecture exploite les forces de chaque développeur
+tout en créant un système modulaire, scalable et maintenable.
+Développeur | Stack Principale | Technologies Clés | Responsabilités
+Hanna | React + Vite | Tailwind CSS, Redux/Zustand, Socket.io-client, Axios | Frontend complet, UX/UI, Design
+Mourchid | Laravel 11 (PHP) | Sanctum, Queues, Storage, Eloquent ORM | API Core, Logique métier, Authentification
+Toi (Service IA) | Python + FastAPI | OpenAI/Claude, PyPDF2, pytesseract, gTTS | Génération IA, Extraction, OCR, Podcasts
+Toi (Temps Réel) | Node.js + Express | Socket.io, JWT, Redis | WebSocket, Quiz live, Chat, Tableau blanc

@@ -1,0 +1,419 @@
+CAHIER DES FONCTIONNALITÉS
+Plateforme Académique Intelligente & Collaborative
+"Le carrefour intelligent de votre réussite académique"
+Version unifiée - Février 2026
+🎯 VISION DU PROJET
+Une plateforme tout-en-un qui accompagne l'étudiant dans trois dimensions complémentaires et interconnectées :
+Organisation : Gérer intelligemment son temps, ses tâches académiques et anticiper les échéances
+Apprentissage : Comprendre et mémoriser efficacement grâce à l'intelligence artificielle
+Collaboration : Apprendre ensemble, s'entraider et progresser collectivement
+💡 Proposition de valeur unique
+Cette plateforme ne se contente pas de gérer les cours : elle anticipe l'échec pour le transformer en réussite grâce à l'IA et à la force du collectif. Le système détecte précocement les difficultés, génère automatiquement du contenu pédagogique personnalisé, et connecte les étudiants entre eux pour créer un écosystème d'entraide intelligent.
+🏗️ ARCHITECTURE FONCTIONNELLE
+L'architecture est organisée en 6 modules interdépendants, conçus selon un ordre logique d'utilisation progressive par l'étudiant.
+MODULE 1 : FONDATION - Identité & Contexte Académique
+"Qui est l'étudiant et quel est son environnement académique ?"
+1.1 Authentification & Profil Étudiant
+Inscription et connexion sécurisée avec système d'authentification robuste
+Profil académique complet structuré :
+Université, filière, niveau d'études (L1, L2, L3, M1, M2...)
+Liste des matières suivies ce semestre avec leurs coefficients
+Niveau de maîtrise auto-évalué par matière (faible / moyen / fort)
+Objectifs académiques personnels (moyenne visée, examens prioritaires)
+Style d'apprentissage préféré (visuel, auditif, kinesthésique)
+1.2 Emploi du Temps Académique
+Saisie manuelle : Formulaire intuitif permettant d'ajouter cours par cours avec horaires, salles et professeurs
+Importation automatique : Upload de fichier ICS/CSV ou synchronisation directe avec le système universitaire (si disponible)
+Visualisation multi-formats : Vues semaine/mois avec codes couleurs personnalisables par matière
+Détection automatique des créneaux libres : Le système identifie intelligemment les plages horaires disponibles pour la révision
+🔗 Interconnexions : L'emploi du temps alimente le calendrier unifié et le système de suggestions de planning. Les créneaux libres sont utilisés par le planificateur intelligent.
+MODULE 2 : ORGANISATION INTELLIGENTE - Gestion du Temps & Tâches
+"Gérer efficacement toutes les tâches académiques et centraliser les événements"
+2.1 Gestion des Tâches Académiques
+Création manuelle de tâches avec attributs complets :
+Type : devoir, révision, exposé, projet, examen, lecture
+Matière associée et tags personnalisables
+Date limite et heure précises
+Priorité (haute / moyenne / basse)
+Temps estimé de réalisation
+Statut : à faire / en cours / terminé
+Extraction automatique depuis les notes de cours :
+L'étudiant upload ses notes (PDF, photo, texte brut)
+L'IA scanne et extrait automatiquement : devoirs mentionnés, dates d'examens, chapitres à réviser
+Création automatique de tâches pré-remplies dans le système
+🔗 Interconnexions : Les tâches extraites alimentent automatiquement le calendrier unifié et déclenchent les notifications appropriées.
+2.2 Calendrier Académique Unifié
+Vue centralisée unique : Tous les événements académiques regroupés en un seul endroit
+Cours (importés depuis l'emploi du temps)
+Devoirs et projets (depuis le gestionnaire de tâches)
+Examens et contrôles continus
+Sessions de révision personnelles et collaboratives
+Deadlines de projets et livrables
+Vues multiples adaptatives : Jour / Semaine / Mois / Agenda liste
+Filtres intelligents : Par matière, par type d'événement, par priorité, par statut
+Synchronisation externe : Export vers Google Calendar, Outlook, Apple Calendar
+🔗 Interconnexions : Hub central qui connecte l'emploi du temps, les tâches, les sessions collaboratives et les suggestions de planning.
+2.3 Notifications & Rappels Intelligents
+Notifications push contextuelles et personnalisées :
+Rappel de cours (15 minutes avant le début)
+Rappel de devoirs (3 jours avant, 1 jour avant, 1h avant deadline)
+Rappel de sessions de révision collaborative planifiées
+Alerte proactive : "Tu n'as pas révisé [Matière] depuis 5 jours"
+Suggestion contextuelle : "Créneau libre détecté mercredi 14h : parfait pour réviser [Matière]"
+Fréquence personnalisable : L'étudiant choisit quand et comment être notifié (paramètres granulaires)
+🔗 Interconnexions : Déclenchées par le calendrier, les tâches à échéance, le système de prédiction et les alertes de risque.
+MODULE 3 : SUIVI DE PERFORMANCE - Analytics & Prédiction
+"Comprendre le niveau de l'étudiant et anticiper les risques d'échec"
+3.1 Système de Saisie des Notes
+Enregistrement détaillé des résultats académiques :
+Par matière : devoirs, contrôles continus, examens partiels, examens finaux
+Note obtenue + note maximale + coefficient appliqué
+Date de l'évaluation pour suivi temporel
+Possibilité d'ajouter des commentaires ou observations
+Import automatique via OCR : L'étudiant scanne sa copie notée, le système détecte automatiquement la note et le sujet
+Synchronisation avec systèmes universitaires : Si l'université dispose d'un portail de notes en ligne, possibilité de synchronisation automatique
+3.2 Calculateur de Moyenne en Temps Réel
+Calculs automatiques instantanés :
+Moyenne par matière (pondérée selon coefficients de chaque évaluation)
+Moyenne générale du semestre (toutes matières confondues)
+Moyenne prévisionnelle : Simulation dynamique "Si j'obtiens X au prochain examen, ma moyenne sera..."
+Visualisation graphique de l'évolution (courbes de progression dans le temps)
+Scénarios prédictifs interactifs : L'étudiant peut tester différentes hypothèses de notes futures pour voir l'impact sur sa moyenne finale
+🔗 Interconnexions : Alimente directement le système d'alerte précoce et influence les suggestions de planning personnalisé.
+3.3 Système d'Alerte Précoce (Early Warning System)
+Analyse prédictive multiparamétrique :
+Détection automatique si moyenne dans une matière < 10/20
+Identification des matières "à risque" (tendance à la baisse détectée)
+Comparaison avec les objectifs académiques fixés par l'étudiant
+Analyse du taux de réalisation des devoirs et du temps consacré à l'étude
+Alertes graduelles contextualisées :
+⚠️ Alerte jaune : "Tu es à 9,5/20 en [Matière], sois vigilant"
+🚨 Alerte rouge : "Risque élevé d'échec en [Matière] : moyenne actuelle 7/20"
+Actions suggérées automatiques et actionnables :
+"Augmente ton temps de révision de 2h par semaine dans cette matière"
+"Trouve un tuteur dans la communauté" (avec lien direct vers matching)
+"Rejoins une session de révision collaborative" (suggestions personnalisées)
+"Refais les quiz de ce chapitre pour identifier tes lacunes précises"
+🔗 Interconnexions : Déclenche des ajustements automatiques du planning, met en avant les opportunités de collaboration, et active des notifications prioritaires.
+3.4 Tableaux de Bord & Statistiques
+Dashboard personnel interactif avec visualisations :
+Temps total consacré à l'étude (par matière, par semaine, par mois)
+Nombre de tâches accomplies vs planifiées (taux de complétion)
+Taux de présence aux cours et séances de révision
+Courbes d'évolution des notes dans le temps (progression visible)
+Identification automatique des points forts et points faibles
+Performance aux quiz (scores moyens, progression, notions maîtrisées)
+Système de gamification motivant :
+Badges d'accomplissement : "7 jours consécutifs de révision 🔥", "100% des devoirs rendus ce mois ⭐", "Top contributeur de fiches 👑"
+Système de points d'expérience (XP) : Gagnés pour chaque action positive (révision, partage, aide apportée)
+Niveaux de progression : L'étudiant monte de niveau au fur et à mesure de son activité
+Streaks de régularité : Encouragent l'assiduité quotidienne
+🔗 Interconnexions : Visualise et agrège les données de toutes les autres fonctionnalités pour créer une vue d'ensemble de la progression.
+MODULE 4 : APPRENTISSAGE ASSISTÉ PAR IA - Génération de Contenu Pédagogique
+"Transformer les cours en contenus pédagogiques personnalisés et interactifs"
+4.1 Hub de Contenus Générés par IA
+Pour chaque cours ou chapitre, l'étudiant peut demander à l'IA de générer automatiquement plusieurs formats de contenus complémentaires :
+a) Fiche de Révision Résumée (Synthèse Écrite)
+L'étudiant upload son cours (PDF, notes manuscrites scannées, texte saisi)
+L'IA génère automatiquement :
+Résumé structuré du chapitre (1 à 2 pages selon complexité)
+Points clés à retenir absolument
+Définitions importantes avec explications claires
+Schémas conceptuels simplifiés et cartes mentales
+Formules essentielles (pour matières scientifiques)
+Format de sortie : PDF téléchargeable + version web responsive
+Personnalisation : Niveau de détail ajustable (court / moyen / détaillé)
+b) Quiz d'Auto-évaluation (QCM Intelligent)
+L'IA génère automatiquement à partir du cours :
+10 à 20 questions à choix multiples ciblées
+Questions de difficulté progressive (facile → moyen → difficile)
+Feedback immédiat après chaque réponse avec explication détaillée
+Score final + pourcentage de réussite
+Identification précise des notions mal maîtrisées
+Adaptive Learning (apprentissage adaptatif) : Si l'étudiant échoue sur un concept spécifique, le système génère automatiquement plus de questions sur ce concept pour renforcer l'apprentissage
+c) Podcast Audio Pédagogique (Apprentissage Auditif)
+L'IA génère un fichier audio (5 à 10 minutes) qui :
+Explique le cours de manière conversationnelle et naturelle
+Utilise des analogies et exemples concrets pour faciliter la compréhension
+Peut être écouté en marchant, dans les transports, ou pendant une activité physique
+Répète les points clés pour améliorer la mémorisation
+Format : MP3 téléchargeable avec lecteur intégré dans l'app
+Options : Vitesse de lecture ajustable (0.75x, 1x, 1.25x, 1.5x), pause/reprise, chapitres cliquables
+d) Exercices Pratiques Générés (Matières Scientifiques)
+Pour matières scientifiques (maths, physique, informatique) : L'IA génère des exercices similaires aux exemples du cours
+Correction détaillée fournie étape par étape avec explications
+Difficulté progressive pour permettre une montée en compétence graduelle
+🔗 Interconnexions : Les résultats des quiz alimentent le système de détection des faiblesses, influencent les suggestions de planning, et peuvent déclencher des alertes.
+4.2 Extraction Intelligente depuis Documents
+Upload de documents sources multiformats :
+Notes de cours (PDF, photos, documents Word)
+Slides de présentations des professeurs (PowerPoint, PDF)
+Polycopiés et supports pédagogiques
+Anciens sujets d'examens avec ou sans correction
+L'IA extrait automatiquement :
+Plan du cours (structure hiérarchique avec titres et sous-titres)
+Concepts clés et mots-clés importants
+Devoirs mentionnés ou annoncés (création automatique de tâches)
+Dates importantes et échéances (ajout automatique au calendrier)
+Références bibliographiques citées
+🔗 Interconnexions : Les documents uploadés servent de base pour générer les fiches, quiz, podcasts et exercices. Les éléments extraits alimentent automatiquement les tâches et le calendrier.
+MODULE 5 : PLANIFICATION INTELLIGENTE - Suggestions Personnalisées
+"Optimiser automatiquement l'organisation du temps d'étude selon le contexte"
+5.1 Moteur de Recommandations de Planning
+Le système analyse en continu plusieurs paramètres pour optimiser le planning :
+Emploi du temps (identification des créneaux libres disponibles)
+Deadlines et échéances à venir (priorisation automatique)
+Notes actuelles (matières nécessitant le plus d'attention en priorité)
+Préférences personnelles de l'étudiant (horaires préférés, durée idéale des sessions)
+Historique d'étude passé (moments où l'étudiant est le plus productif)
+Résultats aux quiz (notions nécessitant révision approfondie)
+Suggestions automatiques contextuelles générées :
+"Tu as 2h libres mercredi 14h : révise [Matière faible détectée]"
+"Examen de mathématiques dans 7 jours : commence les révisions aujourd'hui"
+"Tu n'as pas travaillé [Matière] depuis 1 semaine : prévois 30 minutes aujourd'hui"
+"Session collaborative sur [Sujet] dans 2h : dernière chance pour t'inscrire"
+5.2 Planning de Révision Personnalisé
+Génération automatique d'un plan de révision structuré :
+Input : Date de l'examen, matière concernée, niveau actuel de l'étudiant, temps disponible par jour
+Output : Planning détaillé jour par jour jusqu'à l'examen
+Jour 1 : Révision Chapitres 1-2 (2h) + Fiche de synthèse
+Jour 2 : Exercices pratiques chapitre 1 (1h30)
+Jour 3 : Quiz auto-évaluation + révision des erreurs (1h)
+Jour 4 : Révision Chapitres 3-4 (2h) + Podcast audio
+...etc. jusqu'au jour de l'examen
+Ajustement dynamique en temps réel : Si l'étudiant prend du retard ou si de nouvelles évaluations apparaissent, le planning se réajuste automatiquement
+Intégration transparente au calendrier : Les sessions de révision planifiées apparaissent automatiquement dans le calendrier unifié avec codes couleur
+Méthode de répétition espacée : Le système applique les principes scientifiques de mémorisation (révisions espacées dans le temps pour ancrage durable)
+🔗 Interconnexions : Crée automatiquement des tâches de révision et bloque des créneaux dans le calendrier. Déclenche des notifications de rappel.
+5.3 Calendrier Intelligent avec Suggestions Contextuelles
+Analyse contextuelle avancée :
+Prise en compte de la météo : "Il fait beau, ta concentration est faible l'après-midi : révise tôt le matin"
+Intégration optionnelle avec trackers de santé : "Tu as bien dormi : journée productive à venir, profites-en"
+Apprentissage des patterns personnels : Le système apprend les moments où l'étudiant est le plus efficace
+Optimisation intelligente des créneaux de révision :
+Matières difficiles planifiées aux moments de forte concentration (matin généralement)
+Matières légères ou tâches simples aux moments de baisse d'énergie (après-midi, soir)
+Alternance entre matières complémentaires pour maintenir l'engagement
+Vue "Prochaines 7 jours" : Aperçu hebdomadaire avec suggestions de révision pré-remplies et optimisées automatiquement
+🔗 Interconnexions : S'appuie sur toutes les données disponibles (notes, tâches, préférences, historique, météo) pour suggérer le planning optimal.
+MODULE 6 : COLLABORATION & APPRENTISSAGE SOCIAL
+"Apprendre ensemble et créer un écosystème d'entraide intelligent"
+6.1 Profil Académique Public & Matching Intelligent
+Profil visible dans la communauté comprenant :
+Nom, université, filière, niveau d'études
+Matières maîtrisées avec notation par étoiles (★★★★★)
+Matières où l'étudiant a besoin d'aide
+Disponibilités pour sessions collaboratives
+Badge "Tuteur certifié" (attribué si bon historique d'aide apportée)
+Statistiques : sessions organisées/participées, fiches partagées, note moyenne reçue
+Algorithme de Matching Automatique Intelligent :
+Input utilisateur : "Je cherche de l'aide en Algèbre Linéaire"
+Output système : Liste d'étudiants matchés selon plusieurs critères
+Niveau de maîtrise de la matière (étudiants forts en Algèbre priorisés)
+Disponibilités temporelles compatibles
+Proximité géographique (même université/campus pour rencontres présentielles)
+Historique de collaboration et avis reçus (notation communautaire)
+Score de compatibilité calculé (0-100%)
+🔗 Interconnexions : Utilise les données du profil étudiant et les performances (notes, quiz) pour effectuer des matchings pertinents et intelligents.
+6.2 Sessions de Révision Collaborative
+a) Création de Session par un Organisateur
+L'organisateur définit les paramètres suivants :
+Titre descriptif : "Révision Analyse Mathématique - Intégrales et Primitives"
+Matière et chapitre précis concernés
+Date, heure de début et durée estimée
+Format : En ligne (lien Zoom/Meet généré automatiquement) ou Présentiel (localisation sur campus)
+Nombre maximum de participants (entre 5 et 10 recommandé)
+Niveau requis : débutant / intermédiaire / avancé
+Description détaillée et objectifs de la session
+Rôles possibles : L'organisateur peut être "animateur" (il explique activement) ou "co-apprenant" (il participe à l'apprentissage collectif)
+b) Découverte & Inscription aux Sessions
+Annuaire exhaustif des sessions à venir avec système de filtres :
+Filtrage par matière, par date/heure, par format (en ligne/présentiel), par université
+Recherche textuelle libre (mots-clés dans titre ou description)
+Suggestions personnalisées intelligentes : "Sessions recommandées pour toi" basées sur les faiblesses détectées et les matières en difficulté
+Inscription simplifiée en 1 clic : La session s'ajoute automatiquement au calendrier personnel avec notification de rappel
+c) Déroulement de Session (Outils Intégrés)
+Pour sessions en ligne, outils collaboratifs intégrés :
+Tableau blanc collaboratif interactif pour dessiner schémas et résoudre exercices ensemble
+Partage d'écran pour présenter documents ou démonstrations
+Chat textuel en temps réel pour questions/réponses écrites
+Enregistrement optionnel de la session (replay accessible après pour les participants)
+Partage de fichiers en direct (fiches, exercices, notes)
+Pour sessions présentielles, fonctionnalités pratiques :
+Rappel automatique de localisation précise (salle, bâtiment)
+Liste des participants inscrits
+Système de check-in de présence pour suivi des participants
+d) Après la Session (Feedback & Capitalisation)
+Notation mutuelle (1 à 5 étoiles) + commentaire textuel pour amélioration continue
+Points d'expérience (XP) gagnés pour l'organisateur et les participants actifs
+Résumé automatique généré (notes partagées, points clés discutés)
+Suggestion de nouvelle session si le sujet n'a pas été épuisé
+🔗 Interconnexions : Les sessions apparaissent dans le calendrier, envoient des notifications de rappel, peuvent déclencher la génération de contenus IA (fiche résumée de la session).
+6.3 Bibliothèque Collaborative de Ressources
+a) Partage de Ressources Pédagogiques
+Tout étudiant peut uploader et partager :
+Ses fiches de révision personnelles (PDF, images, documents Word)
+Anciennes épreuves d'examens (sujets avec ou sans correction)
+Notes de cours enrichies et annotées
+Mind maps, schémas conceptuels, cartes mentales
+Exercices corrigés et commentés
+Métadonnées obligatoires pour faciliter la recherche :
+Matière, chapitre, thème précis
+Université, filière, niveau d'études
+Nom du professeur (si pertinent)
+Tags libres (formules, exercices, théorie, pratique...)
+Validation et modération communautaire :
+Système de notation par étoiles (★★★★★) par les utilisateurs
+Commentaires constructifs ("Très clair et complet !", "Manque les exemples du chapitre 3")
+Système de signalement si erreur factuelle, plagiat détecté, ou contenu inapproprié
+Modération par la communauté + équipe de vérification pour contenus signalés
+b) Recherche & Découverte de Ressources
+Moteur de recherche avancé multi-critères :
+Recherche par matière, chapitre, thème, mots-clés
+Filtrage par université, professeur, niveau d'études
+Tri par pertinence, par note communautaire, par date d'ajout
+Vues pré-filtrées pratiques :
+"Fiches les mieux notées" (top qualité)
+"Ajoutées récemment" (nouveautés)
+"Les plus téléchargées" (popularité)
+Suggestions personnalisées intelligentes : "Fiches recommandées pour ton prochain examen de [Matière]" basées sur le calendrier et les besoins détectés
+c) Gamification du Partage de Ressources
+Points d'expérience (XP) gagnés pour chaque ressource uploadée
+Bonus XP si la ressource reçoit une note élevée ou beaucoup de téléchargements
+Badge "Top contributeur du mois" : Attribué au membre ayant partagé le plus de ressources de qualité
+Classement des meilleurs créateurs de contenu : Leaderboard visible encourageant la contribution
+Feedback de contribution : "Ta fiche a aidé 47 étudiants ce mois !" pour valoriser l'impact positif
+🔗 Interconnexions : Les fiches uploadées peuvent être enrichies par l'IA (génération de quiz ou podcast associé) et apparaître dans les recommandations de planning personnalisé.
+6.4 Quiz Collaboratifs & Compétition Amicale
+a) Quiz Multi-joueurs en Temps Réel
+Création de quiz collaboratifs (style Kahoot) :
+Organisateur choisit : matière, nombre de questions (10-20), niveau de difficulté
+Questions générées automatiquement par l'IA OU sélection manuelle depuis banque communautaire
+Déroulement dynamique et engageant :
+Lobby d'attente avec code d'accès (2 à 10 joueurs)
+Questions affichées une par une avec options de réponse
+Chronomètre par question (10 à 30 secondes ajustable)
+Système de points : bonus de rapidité + justesse de réponse
+Classement en direct après chaque question pour maintenir la compétition
+Fin de partie :
+Podium des 3 premiers joueurs avec animation de victoire
+Révision collective des erreurs communes avec explications détaillées
+Statistiques personnelles : taux de réussite, temps moyen de réponse, notions à retravailler
+b) Ligues & Classements Compétitifs
+Classements globaux multi-dimensions :
+Par matière spécifique (Top 10 en Algèbre, Top 10 en Physique...)
+Par université (compétition inter-établissements)
+Par période : semaine / mois / année académique
+Système de ligues progressives (inspiration jeux vidéo) :
+Bronze → Argent → Or → Platine → Diamant
+Promotion/relégation en fonction des performances hebdomadaires
+Affichage visible de la ligue sur le profil pour statut social
+c) Défis & Tournois Organisés
+Défis 1v1 personnalisés : "Défie un ami en Physique" - duel direct entre deux étudiants
+Tournois organisés à grande échelle : "Grand Tournoi Mathématiques IFRI - 50 participants" avec phases éliminatoires
+Tournois inter-universités : Compétitions entre établissements pour créer une émulation positive
+Système de récompenses attractif :
+Badges virtuels exclusifs ("Champion du Tournoi Q1 2026")
+Mentions spéciales affichées sur le profil public
+(Optionnel) Récompenses réelles sponsorisées par partenaires (livres, matériel, bourses...)
+🔗 Interconnexions : Les résultats des quiz alimentent les statistiques de performance, identifient les faiblesses précises, et génèrent des suggestions de révision ciblées.
+6.5 Système de Réputation & Communauté
+Profil enrichi avec indicateurs de confiance :
+Nombre total de sessions organisées et participées
+Nombre de fiches pédagogiques partagées avec la communauté
+Note moyenne reçue des autres étudiants (★★★★★ / 5)
+Collection de badges obtenus (visibles publiquement)
+Niveau d'expérience (XP) global accumulé
+Titres honorifiques attribués automatiquement :
+"Mentor en Mathématiques" : Si l'étudiant a apporté beaucoup d'aide dans cette matière spécifique
+"Créateur Prolifique" : Si l'étudiant a partagé un grand nombre de fiches de qualité
+"Champion des Quiz" : Si classé dans le Top 10 des joueurs de quiz
+"Pilier de la Communauté" : Pour membres très actifs sur tous les aspects de la plateforme
+🔗 Interconnexions : La réputation influence directement le matching automatique (étudiants préfèrent collaborer avec membres bien notés) et augmente la visibilité du profil pour collaborations futures.
+🔄 FLUX UTILISATEUR COMPLET
+Scénario concret : Sophie, étudiante en L2 Informatique à l'IFRI
+Phase 1 : Onboarding (Jour 1)
+Inscription : Sophie crée son profil (L2 Informatique, IFRI, 6 matières : Algo, Réseaux, Bases de données, Maths, Anglais, Gestion de projet)
+Import emploi du temps : Upload fichier PDF reçu de l'administration ou saisie manuelle cours par cours
+Auto-évaluation initiale : Note son niveau par matière (Algo ★★★, Réseaux ★★, Bases de données ★★★, Maths ★★★★)
+Définition d'objectifs : Vise 13/20 de moyenne générale ce semestre
+Phase 2 : Organisation (Semaine 1)
+Upload notes de cours : PDF du cours de Réseaux sur les protocoles TCP/IP
+Extraction automatique : Le système détecte "TP Configuration routeur à rendre le 25/02" → Crée automatiquement la tâche dans son agenda
+Visualisation calendrier : Sophie voit tous ses cours, examens et nouvelles tâches en vue unifiée avec codes couleur
+Notification intelligente : "Tu as 3h libres jeudi après-midi : parfait pour réviser Réseaux et préparer le TP"
+Phase 3 : Apprentissage avec IA (Semaine 2)
+Génération de fiche IA : Demande une fiche résumée du cours de Réseaux → Obtient un PDF de 2 pages avec schémas explicatifs
+Quiz d'auto-évaluation : Fait le quiz généré automatiquement → Score 6/10 → Identifie ses faiblesses précises (protocoles TCP mal compris)
+Podcast audio : Écoute l'explication audio du chapitre en marchant vers l'université (15 minutes)
+Révision ciblée : Refait un quiz spécifique sur TCP uniquement → 9/10 → Notion maintenant maîtrisée
+Phase 4 : Suivi de Performance (Semaine 3)
+Saisie de notes : Entre sa note de Devoir Surveillé Réseaux : 8/20 (coefficient 2)
+Alerte rouge déclenchée : 🚨 "Risque élevé d'échec en Réseaux : moyenne actuelle 8/20 - Action immédiate requise"
+Actions suggérées : "Trouve un tuteur expérimenté" ou "Révise 2h supplémentaires par semaine minimum"
+Ajustement automatique du planning : Le système réorganise son planning pour prioriser Réseaux (ajoute créneaux de révision forcés)
+Phase 5 : Collaboration & Entraide (Semaine 4)
+Recherche d'aide : Clique sur "Trouver un tuteur en Réseaux" depuis l'alerte
+Matching automatique : Le système propose 3 étudiants (L3 et M1) forts en Réseaux avec 90%+ de compatibilité
+Session collaborative : Rejoint une session "Révision Réseaux - Protocoles TCP/IP" organisée par un M1 (5 participants)
+Pendant la session : Utilise le tableau blanc collaboratif pour dessiner des schémas, pose ses questions, échange avec les pairs
+Après la session : Note l'organisateur 5★, reçoit le résumé de la session, gagne 50 XP pour participation active
+Phase 6 : Partage & Communauté (Semaine 5)
+Upload de fiche : Partage sa fiche personnelle d'Algorithmique (matière forte où elle excelle) → Gagne 100 XP + badge "Contributeur"
+Quiz multi-joueurs : Participe à un quiz collaboratif Algo avec 8 joueurs → Finit 2e/8 → Monte en ligue Argent
+Téléchargement ressources : Télécharge une ancienne épreuve de Réseaux avec correction partagée par un étudiant L3
+Phase 7 : Révision Intensive Examen (Semaine 6)
+Examen imminent : Examen de Réseaux dans 10 jours → Le système génère automatiquement un planning de révision complet jour par jour
+Suivi du planning : Jour J-10 à J-1 : Suit rigoureusement le planning suggéré, fait des quiz quotidiens, réécoute les podcasts
+Statistiques progression : Le dashboard montre 12h de révision Réseaux accumulées, progression aux quiz 6/10 → 9/10
+Phase 8 : Post-Examen & Succès (Semaine 7)
+Résultats obtenus : Entre sa note d'examen Réseaux : 14/20 🎉 (remontée spectaculaire)
+Nouvelle moyenne calculée : Moyenne Réseaux recalculée automatiquement : 11,5/20 (sauvée de l'échec !)
+Visualisation progression : Le dashboard affiche une courbe ascendante impressionnante, badge "Remontée Spectaculaire" débloqué
+🧩 MATRICE DES INTERCONNEXIONS FONCTIONNELLES
+Cette matrice illustre comment chaque fonctionnalité alimente et déclenche d'autres fonctionnalités, créant ainsi un écosystème intégré et cohérent.
+🎯 PRIORISATION POUR LE DÉVELOPPEMENT
+Répartition stratégique des fonctionnalités selon leur impact et leur priorité pour le MVP (Minimum Viable Product) et les versions ultérieures.
+🔥 CŒUR DU SYSTÈME (MVP Essentiel) - 70% de la valeur
+Ces fonctionnalités sont absolument essentielles pour que la plateforme soit utilisable et apporte une valeur immédiate aux étudiants.
+Authentification & Profil étudiant complet : Base de toute personnalisation
+Calendrier académique unifié : Hub central pour visualiser tous les événements
+Gestion des tâches : Création manuelle + extraction automatique basique depuis documents
+Calcul de moyenne en temps réel : Suivi des notes et moyenne prévisionnelle
+Système d'alerte précoce (Early Warning System) : Détection risque d'échec avec suggestions d'actions
+Génération IA basique : Fiches de révision + Quiz d'auto-évaluation simples
+Sessions de révision collaborative : Création, découverte, recherche et inscription aux sessions
+Notifications basiques : Rappels de cours, devoirs et sessions
+⚡ DIFFÉRENCIATEURS CLÉS (Ce qui fait gagner) - 20%
+Ces fonctionnalités distinguent la plateforme de la concurrence et apportent une vraie valeur ajoutée unique.
+Algorithme de matching intelligent automatique : Connexion étudiants forts/faibles pour tutorat optimal
+Planning de révision personnalisé avec suggestions : Génération automatique de planning adaptatif
+Quiz collaboratifs en temps réel : Gamification de l'apprentissage style Kahoot
+Bibliothèque collaborative avec notation communautaire : Partage et découverte de ressources de qualité
+Podcast IA (audio pédagogique) : Fort impact démonstration, apprentissage nomade
+✨ FONCTIONNALITÉS BONUS (Finitions & Polish) - 10%
+Ces fonctionnalités améliorent significativement l'expérience utilisateur mais peuvent être développées après le MVP.
+Tableaux de bord statistiques avancés : Visualisations graphiques détaillées de la progression
+Système de gamification complet : Badges, XP, ligues, classements, titres honorifiques
+Système de réputation détaillé : Profils enrichis, avis communautaires, historique complet
+Import emploi du temps ICS automatique : Synchronisation directe avec systèmes universitaires
+Adaptive learning avancé : Quiz qui s'adaptent dynamiquement selon les résultats
+Tournois et compétitions inter-universités : Événements à grande échelle avec récompenses
+Intégrations externes avancées : Calendrier Google, trackers santé, outils de visioconférence
+FIN DU CAHIER DES FONCTIONNALITÉS
+Ce document constitue la référence unique et unifiée pour le développement de la plateforme.
+Toutes les fonctionnalités sont interconnectées pour créer un écosystème académique intelligent et collaboratif.
+Fonctionnalité Source | Alimente/Déclenche | Impact Résultant
+Emploi du temps | Calendrier unifié + Détection créneaux libres | Affiche cours automatiquement + Suggestions de révision
+Extraction auto devoirs | Tâches + Calendrier + Notifications | Création automatique + Affichage + Rappels
+Tâches | Calendrier + Statistiques | Visualisation événements + Temps consacré
+Notes/Résultats | Calcul moyenne + Alertes + Profil | Moyenne temps réel + Détection échec + Mise à jour forces/faiblesses
+Alertes risque | Planning + Matching + Notifications | Augmente temps révision + Propose tuteurs + Alerte étudiant
+Upload cours | Génération IA (fiches + quiz + podcast) | Contenus pédagogiques automatiques
+Résultats quiz | Identification faiblesses + Planning + Adaptive learning | Notions mal maîtrisées + Révision ciblée + Plus de questions
+Planning personnalisé | Calendrier + Tâches | Bloque créneaux révision + Crée sessions
+Profil forces/faiblesses | Matching + Suggestions sessions | Trouve complémentaires + Sessions recommandées
+Sessions collaboratives | Calendrier + Notifications + Statistiques | Ajout automatique + Rappels + Temps comptabilisé
+Partage fiches | Bibliothèque + IA + Gamification | Visible communauté + Enrichissement IA + XP/badges
+Quiz collaboratifs | Classements + Faiblesses + Réputation | Ligues/podiums + Notions à revoir + Points/niveau
+Réputation | Matching + Visibilité profil | Priorité bien notés + Attractivité collaboration

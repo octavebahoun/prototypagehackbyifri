@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Essai de prototypage — Parcours & écrans</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ["Lexend", "sans-serif"],
+                    },
+                    colors: {
+                        primary: "#1337ec",
+                        bg: "#f6f6f8",
+                    },
+                    borderRadius: {
+                        xl: "0.75rem",
+                        "2xl": "1rem",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="font-display bg-bg text-slate-900 min-h-screen">
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center font-bold">P</div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-bold leading-tight">Essai de prototypage</h1>
+                    <p class="text-xs sm:text-sm text-slate-500">Raccourcis + navigation entre variantes</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="login%20page/code.html"
+                    class="inline-flex items-center px-3 py-2 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-blue-700 transition">Démarrer
+                    (Login)</a>
+                <a href="student_dashboard_home_variant_1/code.html"
+                    class="inline-flex items-center px-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm font-semibold hover:border-primary/40 hover:bg-slate-50 transition">Aller
+                    au Dashboard</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <section class="mb-10">
+            <h2 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Parcours rapide</h2>
+            <div class="flex flex-wrap gap-2">
+                <a class="px-3 py-2 rounded-xl bg-white border border-slate-200 hover:border-primary/40 hover:bg-slate-50 transition text-sm font-medium"
+                    href="login%20page/code.html">1. Login</a>
+                <a class="px-3 py-2 rounded-xl bg-white border border-slate-200 hover:border-primary/40 hover:bg-slate-50 transition text-sm font-medium"
+                    href="student_dashboard_home_variant_1/code.html">2. Dashboard</a>
+                <a class="px-3 py-2 rounded-xl bg-white border border-slate-200 hover:border-primary/40 hover:bg-slate-50 transition text-sm font-medium"
+                    href="student_profile_page_variant_2/code.html">3. Profil</a>
+                <a class="px-3 py-2 rounded-xl bg-white border border-slate-200 hover:border-primary/40 hover:bg-slate-50 transition text-sm font-medium"
+                    href="calendar_weekly_view_variant_1/code.html">4. Calendrier</a>
+                <a class="px-3 py-2 rounded-xl bg-white border border-slate-200 hover:border-primary/40 hover:bg-slate-50 transition text-sm font-medium"
+                    href="grade_management_interface_variant_1/code.html">5. Notes</a>
+                <a class="px-3 py-2 rounded-xl bg-white border border-slate-200 hover:border-primary/40 hover:bg-slate-50 transition text-sm font-medium"
+                    href="interactive_quiz_interface_variant_2/code.html">6. Quiz</a>
+                <a class="px-3 py-2 rounded-xl bg-white border border-slate-200 hover:border-primary/40 hover:bg-slate-50 transition text-sm font-medium"
+                    href="ai_content_generation_variant_1/code.html">7. Génération IA</a>
+                <a class="px-3 py-2 rounded-xl bg-white border border-slate-200 hover:border-primary/40 hover:bg-slate-50 transition text-sm font-medium"
+                    href="ai_generation_results_variant_2/code.html">8. Résultats IA</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex items-end justify-between gap-4 mb-4">
+                <div>
+                    <h2 class="text-2xl font-bold">Écrans disponibles</h2>
+                    <p class="text-slate-500">Clique un écran pour l’ouvrir. Chaque page contient aussi une mini-barre
+                        de navigation prototype.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="student_dashboard_home_variant_1/code.html"
+                    class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition">
+                    <img src="student_dashboard_home_variant_1/screen.png" alt="Aperçu — Dashboard"
+                        class="w-full aspect-[16/9] object-cover bg-slate-100" />
+                    <div class="p-4">
+                        <div class="text-sm font-bold group-hover:text-primary transition">Dashboard (Variant 1)</div>
+                        <div class="text-xs text-slate-500 mt-1">Accueil étudiant : tâches, stats, widgets</div>
+                    </div>
+                </a>
+
+                <a href="login%20page/code.html"
+                    class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition">
+                    <img src="login%20page/screen.png" alt="Aperçu — Login"
+                        class="w-full aspect-[16/9] object-cover bg-slate-100" />
+                    <div class="p-4">
+                        <div class="text-sm font-bold group-hover:text-primary transition">Login</div>
+                        <div class="text-xs text-slate-500 mt-1">Connexion (porte d’entrée du parcours)</div>
+                    </div>
+                </a>
+
+                <a href="student_profile_page_variant_2/code.html"
+                    class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition">
+                    <img src="student_profile_page_variant_2/screen.png" alt="Aperçu — Profil"
+                        class="w-full aspect-[16/9] object-cover bg-slate-100" />
+                    <div class="p-4">
+                        <div class="text-sm font-bold group-hover:text-primary transition">Profil (Variant 2)</div>
+                        <div class="text-xs text-slate-500 mt-1">Fiche étudiant + informations & cours</div>
+                    </div>
+                </a>
+
+                <a href="calendar_weekly_view_variant_1/code.html"
+                    class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition">
+                    <img src="calendar_weekly_view_variant_1/screen.png" alt="Aperçu — Calendrier"
+                        class="w-full aspect-[16/9] object-cover bg-slate-100" />
+                    <div class="p-4">
+                        <div class="text-sm font-bold group-hover:text-primary transition">Calendrier (Semaine)</div>
+                        <div class="text-xs text-slate-500 mt-1">Vue hebdo avec événements + tâches</div>
+                    </div>
+                </a>
+
+                <a href="grade_management_interface_variant_1/code.html"
+                    class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition">
+                    <img src="grade_management_interface_variant_1/screen.png" alt="Aperçu — Notes"
+                        class="w-full aspect-[16/9] object-cover bg-slate-100" />
+                    <div class="p-4">
+                        <div class="text-sm font-bold group-hover:text-primary transition">Gestion des notes</div>
+                        <div class="text-xs text-slate-500 mt-1">Tableau notes/coefficients + filtres</div>
+                    </div>
+                </a>
+
+                <a href="interactive_quiz_interface_variant_2/code.html"
+                    class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition">
+                    <img src="interactive_quiz_interface_variant_2/screen.png" alt="Aperçu — Quiz"
+                        class="w-full aspect-[16/9] object-cover bg-slate-100" />
+                    <div class="p-4">
+                        <div class="text-sm font-bold group-hover:text-primary transition">Quiz interactif (Variant 2)
+                        </div>
+                        <div class="text-xs text-slate-500 mt-1">Interface QCM : progression, timer, score</div>
+                    </div>
+                </a>
+
+                <a href="ai_content_generation_variant_1/code.html"
+                    class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition">
+                    <img src="ai_content_generation_variant_1/screen.png" alt="Aperçu — Génération IA"
+                        class="w-full aspect-[16/9] object-cover bg-slate-100" />
+                    <div class="p-4">
+                        <div class="text-sm font-bold group-hover:text-primary transition">Génération de contenu IA
+                        </div>
+                        <div class="text-xs text-slate-500 mt-1">Upload/paste + génération guide d’étude</div>
+                    </div>
+                </a>
+
+                <a href="ai_generation_results_variant_2/code.html"
+                    class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition">
+                    <img src="ai_generation_results_variant_2/screen.png" alt="Aperçu — Résultats IA"
+                        class="w-full aspect-[16/9] object-cover bg-slate-100" />
+                    <div class="p-4">
+                        <div class="text-sm font-bold group-hover:text-primary transition">Résultats IA (Résumé)</div>
+                        <div class="text-xs text-slate-500 mt-1">Document généré : résumé + modes d’étude</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="mt-10">
+            <div class="rounded-2xl border border-slate-200 bg-white p-5">
+                <h3 class="font-bold">Astuce</h3>
+                <p class="text-sm text-slate-600 mt-1">Ouvre d’abord <span class="font-semibold">index.html</span>, puis
+                    navigue via la barre “Index prototypes” en haut de chaque écran.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 text-center text-xs text-slate-500">
+        <p>Prototypage local — 15 février 2026</p>
+    </footer>
+</body>
+
+</html>
