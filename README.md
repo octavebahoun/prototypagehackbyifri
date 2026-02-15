@@ -917,5 +917,3 @@ socket.on("notification", (data) => {
 
 - `doc/Cahier_Fonctionnalites_Unifie.docx`
 - `doc/Cahier_Stack_Technique.docx`
-
-> Note : un dossier `doc/_extracted/` peut exister si on a extrait le texte des `.docx` pour analyse/README.
