@@ -2,342 +2,340 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guide d'Intégration Frontend — Consommation des APIs</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap"
-        rel="stylesheet" />
-    <style>
-        * {
-            font-family: "Inter", sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academix — Guide d'Intégration Frontend</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      font-family: "Inter", sans-serif;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        code,
-        pre {
-            font-family: "Fira Code", monospace;
-        }
+    code,
+    pre {
+      font-family: "Fira Code", monospace;
+    }
 
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-        .nav-link {
-            transition: all 0.3s ease;
-        }
+    .nav-link {
+      transition: all 0.3s ease;
+    }
 
-        .nav-link:hover {
-            transform: translateX(8px);
-            color: #667eea;
-        }
+    .nav-link:hover {
+      transform: translateX(8px);
+      color: #667eea;
+    }
 
-        .nav-link.active {
-            color: #667eea;
-            font-weight: 600;
-            border-left: 3px solid #667eea;
-            padding-left: 13px;
-        }
+    .nav-link.active {
+      color: #667eea;
+      font-weight: 600;
+      border-left: 3px solid #667eea;
+      padding-left: 13px;
+    }
 
-        .card-hover {
-            transition: all 0.3s ease;
-        }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
 
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
 
-        pre {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            overflow-x: auto;
-            font-size: 0.875rem;
-            line-height: 1.7;
-        }
+    pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      font-size: 0.875rem;
+      line-height: 1.7;
+    }
 
-        .code-block {
-            position: relative;
-        }
+    .code-block {
+      position: relative;
+    }
 
-        .code-label {
-            position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            background: rgba(255, 255, 255, 0.1);
-            color: #94a3b8;
-            padding: 0.25rem 0.75rem;
-            border-radius: 0.25rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
+    .code-label {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
 
-        .api-endpoint {
-            background: #0f172a;
-            border-left: 4px solid #3b82f6;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin: 1rem 0;
-        }
+    .api-endpoint {
+      background: #0f172a;
+      border-left: 4px solid #3b82f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+    }
 
-        .api-method {
-            display: inline-block;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            font-weight: 600;
-            font-size: 0.75rem;
-            margin-right: 0.5rem;
-        }
+    .api-method {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      margin-right: 0.5rem;
+    }
 
-        .method-get {
-            background: #10b981;
-            color: white;
-        }
+    .method-get {
+      background: #10b981;
+      color: white;
+    }
 
-        .method-post {
-            background: #3b82f6;
-            color: white;
-        }
+    .method-post {
+      background: #3b82f6;
+      color: white;
+    }
 
-        .method-put {
-            background: #f59e0b;
-            color: white;
-        }
+    .method-put {
+      background: #f59e0b;
+      color: white;
+    }
 
-        .method-delete {
-            background: #ef4444;
-            color: white;
-        }
+    .method-delete {
+      background: #ef4444;
+      color: white;
+    }
 
-        .method-patch {
-            background: #8b5cf6;
-            color: white;
-        }
+    .method-patch {
+      background: #8b5cf6;
+      color: white;
+    }
 
-        .sidebar {
-            position: sticky;
-            top: 20px;
-            height: calc(100vh - 40px);
-            overflow-y: auto;
-        }
+    .sidebar {
+      position: sticky;
+      top: 20px;
+      height: calc(100vh - 40px);
+      overflow-y: auto;
+    }
 
-        .sidebar::-webkit-scrollbar {
-            width: 6px;
-        }
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
 
-        .sidebar::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
 
-        .sidebar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 3px;
-        }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
 
-        .sidebar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
 
-        .step-number {
-            width: 2rem;
-            height: 2rem;
-            background: #667eea;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
+    .step-number {
+      width: 2rem;
+      height: 2rem;
+      background: #667eea;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
 
-        .highlight-box {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border-left: 4px solid #f59e0b;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin: 1rem 0;
-        }
+    .highlight-box {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border-left: 4px solid #f59e0b;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+    }
 
-        .info-box {
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-            border-left: 4px solid #3b82f6;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin: 1rem 0;
-        }
-    </style>
+    .info-box {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-left: 4px solid #3b82f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+    }
+  </style>
 </head>
 
 <body class="bg-gray-50">
-    <!-- Top Navigation -->
-    <nav class="gradient-bg text-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <span class="material-icons text-3xl">integration_instructions</span>
-                    <div>
-                        <h1 class="text-xl font-bold">Guide d'Intégration Frontend</h1>
-                        <p class="text-sm opacity-90">Consommation des APIs — Stack Vanilla JS</p>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-3">
-                    <a href="index.html"
-                        class="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition">
-                        <span class="material-icons">home</span>
-                        <span>Prototypes</span>
-                    </a>
-                    <a href="docu.html"
-                        class="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition">
-                        <span class="material-icons">description</span>
-                        <span>Documentation</span>
-                    </a>
-                    <a href="charge.html"
-                        class="flex items-center space-x-2 bg-white text-purple-600 px-4 py-2 rounded-lg transition font-semibold">
-                        <span class="material-icons">integration_instructions</span>
-                        <span>Intégration API</span>
-                    </a>
-                </div>
-            </div>
+  <!-- Top Navigation -->
+  <nav class="gradient-bg text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <span class="material-icons text-3xl">integration_instructions</span>
+          <div>
+            <h1 class="text-xl font-bold">Guide d'Intégration Frontend</h1>
+            <p class="text-sm opacity-90">Consommation des APIs — Stack Vanilla JS</p>
+          </div>
         </div>
-    </nav>
+        <div class="flex items-center space-x-3">
+          <a href="index.html"
+            class="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition">
+            <span class="material-icons">home</span>
+            <span>Prototypes</span>
+          </a>
+          <a href="docu.html"
+            class="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition">
+            <span class="material-icons">description</span>
+            <span>Documentation</span>
+          </a>
+          <a href="charge.html"
+            class="flex items-center space-x-2 bg-white text-purple-600 px-4 py-2 rounded-lg transition font-semibold">
+            <span class="material-icons">integration_instructions</span>
+            <span>Intégration API</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-6 py-8">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            <!-- Sidebar Navigation -->
-            <div class="lg:col-span-1">
-                <div class="sidebar bg-white rounded-xl shadow-md p-6">
-                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">
-                        Navigation
-                    </h3>
-                    <nav class="space-y-2">
-                        <a href="#intro" class="nav-link block py-2 text-gray-700 text-sm">
-                            <span class="material-icons text-sm align-middle mr-2">info</span>
-                            Introduction
-                        </a>
-                        <a href="#auth-service" class="nav-link block py-2 text-gray-700 text-sm">
-                            <span class="material-icons text-sm align-middle mr-2">code</span>
-                            Service API Global
-                        </a>
-                        <a href="#login" class="nav-link block py-2 text-gray-700 text-sm">
-                            <span class="material-icons text-sm align-middle mr-2">login</span>
-                            Login Page
-                        </a>
-                        <a href="#dashboard" class="nav-link block py-2 text-gray-700 text-sm">
-                            <span class="material-icons text-sm align-middle mr-2">dashboard</span>
-                            Dashboard
-                        </a>
-                        <a href="#profile" class="nav-link block py-2 text-gray-700 text-sm">
-                            <span class="material-icons text-sm align-middle mr-2">account_circle</span>
-                            Profil
-                        </a>
-                        <a href="#calendar" class="nav-link block py-2 text-gray-700 text-sm">
-                            <span class="material-icons text-sm align-middle mr-2">calendar_month</span>
-                            Calendrier
-                        </a>
-                        <a href="#grades" class="nav-link block py-2 text-gray-700 text-sm">
-                            <span class="material-icons text-sm align-middle mr-2">grade</span>
-                            Notes
-                        </a>
-                        <a href="#quiz" class="nav-link block py-2 text-gray-700 text-sm">
-                            <span class="material-icons text-sm align-middle mr-2">quiz</span>
-                            Quiz Interactif
-                        </a>
-                        <a href="#ai-generation" class="nav-link block py-2 text-gray-700 text-sm">
-                            <span class="material-icons text-sm align-middle mr-2">auto_awesome</span>
-                            Génération IA
-                        </a>
-                        <a href="#ai-results" class="nav-link block py-2 text-gray-700 text-sm">
-                            <span class="material-icons text-sm align-middle mr-2">description</span>
-                            Résultats IA
-                        </a>
-                        <a href="#best-practices" class="nav-link block py-2 text-gray-700 text-sm">
-                            <span class="material-icons text-sm align-middle mr-2">tips_and_updates</span>
-                            Bonnes Pratiques
-                        </a>
-                    </nav>
-                </div>
-            </div>
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-6 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <!-- Sidebar Navigation -->
+      <div class="lg:col-span-1">
+        <div class="sidebar bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">
+            Navigation
+          </h3>
+          <nav class="space-y-2">
+            <a href="#intro" class="nav-link block py-2 text-gray-700 text-sm">
+              <span class="material-icons text-sm align-middle mr-2">info</span>
+              Introduction
+            </a>
+            <a href="#auth-service" class="nav-link block py-2 text-gray-700 text-sm">
+              <span class="material-icons text-sm align-middle mr-2">code</span>
+              Service API Global
+            </a>
+            <a href="#login" class="nav-link block py-2 text-gray-700 text-sm">
+              <span class="material-icons text-sm align-middle mr-2">login</span>
+              Login Page
+            </a>
+            <a href="#dashboard" class="nav-link block py-2 text-gray-700 text-sm">
+              <span class="material-icons text-sm align-middle mr-2">dashboard</span>
+              Dashboard
+            </a>
+            <a href="#profile" class="nav-link block py-2 text-gray-700 text-sm">
+              <span class="material-icons text-sm align-middle mr-2">account_circle</span>
+              Profil
+            </a>
+            <a href="#calendar" class="nav-link block py-2 text-gray-700 text-sm">
+              <span class="material-icons text-sm align-middle mr-2">calendar_month</span>
+              Calendrier
+            </a>
+            <a href="#grades" class="nav-link block py-2 text-gray-700 text-sm">
+              <span class="material-icons text-sm align-middle mr-2">grade</span>
+              Notes
+            </a>
+            <a href="#quiz" class="nav-link block py-2 text-gray-700 text-sm">
+              <span class="material-icons text-sm align-middle mr-2">quiz</span>
+              Quiz Interactif
+            </a>
+            <a href="#ai-generation" class="nav-link block py-2 text-gray-700 text-sm">
+              <span class="material-icons text-sm align-middle mr-2">auto_awesome</span>
+              Génération IA
+            </a>
+            <a href="#ai-results" class="nav-link block py-2 text-gray-700 text-sm">
+              <span class="material-icons text-sm align-middle mr-2">description</span>
+              Résultats IA
+            </a>
+            <a href="#best-practices" class="nav-link block py-2 text-gray-700 text-sm">
+              <span class="material-icons text-sm align-middle mr-2">tips_and_updates</span>
+              Bonnes Pratiques
+            </a>
+          </nav>
+        </div>
+      </div>
 
-            <!-- Content -->
-            <div class="lg:col-span-3 space-y-8">
-                <!-- Introduction -->
-                <section id="intro" class="bg-white rounded-xl shadow-md p-8">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="material-icons text-4xl gradient-text">info</span>
-                        <h2 class="text-3xl font-bold text-gray-800">Introduction</h2>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        Ce guide explique comment intégrer les APIs dans chaque page du prototype en
-                        utilisant <strong>HTML, CSS et JavaScript vanilla</strong> (sans framework).
-                    </p>
-                    <div class="highlight-box">
-                        <p class="text-amber-900 font-semibold mb-2">
-                            <span class="material-icons text-sm align-middle mr-1">lightbulb</span>
-                            Stack Frontend
-                        </p>
-                        <ul class="text-amber-800 text-sm space-y-1">
-                            <li>✓ HTML5 pour la structure</li>
-                            <li>✓ CSS3 + Tailwind CSS pour le style</li>
-                            <li>✓ JavaScript Vanilla pour la logique</li>
-                            <li>✓ Fetch API pour les appels HTTP</li>
-                            <li>✓ LocalStorage pour le token d'authentification</li>
-                            <li>✓ Socket.io-client pour le temps réel (quiz, sessions)</li>
-                        </ul>
-                    </div>
-                    <div class="info-box">
-                        <p class="text-blue-900 font-semibold mb-2">
-                            <span class="material-icons text-sm align-middle mr-1">api</span>
-                            URLs des APIs
-                        </p>
-                        <ul class="text-blue-800 text-sm space-y-1">
-                            <li>
-                                <strong>Backend Laravel :</strong>
-                                <code
-                                    class="bg-white px-2 py-1 rounded">https://api.plateforme-academique.com/api/v1</code>
-                            </li>
-                            <li>
-                                <strong>Service IA Python :</strong>
-                                <code
-                                    class="bg-white px-2 py-1 rounded">https://ia.plateforme-academique.com/api/v1</code>
-                            </li>
-                            <li>
-                                <strong>WebSocket Temps Réel :</strong>
-                                <code class="bg-white px-2 py-1 rounded">wss://realtime.plateforme-academique.com</code>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
+      <!-- Content -->
+      <div class="lg:col-span-3 space-y-8">
+        <!-- Introduction -->
+        <section id="intro" class="bg-white rounded-xl shadow-md p-8">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="material-icons text-4xl gradient-text">info</span>
+            <h2 class="text-3xl font-bold text-gray-800">Introduction</h2>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Ce guide explique comment intégrer les APIs dans chaque page du prototype en
+            utilisant <strong>HTML, CSS et JavaScript vanilla</strong> (sans framework).
+          </p>
+          <div class="highlight-box">
+            <p class="text-amber-900 font-semibold mb-2">
+              <span class="material-icons text-sm align-middle mr-1">lightbulb</span>
+              Stack Frontend
+            </p>
+            <ul class="text-amber-800 text-sm space-y-1">
+              <li>✓ HTML5 pour la structure</li>
+              <li>✓ CSS3 + Tailwind CSS pour le style</li>
+              <li>✓ JavaScript Vanilla pour la logique</li>
+              <li>✓ Fetch API pour les appels HTTP</li>
+              <li>✓ LocalStorage pour le token d'authentification</li>
+              <li>✓ Socket.io-client pour le temps réel (quiz, sessions)</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <p class="text-blue-900 font-semibold mb-2">
+              <span class="material-icons text-sm align-middle mr-1">api</span>
+              URLs des APIs
+            </p>
+            <ul class="text-blue-800 text-sm space-y-1">
+              <li>
+                <strong>Backend Laravel :</strong>
+                <code class="bg-white px-2 py-1 rounded">https://api.plateforme-academique.com/api/v1</code>
+              </li>
+              <li>
+                <strong>Service IA Python :</strong>
+                <code class="bg-white px-2 py-1 rounded">https://ia.plateforme-academique.com/api/v1</code>
+              </li>
+              <li>
+                <strong>WebSocket Temps Réel :</strong>
+                <code class="bg-white px-2 py-1 rounded">wss://realtime.plateforme-academique.com</code>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-                <!-- API Service Global -->
-                <section id="auth-service" class="bg-white rounded-xl shadow-md p-8">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="material-icons text-4xl gradient-text">code</span>
-                        <h2 class="text-3xl font-bold text-gray-800">Service API Global</h2>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        Créer un fichier <code class="bg-gray-100 px-2 py-1 rounded">js/api-service.js</code>
-                        pour centraliser toutes les fonctions d'appel API.
-                    </p>
+        <!-- API Service Global -->
+        <section id="auth-service" class="bg-white rounded-xl shadow-md p-8">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="material-icons text-4xl gradient-text">code</span>
+            <h2 class="text-3xl font-bold text-gray-800">Service API Global</h2>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Créer un fichier <code class="bg-gray-100 px-2 py-1 rounded">js/api-service.js</code>
+            pour centraliser toutes les fonctions d'appel API.
+          </p>
 
-                    <div class="code-block">
-                        <span class="code-label">js/api-service.js</span>
-                        <pre><code>// Configuration globale des APIs
+          <div class="code-block">
+            <span class="code-label">js/api-service.js</span>
+            <pre><code>// Configuration globale des APIs
 const API_CONFIG = {
   backend: 'https://api.plateforme-academique.com/api/v1',
   ia: 'https://ia.plateforme-academique.com/api/v1',
@@ -471,47 +469,46 @@ class ApiService {
 
 // Instance globale
 const api = new ApiService();</code></pre>
-                    </div>
+          </div>
 
-                    <div class="highlight-box mt-4">
-                        <p class="text-amber-900 font-semibold mb-2">
-                            <span class="material-icons text-sm align-middle mr-1">warning</span>
-                            Important !
-                        </p>
-                        <p class="text-amber-800 text-sm">
-                            Inclure ce fichier dans <strong>toutes les pages</strong> avant vos scripts
-                            spécifiques :
-                            <code
-                                class="bg-white px-2 py-1 rounded">&lt;script src="../js/api-service.js"&gt;&lt;/script&gt;</code>
-                        </p>
-                    </div>
-                </section>
+          <div class="highlight-box mt-4">
+            <p class="text-amber-900 font-semibold mb-2">
+              <span class="material-icons text-sm align-middle mr-1">warning</span>
+              Important !
+            </p>
+            <p class="text-amber-800 text-sm">
+              Inclure ce fichier dans <strong>toutes les pages</strong> avant vos scripts
+              spécifiques :
+              <code class="bg-white px-2 py-1 rounded">&lt;script src="../js/api-service.js"&gt;&lt;/script&gt;</code>
+            </p>
+          </div>
+        </section>
 
-                <!-- Login Page -->
-                <section id="login" class="bg-white rounded-xl shadow-md p-8">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="material-icons text-4xl gradient-text">login</span>
-                        <h2 class="text-3xl font-bold text-gray-800">Login Page</h2>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        <code class="bg-gray-100 px-2 py-1 rounded">login page/code.html</code>
-                    </p>
+        <!-- Login Page -->
+        <section id="login" class="bg-white rounded-xl shadow-md p-8">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="material-icons text-4xl gradient-text">login</span>
+            <h2 class="text-3xl font-bold text-gray-800">Login Page</h2>
+          </div>
+          <p class="text-gray-600 mb-4">
+            <code class="bg-gray-100 px-2 py-1 rounded">login page/code.html</code>
+          </p>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
 
-                    <div class="api-endpoint">
-                        <div class="flex items-center mb-2">
-                            <span class="api-method method-post">POST</span>
-                            <code class="text-white">/auth/login</code>
-                        </div>
-                        <p class="text-gray-400 text-sm">Authentifier l'utilisateur et récupérer le token</p>
-                    </div>
+          <div class="api-endpoint">
+            <div class="flex items-center mb-2">
+              <span class="api-method method-post">POST</span>
+              <code class="text-white">/auth/login</code>
+            </div>
+            <p class="text-gray-400 text-sm">Authentifier l'utilisateur et récupérer le token</p>
+          </div>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
 
-                    <div class="code-block">
-                        <span class="code-label">JavaScript</span>
-                        <pre><code>// Dans login page/code.html
+          <div class="code-block">
+            <span class="code-label">JavaScript</span>
+            <pre><code>// Dans login page/code.html
 document.addEventListener('DOMContentLoaded', function() {
   const loginForm = document.getElementById('loginForm');
   const emailInput = document.getElementById('email');
@@ -553,19 +550,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });</code></pre>
-                    </div>
+          </div>
 
-                    <div class="info-box mt-4">
-                        <p class="text-blue-900 font-semibold mb-2">Body de la requête</p>
-                        <pre class="text-sm"><code>{
+          <div class="info-box mt-4">
+            <p class="text-blue-900 font-semibold mb-2">Body de la requête</p>
+            <pre class="text-sm"><code>{
   "email": "sophie@etudiant.fr",
   "password": "SecurePass123!"
 }</code></pre>
-                    </div>
+          </div>
 
-                    <div class="info-box">
-                        <p class="text-blue-900 font-semibold mb-2">Réponse attendue</p>
-                        <pre class="text-sm"><code>{
+          <div class="info-box">
+            <p class="text-blue-900 font-semibold mb-2">Réponse attendue</p>
+            <pre class="text-sm"><code>{
   "success": true,
   "data": {
     "user": {
@@ -583,68 +580,68 @@ document.addEventListener('DOMContentLoaded', function() {
     "token": "12|randomtoken..."
   }
 }</code></pre>
-                    </div>
-                </section>
+          </div>
+        </section>
 
-                <!-- Dashboard -->
-                <section id="dashboard" class="bg-white rounded-xl shadow-md p-8">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="material-icons text-4xl gradient-text">dashboard</span>
-                        <h2 class="text-3xl font-bold text-gray-800">Dashboard Étudiant</h2>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        <code class="bg-gray-100 px-2 py-1 rounded">student_dashboard_home_variant_1/code.html</code>
-                    </p>
+        <!-- Dashboard -->
+        <section id="dashboard" class="bg-white rounded-xl shadow-md p-8">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="material-icons text-4xl gradient-text">dashboard</span>
+            <h2 class="text-3xl font-bold text-gray-800">Dashboard Étudiant</h2>
+          </div>
+          <p class="text-gray-600 mb-4">
+            <code class="bg-gray-100 px-2 py-1 rounded">student_dashboard_home_variant_1/code.html</code>
+          </p>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
 
-                    <div class="space-y-3">
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/auth/me</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Récupérer les infos de l'utilisateur connecté</p>
-                        </div>
+          <div class="space-y-3">
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/auth/me</code>
+              </div>
+              <p class="text-gray-400 text-sm">Récupérer les infos de l'utilisateur connecté</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/taches?statut=a_faire&limit=5</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Récupérer les 5 prochaines tâches</p>
-                        </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/taches?statut=a_faire&limit=5</code>
+              </div>
+              <p class="text-gray-400 text-sm">Récupérer les 5 prochaines tâches</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/moyennes</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Récupérer la moyenne générale et par matière</p>
-                        </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/moyennes</code>
+              </div>
+              <p class="text-gray-400 text-sm">Récupérer la moyenne générale et par matière</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/alertes?is_read=false</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Récupérer les alertes non lues</p>
-                        </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/alertes?is_read=false</code>
+              </div>
+              <p class="text-gray-400 text-sm">Récupérer les alertes non lues</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/emploi-temps</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Récupérer l'emploi du temps de la semaine</p>
-                        </div>
-                    </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/emploi-temps</code>
+              </div>
+              <p class="text-gray-400 text-sm">Récupérer l'emploi du temps de la semaine</p>
+            </div>
+          </div>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
 
-                    <div class="code-block">
-                        <span class="code-label">JavaScript</span>
-                        <pre><code>// Dans student_dashboard_home_variant_1/code.html
+          <div class="code-block">
+            <span class="code-label">JavaScript</span>
+            <pre><code>// Dans student_dashboard_home_variant_1/code.html
 document.addEventListener('DOMContentLoaded', async function() {
   // Vérifier si l'utilisateur est connecté
   if (!api.token) {
@@ -807,60 +804,60 @@ function getSeverityClass(severity) {
   };
   return classes[severity] || 'border-gray-500 bg-gray-50';
 }</code></pre>
-                    </div>
-                </section>
+          </div>
+        </section>
 
-                <!-- Profile -->
-                <section id="profile" class="bg-white rounded-xl shadow-md p-8">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="material-icons text-4xl gradient-text">account_circle</span>
-                        <h2 class="text-3xl font-bold text-gray-800">Profil Étudiant</h2>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        <code class="bg-gray-100 px-2 py-1 rounded">student_profile_page_variant_2/code.html</code>
-                    </p>
+        <!-- Profile -->
+        <section id="profile" class="bg-white rounded-xl shadow-md p-8">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="material-icons text-4xl gradient-text">account_circle</span>
+            <h2 class="text-3xl font-bold text-gray-800">Profil Étudiant</h2>
+          </div>
+          <p class="text-gray-600 mb-4">
+            <code class="bg-gray-100 px-2 py-1 rounded">student_profile_page_variant_2/code.html</code>
+          </p>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
 
-                    <div class="space-y-3">
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/auth/me</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Récupérer le profil complet</p>
-                        </div>
+          <div class="space-y-3">
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/auth/me</code>
+              </div>
+              <p class="text-gray-400 text-sm">Récupérer le profil complet</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/matieres</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Liste des matières de l'étudiant</p>
-                        </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/matieres</code>
+              </div>
+              <p class="text-gray-400 text-sm">Liste des matières de l'étudiant</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-put">PUT</span>
-                                <code class="text-white">/auth/profile</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Mettre à jour le profil</p>
-                        </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-put">PUT</span>
+                <code class="text-white">/auth/profile</code>
+              </div>
+              <p class="text-gray-400 text-sm">Mettre à jour le profil</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/badges/mes-badges</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Badges obtenus par l'étudiant</p>
-                        </div>
-                    </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/badges/mes-badges</code>
+              </div>
+              <p class="text-gray-400 text-sm">Badges obtenus par l'étudiant</p>
+            </div>
+          </div>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
 
-                    <div class="code-block">
-                        <span class="code-label">JavaScript</span>
-                        <pre><code>// Charger le profil
+          <div class="code-block">
+            <span class="code-label">JavaScript</span>
+            <pre><code>// Charger le profil
 async function loadProfile() {
   try {
     const [profile, matieres, badges] = await Promise.all([
@@ -906,53 +903,52 @@ profileForm.addEventListener('submit', async (e) => {
     showError('Erreur lors de la mise à jour du profil');
   }
 });</code></pre>
-                    </div>
-                </section>
+          </div>
+        </section>
 
-                <!-- Calendar -->
-                <section id="calendar" class="bg-white rounded-xl shadow-md p-8">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="material-icons text-4xl gradient-text">calendar_month</span>
-                        <h2 class="text-3xl font-bold text-gray-800">Calendrier Hebdomadaire</h2>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        <code class="bg-gray-100 px-2 py-1 rounded">calendar_weekly_view_variant_1/code.html</code>
-                    </p>
+        <!-- Calendar -->
+        <section id="calendar" class="bg-white rounded-xl shadow-md p-8">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="material-icons text-4xl gradient-text">calendar_month</span>
+            <h2 class="text-3xl font-bold text-gray-800">Calendrier Hebdomadaire</h2>
+          </div>
+          <p class="text-gray-600 mb-4">
+            <code class="bg-gray-100 px-2 py-1 rounded">calendar_weekly_view_variant_1/code.html</code>
+          </p>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
 
-                    <div class="space-y-3">
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/emploi-temps</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Emploi du temps complet</p>
-                        </div>
+          <div class="space-y-3">
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/emploi-temps</code>
+              </div>
+              <p class="text-gray-400 text-sm">Emploi du temps complet</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code
-                                    class="text-white">/taches?date_limite_min=2026-02-15&date_limite_max=2026-02-21</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Tâches de la semaine</p>
-                        </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/taches?date_limite_min=2026-02-15&date_limite_max=2026-02-21</code>
+              </div>
+              <p class="text-gray-400 text-sm">Tâches de la semaine</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-post">POST</span>
-                                <code class="text-white">/emploi-temps/cours</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Ajouter un cours</p>
-                        </div>
-                    </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-post">POST</span>
+                <code class="text-white">/emploi-temps/cours</code>
+              </div>
+              <p class="text-gray-400 text-sm">Ajouter un cours</p>
+            </div>
+          </div>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
 
-                    <div class="code-block">
-                        <span class="code-label">JavaScript</span>
-                        <pre><code>// Charger le calendrier de la semaine
+          <div class="code-block">
+            <span class="code-label">JavaScript</span>
+            <pre><code>// Charger le calendrier de la semaine
 async function loadCalendar() {
   try {
     const emploiTemps = await api.get('/emploi-temps');
@@ -1013,61 +1009,60 @@ function displayCalendar(schedule) {
     });
   });
 }</code></pre>
-                    </div>
-                </section>
+          </div>
+        </section>
 
-                <!-- Grades -->
-                <section id="grades" class="bg-white rounded-xl shadow-md p-8">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="material-icons text-4xl gradient-text">grade</span>
-                        <h2 class="text-3xl font-bold text-gray-800">Gestion des Notes</h2>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        <code
-                            class="bg-gray-100 px-2 py-1 rounded">grade_management_interface_variant_1/code.html</code>
-                    </p>
+        <!-- Grades -->
+        <section id="grades" class="bg-white rounded-xl shadow-md p-8">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="material-icons text-4xl gradient-text">grade</span>
+            <h2 class="text-3xl font-bold text-gray-800">Gestion des Notes</h2>
+          </div>
+          <p class="text-gray-600 mb-4">
+            <code class="bg-gray-100 px-2 py-1 rounded">grade_management_interface_variant_1/code.html</code>
+          </p>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
 
-                    <div class="space-y-3">
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/notes</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Liste de toutes les notes</p>
-                        </div>
+          <div class="space-y-3">
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/notes</code>
+              </div>
+              <p class="text-gray-400 text-sm">Liste de toutes les notes</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/moyennes</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Moyennes par matière + générale</p>
-                        </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/moyennes</code>
+              </div>
+              <p class="text-gray-400 text-sm">Moyennes par matière + générale</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-post">POST</span>
-                                <code class="text-white">/notes</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Ajouter une nouvelle note</p>
-                        </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-post">POST</span>
+                <code class="text-white">/notes</code>
+              </div>
+              <p class="text-gray-400 text-sm">Ajouter une nouvelle note</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/notes?matiere_id=5</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Filtrer notes par matière</p>
-                        </div>
-                    </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/notes?matiere_id=5</code>
+              </div>
+              <p class="text-gray-400 text-sm">Filtrer notes par matière</p>
+            </div>
+          </div>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
 
-                    <div class="code-block">
-                        <span class="code-label">JavaScript</span>
-                        <pre><code>// Charger les notes
+          <div class="code-block">
+            <span class="code-label">JavaScript</span>
+            <pre><code>// Charger les notes
 async function loadGrades() {
   try {
     const [notes, moyennes, matieres] = await Promise.all([
@@ -1152,65 +1147,64 @@ matiereFilter.addEventListener('change', async (e) => {
     console.error('Erreur filtrage:', error);
   }
 });</code></pre>
-                    </div>
-                </section>
+          </div>
+        </section>
 
-                <!-- Quiz -->
-                <section id="quiz" class="bg-white rounded-xl shadow-md p-8">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="material-icons text-4xl gradient-text">quiz</span>
-                        <h2 class="text-3xl font-bold text-gray-800">Quiz Interactif</h2>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        <code
-                            class="bg-gray-100 px-2 py-1 rounded">interactive_quiz_interface_variant_2/code.html</code>
-                    </p>
+        <!-- Quiz -->
+        <section id="quiz" class="bg-white rounded-xl shadow-md p-8">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="material-icons text-4xl gradient-text">quiz</span>
+            <h2 class="text-3xl font-bold text-gray-800">Quiz Interactif</h2>
+          </div>
+          <p class="text-gray-600 mb-4">
+            <code class="bg-gray-100 px-2 py-1 rounded">interactive_quiz_interface_variant_2/code.html</code>
+          </p>
 
-                    <div class="highlight-box">
-                        <p class="text-amber-900 font-semibold mb-2">
-                            <span class="material-icons text-sm align-middle mr-1">cable</span>
-                            Socket.io requis !
-                        </p>
-                        <p class="text-amber-800 text-sm">
-                            Cette page nécessite Socket.io pour le temps réel. Inclure :
-                            <code
-                                class="bg-white px-2 py-1 rounded">&lt;script src="https://cdn.socket.io/4.5.4/socket.io.min.js"&gt;&lt;/script&gt;</code>
-                        </p>
-                    </div>
+          <div class="highlight-box">
+            <p class="text-amber-900 font-semibold mb-2">
+              <span class="material-icons text-sm align-middle mr-1">cable</span>
+              Socket.io requis !
+            </p>
+            <p class="text-amber-800 text-sm">
+              Cette page nécessite Socket.io pour le temps réel. Inclure :
+              <code
+                class="bg-white px-2 py-1 rounded">&lt;script src="https://cdn.socket.io/4.5.4/socket.io.min.js"&gt;&lt;/script&gt;</code>
+            </p>
+          </div>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">APIs à consommer</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">APIs à consommer</h3>
 
-                    <div class="space-y-3">
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/contenus-ia?type_contenu=quiz</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Liste des quiz disponibles (REST)</p>
-                        </div>
+          <div class="space-y-3">
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/contenus-ia?type_contenu=quiz</code>
+              </div>
+              <p class="text-gray-400 text-sm">Liste des quiz disponibles (REST)</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/quiz-questions?contenu_ia_id=42</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Questions d'un quiz (REST)</p>
-                        </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/quiz-questions?contenu_ia_id=42</code>
+              </div>
+              <p class="text-gray-400 text-sm">Questions d'un quiz (REST)</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-post">POST</span>
-                                <code class="text-white">/quiz-resultats</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Enregistrer le résultat final (REST)</p>
-                        </div>
-                    </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-post">POST</span>
+                <code class="text-white">/quiz-resultats</code>
+              </div>
+              <p class="text-gray-400 text-sm">Enregistrer le résultat final (REST)</p>
+            </div>
+          </div>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 mt-4">WebSocket (temps réel)</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 mt-4">WebSocket (temps réel)</h3>
 
-                    <div class="code-block">
-                        <span class="code-label">JavaScript</span>
-                        <pre><code>// Connexion WebSocket
+          <div class="code-block">
+            <span class="code-label">JavaScript</span>
+            <pre><code>// Connexion WebSocket
 const socket = io('wss://realtime.plateforme-academique.com', {
   auth: {
     token: api.token
@@ -1318,60 +1312,60 @@ function selectAnswer(answer) {
     btn.disabled = true;
   });
 }</code></pre>
-                    </div>
-                </section>
+          </div>
+        </section>
 
-                <!-- AI Generation -->
-                <section id="ai-generation" class="bg-white rounded-xl shadow-md p-8">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="material-icons text-4xl gradient-text">auto_awesome</span>
-                        <h2 class="text-3xl font-bold text-gray-800">Génération IA</h2>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        <code class="bg-gray-100 px-2 py-1 rounded">ai_content_generation_variant_1/code.html</code>
-                    </p>
+        <!-- AI Generation -->
+        <section id="ai-generation" class="bg-white rounded-xl shadow-md p-8">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="material-icons text-4xl gradient-text">auto_awesome</span>
+            <h2 class="text-3xl font-bold text-gray-800">Génération IA</h2>
+          </div>
+          <p class="text-gray-600 mb-4">
+            <code class="bg-gray-100 px-2 py-1 rounded">ai_content_generation_variant_1/code.html</code>
+          </p>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
 
-                    <div class="space-y-3">
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-post">POST</span>
-                                <code class="text-white">/ai/generate-summary</code> (Service IA)
-                            </div>
-                            <p class="text-gray-400 text-sm">Générer une fiche de révision</p>
-                        </div>
+          <div class="space-y-3">
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-post">POST</span>
+                <code class="text-white">/ai/generate-summary</code> (Service IA)
+              </div>
+              <p class="text-gray-400 text-sm">Générer une fiche de révision</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-post">POST</span>
-                                <code class="text-white">/ai/generate-quiz</code> (Service IA)
-                            </div>
-                            <p class="text-gray-400 text-sm">Générer un QCM</p>
-                        </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-post">POST</span>
+                <code class="text-white">/ai/generate-quiz</code> (Service IA)
+              </div>
+              <p class="text-gray-400 text-sm">Générer un QCM</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-post">POST</span>
-                                <code class="text-white">/ai/generate-podcast</code> (Service IA)
-                            </div>
-                            <p class="text-gray-400 text-sm">Générer un podcast audio</p>
-                        </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-post">POST</span>
+                <code class="text-white">/ai/generate-podcast</code> (Service IA)
+              </div>
+              <p class="text-gray-400 text-sm">Générer un podcast audio</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-post">POST</span>
-                                <code class="text-white">/ai/extract-from-pdf</code> (Service IA)
-                            </div>
-                            <p class="text-gray-400 text-sm">Extraire texte depuis PDF</p>
-                        </div>
-                    </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-post">POST</span>
+                <code class="text-white">/ai/extract-from-pdf</code> (Service IA)
+              </div>
+              <p class="text-gray-400 text-sm">Extraire texte depuis PDF</p>
+            </div>
+          </div>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
 
-                    <div class="code-block">
-                        <span class="code-label">JavaScript</span>
-                        <pre><code>// Formulaire de génération
+          <div class="code-block">
+            <span class="code-label">JavaScript</span>
+            <pre><code>// Formulaire de génération
 const generateForm = document.getElementById('generate-form');
 generateForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -1495,44 +1489,44 @@ fileUpload.addEventListener('change', async (e) => {
     showError('Erreur lors de l\'extraction du PDF');
   }
 });</code></pre>
-                    </div>
-                </section>
+          </div>
+        </section>
 
-                <!-- AI Results -->
-                <section id="ai-results" class="bg-white rounded-xl shadow-md p-8">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="material-icons text-4xl gradient-text">description</span>
-                        <h2 class="text-3xl font-bold text-gray-800">Résultats IA</h2>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        <code class="bg-gray-100 px-2 py-1 rounded">ai_generation_results_variant_2/code.html</code>
-                    </p>
+        <!-- AI Results -->
+        <section id="ai-results" class="bg-white rounded-xl shadow-md p-8">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="material-icons text-4xl gradient-text">description</span>
+            <h2 class="text-3xl font-bold text-gray-800">Résultats IA</h2>
+          </div>
+          <p class="text-gray-600 mb-4">
+            <code class="bg-gray-100 px-2 py-1 rounded">ai_generation_results_variant_2/code.html</code>
+          </p>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">APIs à consommer</h3>
 
-                    <div class="space-y-3">
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/contenus-ia/{id}</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Récupérer le contenu généré</p>
-                        </div>
+          <div class="space-y-3">
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/contenus-ia/{id}</code>
+              </div>
+              <p class="text-gray-400 text-sm">Récupérer le contenu généré</p>
+            </div>
 
-                        <div class="api-endpoint">
-                            <div class="flex items-center mb-2">
-                                <span class="api-method method-get">GET</span>
-                                <code class="text-white">/quiz-questions?contenu_ia_id={id}</code>
-                            </div>
-                            <p class="text-gray-400 text-sm">Questions si c'est un quiz</p>
-                        </div>
-                    </div>
+            <div class="api-endpoint">
+              <div class="flex items-center mb-2">
+                <span class="api-method method-get">GET</span>
+                <code class="text-white">/quiz-questions?contenu_ia_id={id}</code>
+              </div>
+              <p class="text-gray-400 text-sm">Questions si c'est un quiz</p>
+            </div>
+          </div>
 
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">Implémentation</h3>
 
-                    <div class="code-block">
-                        <span class="code-label">JavaScript</span>
-                        <pre><code>// Récupérer l'ID du contenu depuis l'URL
+          <div class="code-block">
+            <span class="code-label">JavaScript</span>
+            <pre><code>// Récupérer l'ID du contenu depuis l'URL
 const urlParams = new URLSearchParams(window.location.search);
 const contentId = urlParams.get('id');
 
@@ -1666,56 +1660,56 @@ function revealAnswer(questionId, correctAnswer) {
   const explanationDiv = document.getElementById(`explanation_${questionId}`);
   explanationDiv.classList.toggle('hidden');
 }</code></pre>
-                    </div>
-                </section>
+          </div>
+        </section>
 
-                <!-- Best Practices -->
-                <section id="best-practices" class="bg-white rounded-xl shadow-md p-8">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="material-icons text-4xl gradient-text">tips_and_updates</span>
-                        <h2 class="text-3xl font-bold text-gray-800">Bonnes Pratiques</h2>
-                    </div>
+        <!-- Best Practices -->
+        <section id="best-practices" class="bg-white rounded-xl shadow-md p-8">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="material-icons text-4xl gradient-text">tips_and_updates</span>
+            <h2 class="text-3xl font-bold text-gray-800">Bonnes Pratiques</h2>
+          </div>
 
-                    <div class="space-y-6">
-                        <div class="card-hover border-2 border-blue-200 rounded-lg p-6">
-                            <h3 class="font-bold text-blue-900 mb-3 flex items-center">
-                                <span class="material-icons mr-2">security</span>
-                                1. Gestion de l'Authentification
-                            </h3>
-                            <ul class="text-gray-700 text-sm space-y-2">
-                                <li>
-                                    ✓ Toujours vérifier la présence du token au chargement de chaque page protégée
-                                </li>
-                                <li>✓ Rediriger vers login si token absent ou expiré</li>
-                                <li>✓ Inclure le token dans le header <code>Authorization: Bearer {token}</code></li>
-                                <li>
-                                    ✓ Stocker le token dans localStorage (ou sessionStorage pour plus de sécurité)
-                                </li>
-                                <li>✓ Nettoyer le localStorage lors de la déconnexion</li>
-                            </ul>
-                        </div>
+          <div class="space-y-6">
+            <div class="card-hover border-2 border-blue-200 rounded-lg p-6">
+              <h3 class="font-bold text-blue-900 mb-3 flex items-center">
+                <span class="material-icons mr-2">security</span>
+                1. Gestion de l'Authentification
+              </h3>
+              <ul class="text-gray-700 text-sm space-y-2">
+                <li>
+                  ✓ Toujours vérifier la présence du token au chargement de chaque page protégée
+                </li>
+                <li>✓ Rediriger vers login si token absent ou expiré</li>
+                <li>✓ Inclure le token dans le header <code>Authorization: Bearer {token}</code></li>
+                <li>
+                  ✓ Stocker le token dans localStorage (ou sessionStorage pour plus de sécurité)
+                </li>
+                <li>✓ Nettoyer le localStorage lors de la déconnexion</li>
+              </ul>
+            </div>
 
-                        <div class="card-hover border-2 border-green-200 rounded-lg p-6">
-                            <h3 class="font-bold text-green-900 mb-3 flex items-center">
-                                <span class="material-icons mr-2">sync</span>
-                                2. Chargement des Données
-                            </h3>
-                            <ul class="text-gray-700 text-sm space-y-2">
-                                <li>✓ Utiliser <code>Promise.all()</code> pour charger plusieurs APIs en parallèle</li>
-                                <li>✓ Afficher un indicateur de chargement (spinner, skeleton) pendant les requêtes</li>
-                                <li>✓ Gérer les erreurs avec try/catch et afficher des messages utilisateur</li>
-                                <li>✓ Implémenter un système de retry pour les requêtes échouées</li>
-                                <li>✓ Cacher les données fréquemment utilisées (localStorage, sessionStorage)</li>
-                            </ul>
-                        </div>
+            <div class="card-hover border-2 border-green-200 rounded-lg p-6">
+              <h3 class="font-bold text-green-900 mb-3 flex items-center">
+                <span class="material-icons mr-2">sync</span>
+                2. Chargement des Données
+              </h3>
+              <ul class="text-gray-700 text-sm space-y-2">
+                <li>✓ Utiliser <code>Promise.all()</code> pour charger plusieurs APIs en parallèle</li>
+                <li>✓ Afficher un indicateur de chargement (spinner, skeleton) pendant les requêtes</li>
+                <li>✓ Gérer les erreurs avec try/catch et afficher des messages utilisateur</li>
+                <li>✓ Implémenter un système de retry pour les requêtes échouées</li>
+                <li>✓ Cacher les données fréquemment utilisées (localStorage, sessionStorage)</li>
+              </ul>
+            </div>
 
-                        <div class="card-hover border-2 border-purple-200 rounded-lg p-6">
-                            <h3 class="font-bold text-purple-900 mb-3 flex items-center">
-                                <span class="material-icons mr-2">error_outline</span>
-                                3. Gestion des Erreurs
-                            </h3>
-                            <div class="code-block">
-                                <pre><code>// Exemple de gestion d'erreur robuste
+            <div class="card-hover border-2 border-purple-200 rounded-lg p-6">
+              <h3 class="font-bold text-purple-900 mb-3 flex items-center">
+                <span class="material-icons mr-2">error_outline</span>
+                3. Gestion des Erreurs
+              </h3>
+              <div class="code-block">
+                <pre><code>// Exemple de gestion d'erreur robuste
 async function safeFetch(apiCall) {
   try {
     const response = await apiCall();
@@ -1735,93 +1729,93 @@ async function safeFetch(apiCall) {
     return { success: false, error: 'Une erreur est survenue' };
   }
 }</code></pre>
-                            </div>
-                        </div>
-
-                        <div class="card-hover border-2 border-orange-200 rounded-lg p-6">
-                            <h3 class="font-bold text-orange-900 mb-3 flex items-center">
-                                <span class="material-icons mr-2">speed</span>
-                                4. Performance
-                            </h3>
-                            <ul class="text-gray-700 text-sm space-y-2">
-                                <li>✓ Debounce les recherches et filtres (attendre 300ms après la dernière frappe)</li>
-                                <li>✓ Pagination pour les longues listes (ne pas charger 1000 éléments d'un coup)</li>
-                                <li>✓ Lazy loading pour les images et contenus lourds</li>
-                                <li>✓ Minimiser les appels API (grouper les requêtes quand possible)</li>
-                                <li>✓ Utiliser des WebSockets uniquement quand le temps réel est nécessaire</li>
-                            </ul>
-                        </div>
-
-                        <div class="card-hover border-2 border-red-200 rounded-lg p-6">
-                            <h3 class="font-bold text-red-900 mb-3 flex items-center">
-                                <span class="material-icons mr-2">bug_report</span>
-                                5. Débogage
-                            </h3>
-                            <ul class="text-gray-700 text-sm space-y-2">
-                                <li>
-                                    ✓ Utiliser <code>console.log</code> pour tracer les appels API et réponses
-                                </li>
-                                <li>✓ Vérifier l'onglet Network dans DevTools pour voir les requêtes HTTP</li>
-                                <li>✓ Vérifier le localStorage pour s'assurer que le token est bien sauvegardé</li>
-                                <li>✓ Tester avec différents scénarios (token expiré, erreur serveur, etc.)</li>
-                                <li>✓ Utiliser des outils comme Postman pour tester les APIs indépendamment</li>
-                            </ul>
-                        </div>
-
-                        <div class="card-hover border-2 border-indigo-200 rounded-lg p-6">
-                            <h3 class="font-bold text-indigo-900 mb-3 flex items-center">
-                                <span class="material-icons mr-2">code</span>
-                                6. Organisation du Code
-                            </h3>
-                            <ul class="text-gray-700 text-sm space-y-2">
-                                <li>✓ Séparer la logique API dans <code>js/api-service.js</code></li>
-                                <li>✓ Créer des fonctions réutilisables pour afficher les données</li>
-                                <li>
-                                    ✓ Utiliser des constantes pour les URLs, clés API, configurations
-                                </li>
-                                <li>✓ Commenter le code pour expliquer les logiques complexes</li>
-                                <li>✓ Suivre une convention de nommage cohérente (camelCase pour JS)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
+              </div>
             </div>
-        </div>
+
+            <div class="card-hover border-2 border-orange-200 rounded-lg p-6">
+              <h3 class="font-bold text-orange-900 mb-3 flex items-center">
+                <span class="material-icons mr-2">speed</span>
+                4. Performance
+              </h3>
+              <ul class="text-gray-700 text-sm space-y-2">
+                <li>✓ Debounce les recherches et filtres (attendre 300ms après la dernière frappe)</li>
+                <li>✓ Pagination pour les longues listes (ne pas charger 1000 éléments d'un coup)</li>
+                <li>✓ Lazy loading pour les images et contenus lourds</li>
+                <li>✓ Minimiser les appels API (grouper les requêtes quand possible)</li>
+                <li>✓ Utiliser des WebSockets uniquement quand le temps réel est nécessaire</li>
+              </ul>
+            </div>
+
+            <div class="card-hover border-2 border-red-200 rounded-lg p-6">
+              <h3 class="font-bold text-red-900 mb-3 flex items-center">
+                <span class="material-icons mr-2">bug_report</span>
+                5. Débogage
+              </h3>
+              <ul class="text-gray-700 text-sm space-y-2">
+                <li>
+                  ✓ Utiliser <code>console.log</code> pour tracer les appels API et réponses
+                </li>
+                <li>✓ Vérifier l'onglet Network dans DevTools pour voir les requêtes HTTP</li>
+                <li>✓ Vérifier le localStorage pour s'assurer que le token est bien sauvegardé</li>
+                <li>✓ Tester avec différents scénarios (token expiré, erreur serveur, etc.)</li>
+                <li>✓ Utiliser des outils comme Postman pour tester les APIs indépendamment</li>
+              </ul>
+            </div>
+
+            <div class="card-hover border-2 border-indigo-200 rounded-lg p-6">
+              <h3 class="font-bold text-indigo-900 mb-3 flex items-center">
+                <span class="material-icons mr-2">code</span>
+                6. Organisation du Code
+              </h3>
+              <ul class="text-gray-700 text-sm space-y-2">
+                <li>✓ Séparer la logique API dans <code>js/api-service.js</code></li>
+                <li>✓ Créer des fonctions réutilisables pour afficher les données</li>
+                <li>
+                  ✓ Utiliser des constantes pour les URLs, clés API, configurations
+                </li>
+                <li>✓ Commenter le code pour expliquer les logiques complexes</li>
+                <li>✓ Suivre une convention de nommage cohérente (camelCase pour JS)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <footer class="gradient-bg text-white py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-lg font-semibold mb-2">Guide d'Intégration Frontend</p>
-            <p class="text-sm opacity-90">Stack Vanilla HTML/CSS/JavaScript — Février 2026</p>
-        </div>
-    </footer>
+  <!-- Footer -->
+  <footer class="gradient-bg text-white py-8 mt-12">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="text-lg font-semibold mb-2">Guide d'Intégration Frontend</p>
+      <p class="text-sm opacity-90">Stack Vanilla HTML/CSS/JavaScript — Février 2026</p>
+    </div>
+  </footer>
 
-    <!-- Smooth scroll script -->
-    <script>
-        // Active link highlighting on scroll
-        const sections = document.querySelectorAll("section[id]");
-        const navLinks = document.querySelectorAll(".nav-link");
+  <!-- Smooth scroll script -->
+  <script>
+    // Active link highlighting on scroll
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
 
-        window.addEventListener("scroll", () => {
-            let current = "";
+    window.addEventListener("scroll", () => {
+      let current = "";
 
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute("id");
-                }
-            });
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute("id");
+        }
+      });
 
-            navLinks.forEach((link) => {
-                link.classList.remove("active");
-                if (link.getAttribute("href") === `#${current}`) {
-                    link.classList.add("active");
-                }
-            });
-        });
-    </script>
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

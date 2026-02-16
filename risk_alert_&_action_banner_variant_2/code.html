@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Risk Alert &amp; Action Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                        "support-blue": "#3b82f6",
+                        "support-purple": "#8b5cf6",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark min-h-screen font-display text-slate-900 dark:text-slate-100 flex flex-col">
+    <!-- Barre de navigation Academix -->
+    <nav class="bg-slate-800 text-white px-6 py-3 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-2 hover:text-slate-300 transition">
+            <span class="material-icons">arrow_back</span>
+            <span class="font-semibold">Index prototypes</span>
+        </a>
+        <div class="flex items-center gap-4">
+            <a href="../student_dashboard_home_variant_1/code.html"
+                class="text-sm hover:text-slate-300 transition">Dashboard</a>
+            <a href="../grade_management_interface_variant_1/code.html"
+                class="text-sm hover:text-slate-300 transition">Notes</a>
+        </div>
+    </nav>
+    <div class="flex-1">
+        <!-- Navigation Header -->
+        <nav class="bg-white dark:bg-zinc-900 border-b border-primary/10 px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="bg-primary p-1.5 rounded-lg">
+                    <span class="material-icons text-white">school</span>
+                </div>
+                <h1 class="font-bold text-xl tracking-tight text-slate-800 dark:text-white">EduPulse <span
+                        class="text-primary">Admin</span></h1>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Advisor Access</p>
+                        <p class="text-sm font-semibold">Prof. Sarah Jenkins</p>
+                    </div>
+                    <img alt="Profile" class="w-10 h-10 rounded-full border-2 border-primary/20"
+                        data-alt="Portrait of a female university professor"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEpw9DPQZ8nhQPt3pRCo_ATxkMiViIOImjs1vx_Akyv8qqBiU2hh1KAJ3LvPp-2515HkTaL7UJ-_RkHRWuMyakak2sR9XKC_5CQc6qALvK5TLhXUeAl9zXgPu3fpf6T9Sp2tvq9tIH_TNiqWippoEPbVJNxlf7CCoKc_9oPXvLH5wcIplB-CNsQQ5lz5kWc_E837KnzYSrgPD4-TjAynTENQmWYnGB3Ih_cT8SNgL4vrrK96oQKKjMVcgLEa7KPd5bLEnWMhrZdSE" />
+                </div>
+            </div>
+        </nav>
+        <main class="max-w-7xl mx-auto p-6 lg:p-10">
+            <!-- Student Profile Context -->
+            <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div class="flex items-center gap-5">
+                    <div class="relative">
+                        <img alt="Student"
+                            class="w-20 h-20 rounded-xl object-cover border-4 border-white dark:border-zinc-800 shadow-sm"
+                            data-alt="Student male portrait for academic profile"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmo1JxJZSUOKsUpEOCpvoxW1H5U1lUsBVUwS4jTtxH-_i1_ttM-DlBjLG5FblQ7KseWCjcv81EfCAuWAqLnd_s-vUL2ZQUEiqH4FjCwpPt1t5tYV9D8gqDEHjGmr8CL09TVul54ZUfGZ6SNlrnuVvkCZAn3rZ-Zizlz2n1gAiHpA8nWrtbejHSbyxYcdRzCisaExznU-MvgLg0FAjsfDiqqTWh0qAhQ8h-heYsZWyunb1gHj8WOmX9N55o2jjYCRDtPFWpG-SrL1k" />
+                        <span
+                            class="absolute -bottom-1 -right-1 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full ring-2 ring-white dark:ring-zinc-900">AT
+                            RISK</span>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold">Marcus Thorne</h2>
+                        <p class="text-slate-500 dark:text-slate-400">ID: #ST-88291 • Year 2 • Computer Science</p>
+                        <div class="flex gap-2 mt-2">
+                            <span
+                                class="bg-primary/10 text-primary text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">Networks
+                                (CS302)</span>
+                            <span
+                                class="bg-slate-200 dark:bg-zinc-800 text-slate-600 dark:text-slate-400 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">Cybersecurity</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 transition-colors text-sm font-medium">
+                        <span class="material-icons text-sm text-slate-400">email</span> Message Student
+                    </button>
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 transition-colors text-sm font-medium text-primary">
+                        <span class="material-icons text-sm">flag</span> Report Issue
+                    </button>
+                </div>
+            </div>
+            <!-- Critical Alert Banner -->
+            <div class="relative overflow-hidden bg-primary rounded-xl shadow-lg shadow-primary/20 mb-10 group">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
+                <div class="relative px-6 py-8 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm border border-white/30">
+                            <span class="material-icons text-white text-3xl">warning_amber</span>
+                        </div>
+                        <div>
+                            <h3 class="text-white text-xl md:text-2xl font-bold leading-tight">Critical: Low Performance
+                                in Networks (8/20)</h3>
+                            <p class="text-white/80 font-medium">This score is 45% below the course average and triggers
+                                an automatic academic intervention.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 min-w-[140px] text-center">
+                        <p class="text-white/60 text-xs font-bold uppercase tracking-[0.1em] mb-1">Target Score</p>
+                        <p class="text-white text-3xl font-bold">14<span class="text-lg text-white/50">/20</span></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Intervention Section -->
+            <section>
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold flex items-center gap-2">
+                            Recommended Path to Success
+                            <span
+                                class="bg-support-blue/10 text-support-blue text-[10px] px-2 py-0.5 rounded uppercase tracking-tighter">Powered
+                                by AI</span>
+                        </h2>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Personalized action plan based on
+                            recent quiz scores and attendance data.</p>
+                    </div>
+                    <span class="text-xs font-medium text-slate-400">Updated: 2 hours ago</span>
+                </div>
+                <!-- Action Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Tutoring Card -->
+                    <div
+                        class="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-slate-100 dark:border-zinc-800 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col group">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-support-blue/10 text-support-blue flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                            <span class="material-icons">person_search</span>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">1-on-1 Tutoring</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-grow">Connect with a Networks
+                            specialist to review complex routing protocols and binary math.</p>
+                        <button
+                            class="w-full bg-support-blue hover:bg-support-blue/90 text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-lg shadow-support-blue/20">
+                            Book a Session <span class="material-icons text-sm">arrow_forward</span>
+                        </button>
+                    </div>
+                    <!-- Study Planner Card -->
+                    <div
+                        class="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-slate-100 dark:border-zinc-800 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col group">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-support-purple/10 text-support-purple flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                            <span class="material-icons">event_note</span>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Study Planner</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-grow">Generate a custom revision
+                            timetable leading up to the Finals in Week 12.</p>
+                        <button
+                            class="w-full bg-support-purple hover:bg-support-purple/90 text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-lg shadow-support-purple/20">
+                            Schedule Study Time <span class="material-icons text-sm">calendar_today</span>
+                        </button>
+                    </div>
+                    <!-- Peer Groups Card -->
+                    <div
+                        class="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-slate-100 dark:border-zinc-800 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col group">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                            <span class="material-icons">groups</span>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Peer Study Groups</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-grow">Join 3 other students from
+                            your cohort who are currently reviewing 'Network Layers'.</p>
+                        <button
+                            class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+                            Browse Groups <span class="material-icons text-sm">search</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Contextual Note -->
+                <div
+                    class="mt-8 p-4 bg-slate-100 dark:bg-zinc-800/50 rounded-lg flex items-start gap-3 border-l-4 border-slate-300 dark:border-zinc-700">
+                    <span class="material-icons text-slate-400 text-xl mt-0.5">info</span>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Note: These recommendations were selected because 80% of students who utilized these three
+                        services improved their "Networks" grade by at least 15 points within four weeks. Attendance in
+                        the upcoming lab session on Thursday is also highly recommended.
+                    </p>
+                </div>
+            </section>
+            <!-- Performance Trends (Secondary Context) -->
+            <section class="mt-12">
+                <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+                    Performance Analytics
+                    <div class="h-1 w-1 rounded-full bg-slate-300"></div>
+                    <span class="text-sm font-normal text-slate-500">Last 30 Days</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-slate-100 dark:border-zinc-800">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">Attendance
+                                Rate</span>
+                            <span class="text-primary font-bold">62%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-zinc-800 h-3 rounded-full overflow-hidden">
+                            <div class="bg-primary h-full rounded-full" style="width: 62%"></div>
+                        </div>
+                        <div class="mt-4 flex justify-between text-xs font-medium text-slate-400">
+                            <span>Missing: 4 Lectures</span>
+                            <span>Threshold: 85%</span>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-slate-100 dark:border-zinc-800">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">Quiz
+                                Submission</span>
+                            <span class="text-support-blue font-bold">100%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-zinc-800 h-3 rounded-full overflow-hidden">
+                            <div class="bg-support-blue h-full rounded-full" style="width: 100%"></div>
+                        </div>
+                        <div class="mt-4 flex justify-between text-xs font-medium text-slate-400">
+                            <span>Excellent Submission Rate</span>
+                            <span>Status: Active</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer Space -->
+        <footer class="mt-20 py-10 border-t border-slate-200 dark:border-zinc-800">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <p class="text-slate-400 text-sm">EduPulse Academic Tracking System • Version 4.2.1-v2</p>
+            </div>
+        </footer>
+</body>
+
+</html>

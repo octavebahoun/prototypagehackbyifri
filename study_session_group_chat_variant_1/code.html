@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Study Session Group Chat - Variant 1</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+    <!-- Barre de navigation Academix -->
+    <nav class="bg-slate-800 text-white px-6 py-3 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-2 hover:text-slate-300 transition">
+            <span class="material-icons">arrow_back</span>
+            <span class="font-semibold">Index prototypes</span>
+        </a>
+        <div class="flex items-center gap-4">
+            <a href="../study_sessions_feed_variant_1/code.html"
+                class="text-sm hover:text-slate-300 transition">Sessions</a>
+            <a href="../student_dashboard_home_variant_1/code.html"
+                class="text-sm hover:text-slate-300 transition">Dashboard</a>
+        </div>
+    </nav>
+    <div class="flex h-screen overflow-hidden">
+        <!-- Left Sidebar: Participant List -->
+        <aside class="w-80 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col">
+            <div class="p-6 border-b border-slate-200 dark:border-slate-800">
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <span class="material-icons text-primary">groups</span>
+                    Participants
+                </h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">6 students currently active</p>
+            </div>
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-2">
+                <!-- Participant: User (You) -->
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-primary/5 border border-primary/10">
+                    <div class="relative">
+                        <img alt="User Avatar" class="w-10 h-10 rounded-full object-cover"
+                            data-alt="Professional portrait of a young male student"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwbmHTwChYk-mJwm346ec4ya2DUlFSohh7D84Ozq8L69cf6dMObwYlPqYASJXqyIll8O-KvBrqFdKLvnSE5hvuJM76zToGOsApIbvCLioP5GuV_YyWkpxb9_eSVBhllzVqpg9D7wckcx8sFJ6lslPdhXMp1VaqAwa1YHq3AXDqMbTy0zgP6k_RrRvwsNhDQ8lpsmqTKXqVUg2SFKt81VDgo-4fU1A4gnosngDtV38Tur0nCePb1IoDYonTSLAP4lCkUdJSSMdVvwI" />
+                        <span
+                            class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-slate-900 rounded-full"></span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-slate-900 dark:text-white truncate">Kevin (You)</p>
+                        <p class="text-xs text-primary font-medium">Online</p>
+                    </div>
+                </div>
+                <!-- Participant: Sarah -->
+                <div
+                    class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer">
+                    <div class="relative">
+                        <img alt="Sarah Avatar" class="w-10 h-10 rounded-full object-cover"
+                            data-alt="Portrait of a female student with glasses"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz2u-C76iUUtS5u1sWsFqu-vFX8EyBj3qoY98j6efkM9B6J-gNFIYpWI6a9ImYtCuiPVhdSRrvSFj1oi5_aUqkN1gSCdYNDZBy0q8kHpg9DhQUsHHSaXoonaWBuvAoIdHDD-mg4jlTgIDRLEtJhXpD81Plait-NIG8-gSpwRyjXX5dIV2cxzoUHTKk91vZ7wjZxd0kt3SfaauHWkqseITW-RsqdYlbEANSVJ8cTZm0uGjyZcG_hD88_74AzKdy2IXvzyvUUtJbmXA" />
+                        <span
+                            class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-slate-900 rounded-full"></span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-slate-900 dark:text-white truncate">Sarah J.</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Typing...</p>
+                    </div>
+                </div>
+                <!-- Participant: Dr. Aris -->
+                <div
+                    class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer">
+                    <div class="relative">
+                        <img alt="Dr. Aris Avatar" class="w-10 h-10 rounded-full object-cover"
+                            data-alt="Distinguished professor with a friendly smile"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl-8MvX2GGZGxmD4lPzGLCzDgsgAxziQ3A33D6qMd8rtpmVd-DpEsAmVJJpnHRgeTSCljChjleZpL7QAV-uJjdxI8UvaoI4tgABuWaWaBXl7zQCphUOsZ7xKu_4bRkahHO_6_tnuTY7pluslEGzovQseu6e3HgR-ptteyOvlZ0DY7chn4CNK6YFbxePxlVW0Jk9wQWnSmLhMpT8VQbnbUPZ6CvuH_HAUMahq8Cgy4bZLESMJe_9pio9OgjNH4Bbk2qUFqM3rAg7nY" />
+                        <span
+                            class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-slate-900 rounded-full"></span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-slate-900 dark:text-white truncate">Dr. Aris</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Online</p>
+                    </div>
+                </div>
+                <!-- Participant: Marcus -->
+                <div
+                    class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer">
+                    <div class="relative">
+                        <img alt="Marcus Avatar" class="w-10 h-10 rounded-full object-cover"
+                            data-alt="Young man with short dark hair"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHhn4K8KVD317znAmI2w1oSnaYBQISHZJWOnhg2HNY3R--cFh-cT7QU9_s-qm7IYFZYinijU1NBvJYCqBeU-5PRnRJtQtjLS9DRq3kHGYCAx6DsIa2j_xbFZDU7kqo0ie5se6dTjYiikcVLyLc2RAlmB_n6xKlGoVDtNmWTDQonXGdpOP7X89ZvlA58Y9C1V_tGjP6QuqNjM8vAhgRturWDdmmRzXdmlMBrFSntFHr0ZE8jDywX7LaxdOl2cE7mZ4RCEMxAJxRbO8" />
+                        <span
+                            class="absolute bottom-0 right-0 w-3 h-3 bg-slate-300 dark:bg-slate-600 border-2 border-white dark:border-slate-900 rounded-full"></span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-slate-900 dark:text-white truncate">Marcus Lee</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Offline</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800">
+                <button
+                    class="w-full flex items-center justify-center gap-2 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">
+                    <span class="material-icons text-lg">person_add</span>
+                    Invite Member
+                </button>
+            </div>
+        </aside>
+        <!-- Main Area: Chat Window -->
+        <main class="flex-1 flex flex-col bg-background-light dark:bg-background-dark relative">
+            <!-- Chat Header -->
+            <header
+                class="h-20 flex items-center justify-between px-8 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 z-10">
+                <div>
+                    <h1 class="text-lg font-bold text-slate-900 dark:text-white">Advanced Calculus Prep</h1>
+                    <div class="flex items-center gap-2 mt-0.5">
+                        <span class="inline-block w-2 h-2 rounded-full bg-green-500"></span>
+                        <span
+                            class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Live
+                            Discussion</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+                        <span class="material-icons">search</span>
+                    </button>
+                    <button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+                        <span class="material-icons">more_vert</span>
+                    </button>
+                </div>
+            </header>
+            <!-- Message Feed -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-8 space-y-6">
+                <!-- Incoming Message -->
+                <div class="flex items-start gap-4 max-w-2xl">
+                    <img alt="Sarah Avatar" class="w-10 h-10 rounded-full mt-1 object-cover"
+                        data-alt="Portrait of Sarah J."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6zt0nDBnrE5oVx_WkM4gY3yYNXr7TUrjQ1WKu-gn08u-jfszrvoDp_mcfZBrj6ztVLTbVNmVaFRbN0cscydcugyNk6EO5T483ixMq8wGY6jpGGYhh2-zYtocDLw8UQOEVFpdEGoFCpv28ejnXsrtlvAMr5iDBs1W6LmZAniAcO2c2zJbqb0_EaaAQAk-qBNXDYHexSBmgP7_L-bCmO58dN-eRvL4FlIR2QIrf6T0jG8WhyiGkEQcC64OZssfQajyNfgtG0FGXEfQ" />
+                    <div>
+                        <div class="flex items-baseline gap-2 mb-1">
+                            <span class="text-sm font-bold text-slate-900 dark:text-white">Sarah J.</span>
+                            <span class="text-xs text-slate-400">10:42 AM</span>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-slate-800 p-4 rounded-xl rounded-tl-none shadow-sm border border-slate-100 dark:border-slate-700">
+                            <p class="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                                Has anyone finished the practice set for the integration by parts chapter? I'm having
+                                some trouble with the definite integral on page 42.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Incoming Message (Consecutive) -->
+                <div class="flex items-start gap-4 max-w-2xl ml-14">
+                    <div
+                        class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700">
+                        <p class="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                            Specifically problem 4b. The bounds are giving me weird values.
+                        </p>
+                    </div>
+                </div>
+                <!-- Outgoing Message (User) -->
+                <div class="flex items-start justify-end gap-4">
+                    <div class="flex flex-col items-end max-w-2xl">
+                        <div class="flex items-baseline gap-2 mb-1">
+                            <span class="text-xs text-slate-400">10:45 AM</span>
+                            <span class="text-sm font-bold text-slate-900 dark:text-white">You</span>
+                        </div>
+                        <div class="bg-primary p-4 rounded-xl rounded-tr-none shadow-md shadow-primary/20">
+                            <p class="text-sm leading-relaxed text-white">
+                                I just finished it! I'm stuck on problem 4b as well, let me double check my work. I
+                                think the substitution step might be where we're both tripping up.
+                            </p>
+                        </div>
+                    </div>
+                    <img alt="User Avatar" class="w-10 h-10 rounded-full mt-1 object-cover"
+                        data-alt="User's profile photo"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTv1dGzfBS9Lt92ADaBok7e5JEMV373GdTrEz4i9vrSreeUQf9axqeavXQOct6-nhS7sDU3PdBkDUdWnqVpRE--AJMi8Z18tMOw8sc3TwXB1qQN0n_HqsmqoX1eWLEN10nDLSyP0abmolJMAISGb0bhfdcIV6N5f4Te4K-uydZHECslYzpoSOKU8i7eQzoA2LcER6Cg9Pl0DqIqE5AjvZgLA-1RgM87aQf1jV23RpwKW-KJCp_erw1H64TytPIcSZmiuLhatj2PuM" />
+                </div>
+                <!-- Attachment Message (Incoming) -->
+                <div class="flex items-start gap-4 max-w-2xl">
+                    <img alt="Dr. Aris Avatar" class="w-10 h-10 rounded-full mt-1 object-cover"
+                        data-alt="Dr. Aris profile photo"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFhRztjyAjDoERL7veBvQjBRMIiQK2GacTJhfovhff_IDLaywJ9acdr65OSHE7fvuTOdxpNXefY7VwVrBflaMxe6xAT5vamdOnQO8h2OZLa7XNNU_ATrjJKjzYsus48_HXrZSWNldRWHC3nN7ePi5yrK6KR9Ii55rYdGdJ-0YsGgFn9Fj7SpaQY2jP5inF1f77evB3h1N2Mdf-wR1PSRrzDHiHXzTi-X84XppYE5SlqC1uZVHAWSHpT5ycSCHdlKxyd4tSErz8Dlo" />
+                    <div>
+                        <div class="flex items-baseline gap-2 mb-1">
+                            <span class="text-sm font-bold text-slate-900 dark:text-white">Dr. Aris</span>
+                            <span class="text-xs text-slate-400">10:48 AM</span>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-slate-800 p-4 rounded-xl rounded-tl-none shadow-sm border border-slate-100 dark:border-slate-700">
+                            <p class="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mb-3">
+                                Check this PDF for the formula. It breaks down the substitution process for definite
+                                integrals more clearly.
+                            </p>
+                            <div
+                                class="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-primary/50 cursor-pointer transition-colors group">
+                                <div
+                                    class="w-10 h-10 bg-red-100 dark:bg-red-900/30 text-red-600 flex items-center justify-center rounded">
+                                    <span class="material-icons">picture_as_pdf</span>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-bold text-slate-900 dark:text-white truncate">
+                                        Lecture_Notes_Calculus_II.pdf</p>
+                                    <p class="text-[10px] text-slate-500 uppercase tracking-tight">1.2 MB • PDF Document
+                                    </p>
+                                </div>
+                                <span
+                                    class="material-icons text-slate-400 group-hover:text-primary transition-colors">file_download</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Outgoing Message (User) -->
+                <div class="flex items-start justify-end gap-4">
+                    <div class="flex flex-col items-end max-w-2xl">
+                        <div class="flex items-baseline gap-2 mb-1">
+                            <span class="text-xs text-slate-400">10:50 AM</span>
+                            <span class="text-sm font-bold text-slate-900 dark:text-white">You</span>
+                        </div>
+                        <div class="bg-primary p-4 rounded-xl rounded-tr-none shadow-md shadow-primary/20">
+                            <p class="text-sm leading-relaxed text-white">
+                                Thanks, Dr. Aris! This is exactly what I needed.
+                            </p>
+                        </div>
+                    </div>
+                    <img alt="User Avatar" class="w-10 h-10 rounded-full mt-1 object-cover"
+                        data-alt="User's profile photo"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqTAL3a57XyVuNPA6ei1A0FmT1wgq1M4SxpjmEnx34dDyPiHqW0h0ejrvZP2Ngk41Hny6lkpGH81hvm4oY62d8UOIWmtqKld4HsBMJFjrCGP6iH1cYVqdY68pUx4Bx13Y-rUr70wZ0uXHkE6zs0t2-nBMra6RmN3L9J5pIZUyBwNWZeMvlVjUybCR9Owga_WRIBGeZoM3inlBvbveP4AEpwWdRdzApn1rwdYQqvvn_5RW-D4WHZ99sHJdvUm3WPEop9PIq2tAY5OY" />
+                </div>
+            </div>
+            <!-- Fixed Input Area -->
+            <div class="p-6 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+                <div class="max-w-4xl mx-auto flex items-end gap-4">
+                    <div class="flex-1 relative flex items-center">
+                        <button class="absolute left-4 p-1 text-slate-400 hover:text-primary transition-colors"
+                            title="Attach Files">
+                            <span class="material-icons">attach_file</span>
+                        </button>
+                        <textarea
+                            class="w-full pl-12 pr-4 py-4 bg-slate-50 dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-primary text-sm text-slate-900 dark:text-white resize-none max-h-32 custom-scrollbar transition-all"
+                            placeholder="Type your message to the group..." rows="1"></textarea>
+                    </div>
+                    <button
+                        class="bg-primary hover:bg-primary/90 text-white p-4 rounded-xl flex items-center justify-center transition-all shadow-lg shadow-primary/20 active:scale-95">
+                        <span class="material-icons">send</span>
+                    </button>
+                </div>
+                <div class="mt-3 flex items-center justify-center gap-6">
+                    <button
+                        class="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5 hover:text-slate-600 dark:hover:text-slate-300">
+                        <span class="material-icons text-sm">emoji_emotions</span>
+                        Emoji
+                    </button>
+                    <button
+                        class="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5 hover:text-slate-600 dark:hover:text-slate-300">
+                        <span class="material-icons text-sm">mic</span>
+                        Voice
+                    </button>
+                    <button
+                        class="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5 hover:text-slate-600 dark:hover:text-slate-300">
+                        <span class="material-icons text-sm">videocam</span>
+                        Join Call
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

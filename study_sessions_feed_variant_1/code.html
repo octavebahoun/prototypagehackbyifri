@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Study Sessions Feed</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .avatar-stack img {
+            border: 2px solid white;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+    <!-- Barre de navigation Academix -->
+    <nav class="bg-slate-800 text-white px-6 py-3 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-2 hover:text-slate-300 transition">
+            <span class="material-icons">arrow_back</span>
+            <span class="font-semibold">Index prototypes</span>
+        </a>
+        <div class="flex items-center gap-4">
+            <a href="../student_dashboard_home_variant_1/code.html"
+                class="text-sm hover:text-slate-300 transition">Dashboard</a>
+            <a href="../interactive_quiz_interface_variant_2/code.html"
+                class="text-sm hover:text-slate-300 transition">Quiz</a>
+            <a href="../ai_content_generation_variant_1/code.html"
+                class="text-sm hover:text-slate-300 transition">IA</a>
+        </div>
+    </nav>
+    <!-- Navigation Header -->
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="bg-primary p-2 rounded-lg">
+                        <span class="material-icons text-white">school</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-primary">EduTrack</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-all shadow-lg shadow-primary/20">
+                        <span class="material-icons text-sm">add</span>
+                        <span>Create Session</span>
+                    </button>
+                    <div class="h-10 w-10 rounded-full border-2 border-primary/20 p-0.5">
+                        <img alt="Profile Photo" class="w-full h-full rounded-full object-cover"
+                            data-alt="Close up portrait of a young man smiling"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbZatB_PVvEXX4ZXDfjpgu1bxg_ptmeKnO4ZDTIMP12iswCwHru3fYA2aX61Tq0YHY5S0gESTxIMvjzGhaddlC9vP0Lqks66hcRqW-RzLgYTwY4lTkAhGo9vNlp47eJoamHcKh8vPWrB0z5SeBn4ObjKN5V0YZejrzORQmPGfqoX2kdmbDugqGFFZfTqfVKuo3ycFQUUe26ZhksVk65BykrjCQNfyK-ltP6jtYKwILbfdH5CV_CkWDOIGTbCenkN1_Ofne610vMG4" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header & Filters Section -->
+        <div class="mb-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-slate-900 dark:text-white">Collaborative Sessions</h1>
+                    <p class="text-slate-500 dark:text-slate-400">Join a group and master your courses together.</p>
+                </div>
+            </div>
+            <!-- Filter Tags -->
+            <div class="flex flex-wrap gap-2">
+                <button class="px-5 py-2 rounded-full bg-primary text-white font-medium shadow-md shadow-primary/10">All
+                    Sessions</button>
+                <button
+                    class="px-5 py-2 rounded-full bg-white dark:bg-slate-800 border border-primary/10 hover:border-primary/40 text-slate-600 dark:text-slate-300 font-medium transition-colors">Mathematics</button>
+                <button
+                    class="px-5 py-2 rounded-full bg-white dark:bg-slate-800 border border-primary/10 hover:border-primary/40 text-slate-600 dark:text-slate-300 font-medium transition-colors">Computer
+                    Science</button>
+                <button
+                    class="px-5 py-2 rounded-full bg-white dark:bg-slate-800 border border-primary/10 hover:border-primary/40 text-slate-600 dark:text-slate-300 font-medium transition-colors">History</button>
+                <button
+                    class="px-5 py-2 rounded-full bg-white dark:bg-slate-800 border border-primary/10 hover:border-primary/40 text-slate-600 dark:text-slate-300 font-medium transition-colors">Today</button>
+                <button
+                    class="px-5 py-2 rounded-full bg-white dark:bg-slate-800 border border-primary/10 hover:border-primary/40 text-slate-600 dark:text-slate-300 font-medium transition-colors">Upcoming</button>
+            </div>
+        </div>
+        <!-- Sessions Feed Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Session Card 1 -->
+            <div
+                class="bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-xl transition-shadow border border-primary/5 p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span
+                            class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-wider">Mathematics</span>
+                        <div
+                            class="flex items-center text-rose-500 bg-rose-50 dark:bg-rose-500/10 px-2 py-1 rounded text-xs font-semibold">
+                            <span class="w-2 h-2 bg-rose-500 rounded-full mr-2 animate-pulse"></span>
+                            LIVE NOW
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">Calculus III:
+                        Multivariable Integration Review</h3>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-slate-500 dark:text-slate-400 text-sm">
+                            <span class="material-icons text-sm mr-2">event</span>
+                            Today, 4:00 PM - 6:00 PM
+                        </div>
+                        <div class="flex items-center text-slate-500 dark:text-slate-400 text-sm">
+                            <span class="material-icons text-sm mr-2">location_on</span>
+                            Campus Library, Room 402
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-slate-100 dark:border-slate-700">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <img alt="Sarah Miller" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Professional portrait of a woman with a friendly smile"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeDmNJValeS-Vp35Hx7foOUT2ndlgi75szyUfcsrzIoRIAcT6plClvmPf4dV3bX22TkzhEtaKt9j4RPxylody3myL1k4dNcK_rQ5hBvNk2ATSA47vCPhVWQd3Us3WLasy1bY9S0ikrX74GoxP3KFtQkWIKg8Lq0Y7rdK-SctryVhhvtkY90IR7sFHj4bWdlWmPOdgmN3a3dflvZzlgIrq0KJMMiDIQUIM0R01Hd6XWkxOD79h1GxVe3fXQageUIf4a0bwnBcMR2I0" />
+                            <div class="text-sm">
+                                <p class="font-semibold text-slate-900 dark:text-white">Sarah Miller</p>
+                                <p class="text-xs text-slate-500">Organizer</p>
+                            </div>
+                        </div>
+                        <div class="flex -space-x-3 avatar-stack">
+                            <img alt="User 1" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Profile photo of a young man with glasses"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc-NXKZAQXfePwaPpbaHjVMs7qMj8uSt5cFWfaAFJPOn4AAzlfx-w6tzt8TxJleTVQ_X5Ae6C6lCRU87xpA1hn1H3tSH4Qryc5Fj7DAdOdyY2ewiOyYdmFzqqcbQDiNvjgdQVU3eV8y0w70N3fT3GC93thnQn-8ePnTOVR1Jdr06azlxXQEF1p4gaRbDw30UEtFrNf6zCkpV71MrE3I-SEqjAD9kIqshELr1e0nNz8r3WbFWdDKYRU3JKM0Gn4_8Tryz36_rYYYMU" />
+                            <img alt="User 2" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Portrait of a young professional woman"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzYCW_w6eOebF9qocFPMqmVyOS1vkiviay9n87SJktXWCiET6o5EUnbam2mMy2YHFktrqDEK2bf1YGXdG6qz8sfUQzck2zr01FtrbNVjzNGo6VTUF_4Q_LVAo5eCqVkF1skr3jGxO1NUON7DIMFkYKz9BteFEGWMBlrtCq6z-AmSj7XAVDl7qEHNEqv4r4k5b1Hg9EtPpHqTobih6VdFCygoA3lMeWOsQBCxDeruvGbGj1WWBHpQtZgPNRmZhEpSmRJdU-soXGKuU" />
+                            <img alt="User 3" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Smiling male college student"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKulvWh_zgR8MeBcWyQnt5LnedQu4uLOLSDuXjo1BKHiY6WS5xGXqP284CWZDut0FKpttDIkczZEtCmjmNQN1jQ47r4YuPnM2uSZac2O8oYnt0KO2OrQvC0HQr6hqmceYpLYtq3etH2QtMwjsPrh8Dcv8Be-oFMRe_n0Y0eVQQWNvb-QgXqBfG5QSqY3F7OaM5ySW301QFP5BsUQhS24nC00F_gjioIWy8Xkw-tEf1xJqm0t4EOYziLgv2RJC-KSNEz9EMHTC8HnM" />
+                            <div
+                                class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold border-2 border-white">
+                                +8</div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full bg-primary py-3 rounded-lg text-white font-semibold hover:bg-primary/90 transition-colors">Join
+                        Session</button>
+                </div>
+            </div>
+            <!-- Session Card 2 -->
+            <div
+                class="bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-xl transition-shadow border border-primary/5 p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span
+                            class="px-3 py-1 bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold rounded-full uppercase tracking-wider">History</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">The Industrial
+                        Revolution: Critical Analysis Group</h3>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-slate-500 dark:text-slate-400 text-sm">
+                            <span class="material-icons text-sm mr-2">event</span>
+                            Tomorrow, 10:00 AM
+                        </div>
+                        <div class="flex items-center text-slate-500 dark:text-slate-400 text-sm">
+                            <span class="material-icons text-sm mr-2">videocam</span>
+                            Zoom Meeting
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-slate-100 dark:border-slate-700">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <img alt="David Chen" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Portrait of a male student wearing glasses"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG55GFUHuCGax5-rXwkafaqMTz5oloOX0pmOK16FG0oQJgy-rFP3QkNVi2szBHKrYqV3HAMYt41etFHP1WYr_txINpapjlA-NrNlWitmc2hj526tP0ZluIcUPcUIWY8faroO25lwNFB09-w7hVkC93MCFsLd6rjxXo9iLWXiG9ajaeq_qmhTvLgLXbH0JFl-WQlDIL1ZDM91vS3KyIiXXTYxF4umR0iTZbl9A1pVwIX0PxecW2sqqATYe7Doz3BKFvXKVzDILNAUU" />
+                            <div class="text-sm">
+                                <p class="font-semibold text-slate-900 dark:text-white">David Chen</p>
+                                <p class="text-xs text-slate-500">Organizer</p>
+                            </div>
+                        </div>
+                        <div class="flex -space-x-3 avatar-stack">
+                            <img alt="User 4" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Woman with short hair looking at camera"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFn7bIIS5dmG_iFTZRmkaPxo_l7RwzivbQboysPNuCzvoJ-Oo6jct_D10mlKTiKVJlZXkqPF52-dxCI3-EVNO8Gy4mcp5OctUSuP7wWRew_MVIZfc8vBCe_ELcNNut-v-US--OZXTEBXJaP_0piyhMK-TcXA0wTldcG1UREEaZuhmyTGgbmuAYPEtzxaGXokbuPqfoCj6SEOzStiwA_WbRWhIKU74S50YktzKJZFU6Cw9dezQpI75L5StGLBYnSBJNbND0fS1joEI" />
+                            <img alt="User 5" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Young woman smiling brightly"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuARRKSKea8yUaKCHRd0FyrS-GzWXx70jDerW2q5OqarOsPp-eUBf0BZ3jpVnECwYZ9TW0mmj7W-_ngJwvpSK3vdVnAKVStt7up8zkZ1NDDQpi8pv2aM9D1t8Mik9V8faoAtg7sa7-duJd41kKLmNKbo44X5QYc03AFt1Qok-4gp7TzQbJx-Getg0ndZH7UYpKbIsjMGz1K60FuRmL7bNWa39lHg9QIT6SgQsDOtYzFEfTSh9KMlGdR4Ywe5XEBUTjbFaMOBdKtuL38" />
+                            <div
+                                class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold border-2 border-white">
+                                +4</div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full bg-primary/10 text-primary py-3 rounded-lg font-semibold hover:bg-primary/20 transition-colors">RSVP
+                        Now</button>
+                </div>
+            </div>
+            <!-- Session Card 3 -->
+            <div
+                class="bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-xl transition-shadow border border-primary/5 p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span
+                            class="px-3 py-1 bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold rounded-full uppercase tracking-wider">Physics</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">Quantum Mechanics:
+                        Solving Problem Set #4</h3>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-slate-500 dark:text-slate-400 text-sm">
+                            <span class="material-icons text-sm mr-2">event</span>
+                            Oct 24, 2:00 PM
+                        </div>
+                        <div class="flex items-center text-slate-500 dark:text-slate-400 text-sm">
+                            <span class="material-icons text-sm mr-2">location_on</span>
+                            Science Hall B-12
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-slate-100 dark:border-slate-700">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <img alt="Elena Rodriguez" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Woman with curly hair smiling outdoors"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqbOIH2-RTSYOKmg3AW0KQ9mYtX3CX-JuqB_nfAMES0v2bJ2QHgYqZ1eIEwVUiZ0O4m9UEY_lbZCc_s9KY0vtHF6PvaSrcPixRHPGVt8kajESfMC1M5RMF9TxBIZHQCjERob7R22WVLin2yG73BmO-NIOaS6B4zkTFNIR2ZC3vHnb0sMUYa8GQEjykuekpwEt0YJiKMSBo5Hj-0LTJUz9nZlHloerIO2qBsoZeFiQqW2zrDXvO1_6t0LrkpG3oR62InxcijgFgctg" />
+                            <div class="text-sm">
+                                <p class="font-semibold text-slate-900 dark:text-white">Elena Rodriguez</p>
+                                <p class="text-xs text-slate-500">Organizer</p>
+                            </div>
+                        </div>
+                        <div class="flex -space-x-3 avatar-stack">
+                            <img alt="User 6" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Male professional headshot"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwhZH0FheeOJoEozS02tPDCQd46YetzanVYh-zQzRaNPO3sr0lG6DOblPDgKh7oKySv8lKUQJKShjbhrnByRs-h-Iib7hmmMG3OMzufZNxXierSmIP4UHhSm8orsCfLFrUY63W7xmdie1BtSq0Kdq-b5gMQm8wkIUvqHRlDj4qb9Rgji2Q7vwAcSZjeTYiUcmoSErEc0w39F-Sh7icNfMHgnOAde5gRgAuEPxyZ5ftQCB7EjP3QF7BBZT6797DYRMI3jR342owElM" />
+                            <div
+                                class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold border-2 border-white">
+                                +2</div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full bg-primary/10 text-primary py-3 rounded-lg font-semibold hover:bg-primary/20 transition-colors">Join
+                        Session</button>
+                </div>
+            </div>
+            <!-- Session Card 4 -->
+            <div
+                class="bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-xl transition-shadow border border-primary/5 p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span
+                            class="px-3 py-1 bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold rounded-full uppercase tracking-wider">Computer
+                            Science</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">Data Structures:
+                        Hash Map Implementation Lab</h3>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-slate-500 dark:text-slate-400 text-sm">
+                            <span class="material-icons text-sm mr-2">event</span>
+                            Oct 25, 6:00 PM
+                        </div>
+                        <div class="flex items-center text-slate-500 dark:text-slate-400 text-sm">
+                            <span class="material-icons text-sm mr-2">videocam</span>
+                            Discord Code Lab
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-slate-100 dark:border-slate-700">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <img alt="Marcus Tso" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Man in a blue shirt smiling"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPIIaAHuULef_wQETXZ9lm0OCthTig9EwY_BuwGkOpVHRUbsxhxY9ke7zwGLqSx_Jc4-2jMgESMlYgkg6B-9dTtMxn7pIhcNUkf3Ob7MGHH_VnR_R6hWpLgjErM0BvNfmK4ZVQBQ2U6p7Gx-SlWO8hp6gUbnAR7fDlP6W1oUs4mxEohFohURKwEO-sFdOu2qvaNChnhjLB2FXw8ujJR8VukkOqpoEkQIdJQ52guEJwfKarjDpCuZZAmDhAEp6WOI1i-ml64QTR3iU" />
+                            <div class="text-sm">
+                                <p class="font-semibold text-slate-900 dark:text-white">Marcus Tso</p>
+                                <p class="text-xs text-slate-500">Organizer</p>
+                            </div>
+                        </div>
+                        <div class="flex -space-x-3 avatar-stack">
+                            <img alt="User 7" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Female student in library"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhdRJ3bdb0_NO5PUOVST5lksTgz31Uk7_VqT9i1lAomwcNnJmyMyefkYsf13MtvCQ__O7pfaLB_tT7l3NZAQRh4NcsXSfWLcds28h8_tKtVUBsCQSf-mX_aIFkWuTy7f5T36t5PL8nZB3njZsHHcLChK9NEFJREF9OkpBVE1LKVx9VATjkS-f0EntUKwhrPuAZULlEMbd3yFjDwB7oszBddMCJRIiJVuMo0YTJvv0h3tPnSeToLKStm705MpTh3tsbS5wkl1dHuDc" />
+                            <img alt="User 8" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Young woman looking at camera"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBynfYojkyKLofqQNhSxLn8Rlb3Uxaf4l6NUMFaWlnbpGyl7P82uIwn036E_lhyn2BGHb6Wb6V8KJ5QWDFOfGLXH7ZUBDGEJTtbLAq75JZ0D612hu9l1mzmCtcMPZ2YlVdvmUAAl1Jn_MYLC71F3xCFgNn2pu1Q0PEc_P_0TCQvyfaSmy9Wh-sLhs3A365Cp0JgsQgsXzn05mT5F9wJJIAfUU5zMxIu6--UnrV1ffp3VnsPIQOzxMBcZzR9Ph46uMredC3rCgYMVlI" />
+                            <div
+                                class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold border-2 border-white">
+                                +15</div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full bg-primary/10 text-primary py-3 rounded-lg font-semibold hover:bg-primary/20 transition-colors">Join
+                        Session</button>
+                </div>
+            </div>
+            <!-- Session Card 5 -->
+            <div
+                class="bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-xl transition-shadow border border-primary/5 p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span
+                            class="px-3 py-1 bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 text-xs font-bold rounded-full uppercase tracking-wider">Literature</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">Post-Modernist
+                        Poetry: Analyzing "The Waste Land"</h3>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-slate-500 dark:text-slate-400 text-sm">
+                            <span class="material-icons text-sm mr-2">event</span>
+                            Oct 26, 1:00 PM
+                        </div>
+                        <div class="flex items-center text-slate-500 dark:text-slate-400 text-sm">
+                            <span class="material-icons text-sm mr-2">location_on</span>
+                            The Coffee Bean Loft
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-slate-100 dark:border-slate-700">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <img alt="Chloe Banks" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Close up of a young woman with a focused expression"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2ntnWzVeR0mnE6ry-YfPkWYAkU0IooJiOn3Rl2ERpO3YPvI93SHt3x7yt1xB2nIFF827oLY5GgmbSZM6jJsASJD7OPkU60r5JZ1RWmOciMWtVg7j2NydxzFg_Qwi9eaxpbfmoDZpTkyd_dORzSP_RI8TpjdVXHpAaqjzE4MAzXRf9AO8d-Ad7RGTexIlnvIo3wtwVYcnnMWlCj9BRPt_wcbPGZaf02x1beZ9ItKYN_qEKgIzrseUWCa61iKn_bbxWT32c4Dow-Cs" />
+                            <div class="text-sm">
+                                <p class="font-semibold text-slate-900 dark:text-white">Chloe Banks</p>
+                                <p class="text-xs text-slate-500">Organizer</p>
+                            </div>
+                        </div>
+                        <div class="flex -space-x-3 avatar-stack">
+                            <img alt="User 9" class="w-8 h-8 rounded-full object-cover"
+                                data-alt="Man with short curly hair"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5EENgqVuBtT0TwjEHdEP1yBvwU1q5xmn4oUJP6SVBqcGBQYcS7BVZwI-xj7V7iMl_OG57Ww1VBPiL1Sl37vpGg2f3iV_ifhG1Vhh2tpCL-gTMgRt7UX9bORMSyf1sBPxr37TPKE5_LEynjS-fpvQIN0LAGzq0x8aUvvrp3djZJ52OqPuKtdMfyYCAO2y6V49tY5EPSiVpZ5QhSmg-WuhUzMNkKr4W7YeB55bH3CF4eSwjQIblLtSFk-q-kUZdqW9hoXdskX-i8PQ" />
+                            <div
+                                class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold border-2 border-white">
+                                +3</div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full bg-primary/10 text-primary py-3 rounded-lg font-semibold hover:bg-primary/20 transition-colors">Join
+                        Session</button>
+                </div>
+            </div>
+            <!-- Empty State Placeholder / Add New Shortcut -->
+            <div
+                class="bg-primary/5 dark:bg-slate-800/50 rounded-xl border-2 border-dashed border-primary/20 flex flex-col items-center justify-center p-8 text-center">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                    <span class="material-icons text-primary text-3xl">add_circle_outline</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200">Host your own?</h3>
+                <p class="text-sm text-slate-500 mb-6">Can't find what you're looking for? Start a new session for your
+                    classmates.</p>
+                <button class="text-primary font-bold hover:underline decoration-2 underline-offset-4">Create Session
+                    Now</button>
+            </div>
+        </div>
+        <!-- Pagination/Load More -->
+        <div class="mt-12 flex justify-center">
+            <button
+                class="flex items-center gap-2 px-8 py-3 bg-white dark:bg-slate-800 border border-primary/10 rounded-xl font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors shadow-sm">
+                <span>View More Sessions</span>
+                <span class="material-icons">expand_more</span>
+            </button>
+        </div>
+    </main>
+    <footer class="mt-20 border-t border-primary/5 py-10 bg-white dark:bg-background-dark">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2 opacity-50">
+                <span class="material-icons text-primary">school</span>
+                <span class="font-bold tracking-tight text-primary">EduTrack</span>
+                <span class="text-sm text-slate-500">© 2024</span>
+            </div>
+            <div class="flex gap-8 text-sm font-medium text-slate-500">
+                <a class="hover:text-primary transition-colors" href="#">Guidelines</a>
+                <a class="hover:text-primary transition-colors" href="#">Safety</a>
+                <a class="hover:text-primary transition-colors" href="#">Help Center</a>
+                <a class="hover:text-primary transition-colors" href="#">Privacy</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
-# Plateforme Académique Intelligente — Prototypage
+# Academix — Prototypage
 
-Ce dossier contient un **prototype HTML statique** (maquettes intégrées) d’une plateforme académique intelligente et collaborative.
+Ce dossier contient un **prototype HTML statique** (maquettes intégrées) d'**Academix**, une plateforme académique intelligente et collaborative.
 
 ## Vision (février 2026)
 
